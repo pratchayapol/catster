@@ -49,7 +49,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admincatster
       MYSQL_DATABASE: dbcatster
-      MYSQL_USER: root
+      MYSQL_USER: catster
       MYSQL_PASSWORD: catster
     networks:
       catster_network:
@@ -58,7 +58,6 @@ services:
       - "3342:3306"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./mysql_backup:/backup
     command: --default-authentication-plugin=mysql_native_password
 
       
