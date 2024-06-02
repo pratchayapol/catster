@@ -1,6 +1,6 @@
 <?php
   date_default_timezone_set("Asia/Bangkok");
-  $servername = "mariadb-catster";
+  $servername = "100.70.4.4:3342";
   $username = "root";
   $password = "admincatster";
   $dbname = "dbcatster";
