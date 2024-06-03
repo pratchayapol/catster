@@ -11,8 +11,8 @@
         </button>
         <div class="collapse show" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-shield-cat me-2"></i>Cats</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-arrow-trend-up me-2"></i>Sales</a></li>
+            <li><a href="admin.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-shield-cat me-2"></i>Cats</a></li>
+            <li><a href="db_sales.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-arrow-trend-up me-2"></i>Sales</a></li>
           </ul>
         </div>
       </li>
