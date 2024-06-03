@@ -1,11 +1,11 @@
 <?php
-include 'condb.php';
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("location:login.php");
-}
-$sql = "SELECT * FROM orders";
-$result = mysqli_query($conn, $sql);
+  include 'condb.php';
+  session_start();
+  if (!isset($_SESSION['username'])) {
+      header("location:login.php");
+  }
+  $sql = "SELECT * FROM orders";
+  $result = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -51,12 +51,7 @@ $result = mysqli_query($conn, $sql);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($row = mysqli_fetch_assoc($result)) { 
-                            $order_id = $row['order_id'];
-                            $payment_sql = "SELECT * FROM payment WHERE order_id = '$order_id'";
-                            $payment_result = mysqli_query($conn, $payment_sql);
-                            $payment = mysqli_fetch_assoc($payment_result);
-                        ?>
+                        <?php while($row = mysqli_fetch_assoc($result)) { ?>
                         <tr>
                             <th scope="row"><?php echo $row['order_id']; ?></th>
                             <td><?php echo $row['mem_username']; ?></td>
@@ -74,34 +69,38 @@ $result = mysqli_query($conn, $sql);
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body text-start p-4">
-                                        <h5 class="modal-title text-uppercase mb-5" id="orderDetailsLabel<?php echo $row['order_id']; ?>"><?php echo $row['mem_username']; ?></h5>
+                                      <h5 class="modal-title text-uppercase mb-5" id="orderDetailsLabel<?php echo $row['order_id']; ?>"><?php echo $row['mem_username']; ?></h5>
+                                        <?php 
+                                          $order_id = $row['order_id'];
+                                          $payment_sql = "SELECT * FROM payment WHERE order_id = '$order_id'";
+                                          $payment_result = mysqli_query($conn, $payment_sql);
+                                          while($payment_row = mysqli_fetch_assoc($payment_result)){ ?>
+                                            <img src="images/<?php echo $payment_row['pay_slip']; ?>" style="width: 480px;">
+                                          <?php } ?>
                                         <p class="mb-0">Payment summary</p>
                                         <?php 
-                                        $image_path = "images/" . $payment['pay_slip'];
-                                        if (file_exists($image_path)) {
-                                            echo "<img src='$image_path' alt='Payment Slip'>";
-                                        } else {
-                                            echo "<p>Image not found: $image_path</p>";
-                                        }
-                                        ?>
+                                          $order_details_sql = "SELECT * FROM order_details WHERE order_id = '$order_id'";
+                                          $order_details_result = mysqli_query($conn, $order_details_sql);
+                                          while ($order_details_row = mysqli_fetch_assoc($order_details_result)) { ?>
+                                            <div class="d-flex justify-content-between">
+                                              <p class="fw-small mb-0"><?php echo $order_details_row['product_name']; ?> (Qty: <?php echo $order_details_row['quantity']; ?>)</p>
+                                              <p class="text-muted mb-0">$<?php echo $order_details_row['sub_total']; ?></p>
+                                            </div>
+                                        <?php } ?>
                                         <hr class="mt-2 mb-4"
                                           style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
                                         
-                                        <!-- Order details -->
-                                        <div class="d-flex justify-content-between">
-                                          <p class="fw-small mb-0">Ether Chair(Qty:1)</p>
-                                          <p class="text-muted mb-0">$1750.00</p>
-                                        </div>
-
+                                        <!-- Order total -->
                                         <div class="d-flex justify-content-between">
                                           <p class="fw-bold">Total</p>
-                                          <p class="fw-bold">$2125.00</p>
+                                          <p class="fw-bold"><?php echo $row['order_total']; ?></p>
                                         </div>
                                       </div>
                                       <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
                                         <button type="button" class="btn btn-lg mb-1" style="background-color: #FFA931;">
                                           Confirm
                                         </button>
+                                        <p></p>
                                       </div>
                                     </div>
                                   </div>
@@ -117,6 +116,8 @@ $result = mysqli_query($conn, $sql);
 
 </body>
 </html>
+
+
 
 
 
