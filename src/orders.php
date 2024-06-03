@@ -51,32 +51,64 @@ $result = mysqli_query($conn, $sql);
                         </tr>
                     </thead>
                     <tbody>
+                        <?php while($row = mysqli_fetch_assoc($result)) { 
+                            $order_id = $row['order_id'];
+                            $payment_sql = "SELECT * FROM payment WHERE order_id = '$order_id'";
+                            $payment_result = mysqli_query($conn, $payment_sql);
+                            $payment = mysqli_fetch_assoc($payment_result);
+                        ?>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Otto</td>
+                            <th scope="row"><?php echo $row['order_id']; ?></th>
+                            <td><?php echo $row['mem_username']; ?></td>
+                            <td><?php echo $row['order_date']; ?></td>
+                            <td><?php echo $row['order_total']; ?></td>
+                            <td><?php echo $row['order_status']; ?></td>
                             <td>
-                                <button onclick="document.getElementById('orderDetails').style.display='block'" class="w3-button w3-amber"><i class="fa-regular fa-eye"></i></button>
-                                <div id="orderDetails" class="w3-modal">
-                                    <div class="w3-modal-content w3-animate-top w3-card-4">
-                                    <header class="w3-container w3-amber"> 
-                                        <span onclick="document.getElementById('orderDetails').style.display='none'" 
-                                        class="w3-button w3-display-topright">&times;</span>
-                                        <h2>รายละเอียดการชำระเงิน</h2>
-                                    </header>
-                                    <div class="w3-container">
-                                        <p>Some text..</p>
-                                        <p>Some text..</p>
+                                <button type="button" class="w3-button w3-amber" data-bs-toggle="modal" data-bs-target="#orderDetails<?php echo $row['order_id']; ?>">
+                                    <i class="fa-regular fa-eye"></i>
+                                </button>
+                                <div class="modal fade" id="orderDetails<?php echo $row['order_id']; ?>" tabindex="-1" aria-labelledby="orderDetailsLabel<?php echo $row['order_id']; ?>" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header border-bottom-0">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body text-start p-4">
+                                        <h5 class="modal-title text-uppercase mb-5" id="orderDetailsLabel<?php echo $row['order_id']; ?>"><?php echo $row['mem_username']; ?></h5>
+                                        <p class="mb-0">Payment summary</p>
+                                        <?php 
+                                        $image_path = "images/" . $payment['pay_slip'];
+                                        if (file_exists($image_path)) {
+                                            echo "<img src='$image_path' alt='Payment Slip'>";
+                                        } else {
+                                            echo "<p>Image not found: $image_path</p>";
+                                        }
+                                        ?>
+                                        <hr class="mt-2 mb-4"
+                                          style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
+                                        
+                                        <!-- Order details -->
+                                        <div class="d-flex justify-content-between">
+                                          <p class="fw-small mb-0">Ether Chair(Qty:1)</p>
+                                          <p class="text-muted mb-0">$1750.00</p>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                          <p class="fw-bold">Total</p>
+                                          <p class="fw-bold">$2125.00</p>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
+                                        <button type="button" class="btn btn-lg mb-1" style="background-color: #FFA931;">
+                                          Confirm
+                                        </button>
+                                      </div>
                                     </div>
-                                    <footer class="w3-container w3-amber">
-                                        <p>กด --ตรวจสอบสินค้าแล้ว-- เพื่อยืนยันและทำการจัดส่งสินค้า</p>
-                                    </footer>
-                                    </div>
+                                  </div>
                                 </div>
                             </td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -85,6 +117,9 @@ $result = mysqli_query($conn, $sql);
 
 </body>
 </html>
+
+
+
 
 
 <style>

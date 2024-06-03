@@ -1,29 +1,28 @@
 <?php
-    session_start(); // ตรวจสอบ session
+session_start(); // Start the session
 
-    include 'condb.php';
+include 'condb.php';
 
-    // ดึงข้อมูล order_id และ shipping_info จาก URL หรือ session
-    $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : (isset($_SESSION['order_id']) ? $_SESSION['order_id'] : '');
+// Get the order ID from the URL or session
+$order_id = isset($_GET['order_id']) ? $_GET['order_id'] : (isset($_SESSION['order_id']) ? $_SESSION['order_id'] : '');
 
-    if (empty($order_id)) {
-        // ถ้าไม่มี order_id ให้จัดการข้อผิดพลาดตามที่คุณต้องการ
-        echo "Order ID is not available.";
-        exit; // หยุดการทำงานต่อ
-    }
-    // ตรวจสอบว่ามีคำสั่งซื้อที่มีสถานะ "unpaid" และถูกสร้างมาเมื่อ 24 ชั่วโมงที่ผ่านมาหรือไม่
-    $current_date = date('Y-m-d H:i:s');
-    $twenty_four_hours_ago = date('Y-m-d H:i:s', strtotime('-24 hours'));
+if (empty($order_id)) {
+    // Handle the error if order ID is not available
+    echo "Order ID is not available.";
+    exit;
+}
 
-    // คำสั่ง SQL เพื่ออัพเดต order_status เป็น "refuse" สำหรับคำสั่งซื้อที่มีสถานะ "unpaid" และถูกสร้างมาก่อนหนึ่งวัน
-    $update_sql = "UPDATE orders SET order_status = 'refuse' WHERE order_status = 'pending' AND order_date <= '$twenty_four_hours_ago'";
-    mysqli_query($conn, $update_sql);
+// Check for orders that are unpaid and older than 24 hours, update their status to "refuse"
+$current_date = date('Y-m-d H:i:s');
+$twenty_four_hours_ago = date('Y-m-d H:i:s', strtotime('-24 hours'));
 
-    $sql = "SELECT * FROM orders WHERE order_id = '$order_id'";
-    $result = mysqli_query($conn, $sql);
-    $order = mysqli_fetch_assoc($result);
+$update_sql = "UPDATE orders SET order_status = 'refuse' WHERE order_status = 'pending' AND order_date <= '$twenty_four_hours_ago'";
+mysqli_query($conn, $update_sql);
+
+$sql = "SELECT * FROM orders WHERE order_id = '$order_id'";
+$result = mysqli_query($conn, $sql);
+$order = mysqli_fetch_assoc($result);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="th">
@@ -91,6 +90,7 @@
     </script>
 </body>
 </html>
+
 
 
 
