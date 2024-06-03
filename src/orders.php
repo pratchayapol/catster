@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("location:login.php");
 }
-$sql = "SELECT * FROM employees";
+$sql = "SELECT * FROM orders";
 $result = mysqli_query($conn, $sql);
 ?>
 

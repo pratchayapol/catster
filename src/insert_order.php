@@ -33,7 +33,7 @@ $order_status = 'pending';
 // Prepare and execute the order insertion
 $query = mysqli_prepare($conn, "INSERT INTO orders (order_id, order_date, order_tel, order_address, order_status, order_total, order_note, mem_username) 
 VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-mysqli_stmt_bind_param($query, 'ssssdsss', $order_id, $order_date, $order_tel, $order_address, $order_status, $_POST['order_total'], $order_note, $_POST['mem_username']);
+mysqli_stmt_bind_param($query, 'sssssdss', $order_id, $order_date, $order_tel, $order_address, $order_status, $_POST['order_total'], $order_note, $_POST['mem_username']);
 
 if (mysqli_stmt_execute($query)) {
     $last_id = mysqli_insert_id($conn);
