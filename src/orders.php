@@ -69,7 +69,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body text-start p-4">
-                                      <h5 class="modal-title text-uppercase mb-5" id="orderDetailsLabel<?php echo $row['order_id']; ?>"><?php echo $row['mem_username']; ?></h5>
+                                      <h5 class="modal-title text-uppercase mb-5" id="orderDetailsLabel<?php echo $row['order_id']; ?>">#<?php echo " " . $row['order_id']; ?></h5>
                                         <?php 
                                           $order_id = $row['order_id'];
                                           $payment_sql = "SELECT * FROM payment WHERE order_id = '$order_id'";
@@ -78,14 +78,14 @@
                                             <img src="images/<?php echo $payment_row['pay_slip']; ?>" style="width: 480px;">
                                           <?php } ?>
                                         
-                                        <p class="mb-0">Payment summary</p>
+                                        <strong class="mb-0">Payment summary</strong>
                                         <hr class="mt-2 mb-4" style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
                                         <?php 
                                           $order_details_sql = "SELECT * FROM order_details WHERE order_id = '$order_id'";
                                           $order_details_result = mysqli_query($conn, $order_details_sql);
                                           while ($order_details_row = mysqli_fetch_assoc($order_details_result)) { ?>
                                             <div class="d-flex justify-content-between">
-                                              <p class="fw-small mb-0"><?php echo $order_details_row['product_name']; ?> (Qty: <?php echo $order_details_row['quantity']; ?>)</p>
+                                              <p class="fw-small mb-0"><?php echo $order_details_row['quantity'] . " "; ?><?php echo " " . $order_details_row['product_name']; ?></p>
                                               <p class="text-muted mb-0">$<?php echo $order_details_row['sub_total']; ?></p>
                                             </div>
                                         <?php } ?>
@@ -106,7 +106,6 @@
                                             Refuse
                                         </a>
                                       <?php } ?>
-
                                       </div>
                                     </div>
                                   </div>
