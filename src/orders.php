@@ -17,7 +17,8 @@ $result = mysqli_query($conn, $sql);
     <link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet" />
     <link href="assets/fontawesome/css/brands.css" rel="stylesheet" />
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet" />
-    <title>Employees</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Orders</title>
 </head>
 <body>
 
@@ -28,7 +29,7 @@ $result = mysqli_query($conn, $sql);
             <div class="container d-flex flex-wrap justify-content-center">
                 <p class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                    <span class="fs-4">Dashboard</span>
+                    <span class="fs-4">Orders</span>
                 </p>
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
                     <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
@@ -41,10 +42,12 @@ $result = mysqli_query($conn, $sql);
                 <table class="table table-hover ms-4">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">ORDER ID</th>
+                            <th scope="col">MEMBER</th>
+                            <th scope="col">DATE</th>
+                            <th scope="col">TOTAL</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">DETAILS</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,18 +56,26 @@ $result = mysqli_query($conn, $sql);
                             <td>Mark</td>
                             <td>Otto</td>
                             <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@twitter</td>
+                            <td>Otto</td>
+                            <td>
+                                <button onclick="document.getElementById('orderDetails').style.display='block'" class="w3-button w3-amber"><i class="fa-regular fa-eye"></i></button>
+                                <div id="orderDetails" class="w3-modal">
+                                    <div class="w3-modal-content w3-animate-top w3-card-4">
+                                    <header class="w3-container w3-amber"> 
+                                        <span onclick="document.getElementById('orderDetails').style.display='none'" 
+                                        class="w3-button w3-display-topright">&times;</span>
+                                        <h2>รายละเอียดการชำระเงิน</h2>
+                                    </header>
+                                    <div class="w3-container">
+                                        <p>Some text..</p>
+                                        <p>Some text..</p>
+                                    </div>
+                                    <footer class="w3-container w3-amber">
+                                        <p>กด --ตรวจสอบสินค้าแล้ว-- เพื่อยืนยันและทำการจัดส่งสินค้า</p>
+                                    </footer>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
