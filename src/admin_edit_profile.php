@@ -78,54 +78,43 @@
                             }
                         ?>
                         <br><br>
-                        <input type="file" class="form-control">
+                        <input type="hidden" name="current_picture" value="<?php echo isset($row['mem_picture']) ? htmlspecialchars($row['mem_picture']) : ''; ?>">
+                        <input type="file" id="emp_picture" name="emp_picture" class="form-control">
                         </div>
                     </div>
                     
                     <!-- edit form column -->
                     <div class="col-md-9 personal-info">
                         <h3>Personal info</h3>
-                        
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" role="form" action="edit_profile_admin.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="col-lg-3 control-label">First name:</label>
                             <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Jane">
+                            <input class="form-control" name="emp_firstname" type="text" value="<?php echo isset($row['emp_firstname']) ? $row['emp_firstname'] : ''; ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Last name:</label>
                             <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Bishop">
+                            <input class="form-control" name="emp_lastname" type="text" value="<?php echo isset($row['emp_lastname']) ? $row['emp_lastname'] : ''; ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Company:</label>
+                            <label class="col-lg-3 control-label">Telephone:</label>
                             <div class="col-lg-8">
-                            <input class="form-control" type="text" value="">
+                            <input class="form-control" name="emp_tel" type="text" value="<?php echo isset($row['emp_tel']) ? $row['emp_tel'] : ''; ?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Email:</label>
                             <div class="col-lg-8">
-                            <input class="form-control" type="text" value="janesemail@gmail.com">
+                            <input class="form-control" name="emp_email" type="text" value="<?php echo isset($row['emp_email']) ? $row['emp_email'] : ''; ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Time Zone:</label>
-                            <div class="col-lg-8">
-                            <div class="ui-select">
-                                <select id="user_time_zone" class="form-control">
-                                <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                                <option value="Alaska">(GMT-09:00) Alaska</option>
-                                <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                                <option value="Arizona">(GMT-07:00) Arizona</option>
-                                <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                                <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                                <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                                </select>
-                            </div>
+                            <label class="col-lg-3 control-label">Address:</label>
+                            <div class="col-lg-8"> 
+                            <textarea rows="3" class="form-control" name="emp_address"><?php echo isset($row['emp_address']) ? $row['emp_address'] : ''; ?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -146,6 +135,7 @@
 
 </body>
 </html>
+
 
 
 
