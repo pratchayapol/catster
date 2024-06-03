@@ -25,7 +25,7 @@
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-house me-2"></i>Shelter</a></li>
             <li><a href="employees.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-user-group me-2"></i>Employees</a></li>
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-font me-2" ></i>Types</a></li>
-            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-cubes-stacked me-2"></i>Products</a></li>
+            <li><a href="products.php" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-cubes-stacked me-2"></i>Products</a></li>
             <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-4"><i class="fa-solid fa-syringe me-2"></i>Vaccine</a></li>
           </ul>
         </div>

@@ -36,22 +36,37 @@ if (!empty($_GET['product_id'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <script src="assets/js/bootstrap.min.js"></script>
-    <link href="assets/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="assets/fontawesome/css/brands.min.css" rel="stylesheet">
-    <link href="assets/fontawesome/css/solid.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
-    <title>สินค้า</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="assets/fontawesome/css/brands.css" rel="stylesheet" />
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Products</title>
 </head>
 <body>
-    <?php include 'include/menu.php' ?>
-    <div class="container" style="margin-top: 70px;">
-        <h4>จัดการข้อมูลสินค้า</h4>
-        <div class="row g-5">
-            <div class="col-md-8 col-sm-12">
+
+    <?php include 'include/sidenav.php'; ?>
+
+    <div class="main">
+        <header class="py-3 mb-4 border-bottom">
+            <div class="container d-flex flex-wrap justify-content-center">
+                <p class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+                    <span class="fs-4">Products</span>
+                </p>
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
                 <form action="update_product.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($result['product_id']); ?>">
                     <div class="row g-3 mb-3">
@@ -112,18 +127,14 @@ if (!empty($_GET['product_id'])) {
                     <a class="btn btn-secondary" href="products.php"><i class="fa-solid fa-angles-left me-1"></i>ยกเลิก</a>
                     <hr class="my-4">
                 </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-bordered border-dark">
+                <table class="table table-hover ms-4">
                     <thead>
-                        <tr style="text-align: center;">
-                            <th style="width: 100px;">รูปภาพ</th>
-                            <th>ชื่อสินค้า</th>
-                            <th style="width: 200px;">ราคา</th>
-                            <th style="width: 200px;">จำนวนคงเหลือ</th>
-                            <th style="width: 200px;">จัดการ</th>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Remain</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,7 +154,7 @@ if (!empty($_GET['product_id'])) {
                             <td><?php echo number_format($product['product_price'], 2); ?></td>
                             <td><?php echo htmlspecialchars($product['product_remain']); ?></td>
                             <td>
-                                <a role="button" href="products.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>" class="btn btn-outline-dark"><i class="fa-regular fa-pen-to-square me-1"></i>แก้ไข</a>
+                                <a role="button" href="form_update_product.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>" class="btn btn-outline-dark"><i class="fa-regular fa-pen-to-square me-1"></i>แก้ไข</a>
                                 <a role="button" href="delete_product.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>" class="btn btn-outline-danger" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบสินค้านี้?');">
                                     <i class="fa-regular fa-trash-can me-1"></i>ลบ
                                 </a>
@@ -162,5 +173,130 @@ if (!empty($_GET['product_id'])) {
             </div>
         </div>
     </div>
+
 </body>
 </html>
+
+
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    color: #000;
+    display: block;
+  }
+
+  .sidenav a:hover {
+    color: #000;
+  }
+
+  .main {
+    margin-left: 250px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+
+      .nav-link a:hover {
+        color: #ffffff;
+        background-color: #F88020;
+      }
+</style>
+
+
