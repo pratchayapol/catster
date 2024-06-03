@@ -14,6 +14,8 @@
   <link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet" />
   <link href="assets/fontawesome/css/brands.css" rel="stylesheet" />
   <link href="assets/fontawesome/css/solid.css" rel="stylesheet" />
+  <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <style>
   body {
     font-family: "Lato", sans-serif;
@@ -152,7 +154,6 @@
       </div>
     </header>
 
-
     <div class="row mb-5 ms-3">
       <div class="col-lg-3">
         <div class="card text-center">
@@ -219,17 +220,11 @@
     <div class="row ms-3">
       <div class="col-lg-8">
         <div class="card text-center">
-          <div class="card-header">
-            Featured
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-          <div class="card-footer text-body-secondary">
-            2 days ago
-          </div>
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="chartPie"></canvas>
+                </div>
+            </div>
         </div>
       </div>
       <div class="col-lg-4">
@@ -248,6 +243,37 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Pie Data
+      var chartPie_Data = {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'Count of Votes',
+          data: [17, 12, 5, 7, 2, 10],
+          backgroundColor: [ 'red','blue','yellow','green','purple','orange']
+        }]
+      }
+      // Pie Chart
+      var chartPie = document.getElementById('chartPie').getContext('2d');
+      var chartPie_options = {
+        cutoutPercentage: 0, //DonutPie
+        legend: {position:'left',
+          labels:{
+            pointStyle:'circle',
+            usePointStyle:true
+          }
+        }
+      };
+      if (chartPie) {
+        new Chart(chartPie, {
+        type: 'pie',
+        data: chartPie_Data,
+        options: chartPie_options
+        });
+      }
+    </script>
+    
   </div>
    
 </body>
