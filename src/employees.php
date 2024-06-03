@@ -87,9 +87,8 @@
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Username</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
+                            <th scope="col" style="width: 150px;">First Name</th>
+                            <th scope="col" style="width: 150px;">Last Name</th>
                             <th scope="col">Address</th>
                             <th scope="col">Email</th>
                             <th scope="col">Telephone</th>
@@ -109,7 +108,6 @@
                                     <img src="images/noimage.png" style="width: 100px;" alt="No Image">
                                 <?php endif; ?>
                             </td>
-                            <td><?php echo htmlspecialchars($employee['emp_username']); ?></td>
                             <td><?php echo htmlspecialchars($employee['emp_firstname']); ?></td>
                             <td><?php echo htmlspecialchars($employee['emp_lastname']); ?></td>
                             <td><?php echo htmlspecialchars($employee['emp_address']); ?></td>

@@ -67,7 +67,7 @@ if (!empty($_GET['product_id'])) {
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-10">
-            <form action="insert_product.php" method="POST" enctype="multipart/form-data">
+                <form action="insert_product.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($result['product_id']); ?>">
                     <div class="row g-3 mb-3">
                         <?php if(!empty($result['product_id'])): ?>
