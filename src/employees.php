@@ -8,8 +8,6 @@
   $result = mysqli_query($conn, $sql);
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +18,7 @@
     <link href="assets/fontawesome/css/brands.css" rel="stylesheet" />
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Products</title>
+    <title>Employees</title>
 </head>
 <body>
 
@@ -32,7 +29,7 @@
             <div class="container d-flex flex-wrap justify-content-center">
                 <p class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
                     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                    <span class="fs-4">Products</span>
+                    <span class="fs-4">Employees</span>
                 </p>
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
                     <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
@@ -42,96 +39,85 @@
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-10">
-            <form action="insert_product.php" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($result['product_id']); ?>">
+                <form action="insert_emp.php" method="POST" enctype="multipart/form-data">
                     <div class="row g-3 mb-3">
-                        <?php if(!empty($result['product_id'])): ?>
-                        <div class="col-sm-2">
-                            <?php if(!empty($result['product_picture'])): ?>
-                                <br>
-                                <img src="images/<?php echo htmlspecialchars($result['product_picture']); ?>" style="width: 100px;" alt="รูปภาพสินค้า">
-                            <?php else: ?>
-                                <img src="images/noimage.png" style="width: 100px;" alt="รูปภาพสินค้า">
-                            <?php endif; ?>
-                        </div>
-                        <div class="col-sm-10">
-                            <label for="product_picture" class="form-label">รูปภาพ</label>
-                            <input type="file" name="product_picture" class="form-control" id="product_picture">
-                        </div>
-                        <?php else: ?>
-                            <div class="col-sm-6">
-                                <label for="product_picture" class="form-label">รูปภาพ</label>
-                                <input type="file" name="product_picture" class="form-control" id="product_picture">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="product_id" class="form-label">รหัสสินค้า</label>
-                                <input type="text" name="product_id" class="form-control" id="product_id">
-                            </div>
-                        <?php endif; ?>
                         <div class="col-sm-6">
-                            <label for="product_name" class="form-label">ชื่อสินค้า</label>
-                            <input type="text" name="product_name" class="form-control" id="product_name" value="<?php echo htmlspecialchars($result['product_name']); ?>">
+                            <label for="emp_picture" class="form-label">Picture</label>
+                            <input type="file" name="emp_picture" class="form-control" id="emp_picture">
                         </div>
                         <div class="col-sm-6">
-                            <label for="product_price" class="form-label">ราคา</label>
-                            <input type="text" name="product_price" class="form-control" id="product_price" value="<?php echo htmlspecialchars($result['product_price']); ?>">
                         </div>
                         <div class="col-sm-6">
-                            <label for="product_remain" class="form-label">จำนวนคงเหลือ</label>
-                            <input type="number" name="product_remain" class="form-control" id="product_remain" value="<?php echo htmlspecialchars($result['product_remain']); ?>">
+                            <label for="emp_firstname" class="form-label">First Name</label>
+                            <input type="text" name="emp_firstname" class="form-control" id="emp_firstname">
                         </div>
                         <div class="col-sm-6">
-                            <label for="type_id" class="form-label">ประเภท</label>
-                            <select name="type_id" id="type_id" class="form-select">
-                                <?php 
-                                    while($type = mysqli_fetch_assoc($type_result)) {
-                                        $selected = ($type['type_id'] == $result['type_id']) ? 'selected' : '';
-                                        echo '<option value="'.htmlspecialchars($type['type_id']).'" '.$selected.'>'.htmlspecialchars($type['type_name']).'</option>';
-                                    }
-                                ?>
-                            </select>
+                            <label for="emp_lastname" class="form-label">Last Name</label>
+                            <input type="text" name="emp_lastname" class="form-control" id="emp_lastname">
                         </div>
                         <div class="col-sm-12">
-                            <label for="product_desc" class="form-label">รายละเอียด</label>
-                            <textarea name="product_desc" class="form-control" id="product_desc" rows="3"><?php echo htmlspecialchars($result['product_desc']); ?></textarea>
+                            <label for="emp_address" class="form-label">Address</label>
+                            <textarea rows="3" name="emp_address" class="form-control" id="emp_address"></textarea>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="emp_email" class="form-label">Email</label>
+                            <input type="email" name="emp_email" class="form-control" id="emp_email">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="emp_tel" class="form-label">Telephone</label>
+                            <input type="tel" name="emp_tel" class="form-control" id="emp_tel">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="emp_username" class="form-label">Username</label>
+                            <input type="text" name="emp_username" class="form-control" id="emp_username">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="emp_password" class="form-label">Password</label>
+                            <input type="password" name="emp_password" class="form-control" id="emp_password">
                         </div>
                     </div>
                     <button class="btn btn-success" type="submit">
                         <i class="fa-regular fa-floppy-disk me-1"></i>Save
                     </button>
-                    <a class="btn btn-secondary" href="products.php"><i class="fa-solid fa-angles-left me-1"></i>ยกเลิก</a>
+                    <a class="btn btn-secondary" href="employees.php"><i class="fa-solid fa-angles-left me-1"></i>Cancel</a>
                     <hr class="my-4">
                 </form>
+
                 <table class="table table-hover ms-4">
                     <thead>
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Remain</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telephone</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
-                            if($rows > 0): 
-                                while($product = mysqli_fetch_assoc($product_result)):
+                            if(mysqli_num_rows($result) > 0): 
+                                while($employee = mysqli_fetch_assoc($result)):
                         ?>
                         <tr>
                             <td>
-                                <?php if(!empty($product['product_picture'])): ?>
-                                    <img src="images/<?php echo htmlspecialchars($product['product_picture']); ?>" style="width: 100px;" alt="รูปภาพสินค้า">
+                                <?php if(!empty($employee['emp_picture'])): ?>
+                                    <img src="images/<?php echo htmlspecialchars($employee['emp_picture']); ?>" style="width: 100px;" alt="Employee Picture">
                                 <?php else: ?>
-                                    <img src="images/noimage.png" style="width: 100px;" alt="ไม่มีรูปภาพ">
+                                    <img src="images/noimage.png" style="width: 100px;" alt="No Image">
                                 <?php endif; ?>
                             </td>
-                            <td><?php echo htmlspecialchars($product['product_name']); ?></td>
-                            <td><?php echo number_format($product['product_price'], 2); ?></td>
-                            <td><?php echo htmlspecialchars($product['product_remain']); ?></td>
+                            <td><?php echo htmlspecialchars($employee['emp_username']); ?></td>
+                            <td><?php echo htmlspecialchars($employee['emp_firstname']); ?></td>
+                            <td><?php echo htmlspecialchars($employee['emp_lastname']); ?></td>
+                            <td><?php echo htmlspecialchars($employee['emp_address']); ?></td>
+                            <td><?php echo htmlspecialchars($employee['emp_email']); ?></td>
+                            <td><?php echo htmlspecialchars($employee['emp_tel']); ?></td>
                             <td>
-                                <a role="button" href="form_update_product.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>" class="btn btn-outline-dark"><i class="fa-regular fa-pen-to-square me-1"></i>แก้ไข</a>
-                                <a role="button" href="delete_product.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>" class="btn btn-outline-danger" onclick="return confirm('คุณแน่ใจหรือไม่ว่าต้องการลบสินค้านี้?');">
-                                    <i class="fa-regular fa-trash-can me-1"></i>ลบ
+                                <a role="button" href="delete_emp.php?emp_username=<?php echo htmlspecialchars($employee['emp_username']); ?>" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this employee?');">
+                                    <i class="fa-regular fa-trash-can me-1"></i>Delete
                                 </a>
                             </td>
                         </tr>
@@ -140,17 +126,19 @@
                             else: 
                         ?>
                         <tr>
-                            <td colspan="5"><p class="text-center">ไม่มีข้อมูล</p></td>
+                            <td colspan="8"><p class="text-center">No data available</p></td>
                         </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
 
 </body>
 </html>
+
 
 
 <style>
