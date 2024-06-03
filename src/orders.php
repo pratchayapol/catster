@@ -77,7 +77,9 @@
                                           while($payment_row = mysqli_fetch_assoc($payment_result)){ ?>
                                             <img src="images/<?php echo $payment_row['pay_slip']; ?>" style="width: 480px;">
                                           <?php } ?>
+                                        
                                         <p class="mb-0">Payment summary</p>
+                                        <hr class="mt-2 mb-4" style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
                                         <?php 
                                           $order_details_sql = "SELECT * FROM order_details WHERE order_id = '$order_id'";
                                           $order_details_result = mysqli_query($conn, $order_details_sql);
@@ -87,8 +89,7 @@
                                               <p class="text-muted mb-0">$<?php echo $order_details_row['sub_total']; ?></p>
                                             </div>
                                         <?php } ?>
-                                        <hr class="mt-2 mb-4"
-                                          style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
+                                        <hr class="mt-2 mb-4" style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
                                         
                                         <!-- Order total -->
                                         <div class="d-flex justify-content-between">
@@ -97,10 +98,15 @@
                                         </div>
                                       </div>
                                       <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
-                                        <button type="button" class="btn btn-lg mb-1" style="background-color: #FFA931;">
+                                      <?php if($row['order_status'] == 'wait'){ ?>
+                                        <a href="admin_confirm_order.php?action=confirm&order_id=<?php echo $row['order_id']; ?>" class="btn btn-lg mb-1" style="background-color: #FFA931;">
                                           Confirm
-                                        </button>
-                                        <p></p>
+                                        </a>
+                                        <a href="admin_confirm_order.php?action=refuse&order_id=<?php echo $row['order_id']; ?>" class="btn btn-lg mb-1" style="background-color: #D1274B; color: #fff;">
+                                            Refuse
+                                        </a>
+                                      <?php } ?>
+
                                       </div>
                                     </div>
                                   </div>

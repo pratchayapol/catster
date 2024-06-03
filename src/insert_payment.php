@@ -50,8 +50,8 @@ $pay_id = "P" . generatePayId($conn);
 $sql = "INSERT INTO payment (pay_id, order_id, pay_slip) VALUES ('{$pay_id}', '{$order_id}', '{$pay_slip}')";
 
 if (mysqli_query($conn, $sql)) {
-    // Update order status to 'paid'
-    $update_order_status_sql = "UPDATE orders SET order_status = 'paid' WHERE order_id = '{$order_id}'";
+    // Update order status to 'wait'
+    $update_order_status_sql = "UPDATE orders SET order_status = 'wait' WHERE order_id = '{$order_id}'";
     if (mysqli_query($conn, $update_order_status_sql)) {
         // Fetch order total
         $order_query = "SELECT order_total FROM orders WHERE order_id = '{$order_id}'";

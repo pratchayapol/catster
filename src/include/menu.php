@@ -46,7 +46,7 @@
           <?php if(isset($_SESSION['username'])): ?>
             <a class="nav-link" href="form_edit_profile.php">Welcome, <?php echo $_SESSION['username']; ?></a>
           <?php else: ?>
-            <a role="button" class="btn btn-outline-warning" href="login.php">Login</a>
+            <a role="button" class="btn btn-outline-warning" href="login.php">sign in</a>
           <?php endif; ?>
         </div>
       </div>
