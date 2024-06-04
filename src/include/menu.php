@@ -27,9 +27,11 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="shop.php">All Products</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Food</a></li>
+            <li><a class="dropdown-item" href="#">Toy</a></li>
+            <li><a class="dropdown-item" href="#">Item</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="your_orders.php">Orders History</a></li>
+            <li><a class="dropdown-item" href="#">Catster</a></li>
           </ul>
         </li>
           <li class="nav-item">
