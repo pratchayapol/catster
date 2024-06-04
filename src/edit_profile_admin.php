@@ -12,28 +12,37 @@
 
         // Check if a new picture is uploaded
         if(isset($_FILES['emp_picture']) && $_FILES['emp_picture']['error'] === UPLOAD_ERR_OK) {
+            // Get file details
             $emp_picture = $_FILES['emp_picture']['name'];
             $target_dir = "images/";
             $target_file = $target_dir . basename($_FILES["emp_picture"]["name"]);
-            move_uploaded_file($_FILES["emp_picture"]["tmp_name"], $target_file);
-        } else {
-            // If no new picture is uploaded, use the current picture
-            $emp_picture = $_POST['current_picture'];
+
+            // Move uploaded file to target directory
+            if(move_uploaded_file($_FILES["emp_picture"]["tmp_name"], $target_file)) {
+                // Update database with new picture filename
+                $sql = "UPDATE employees SET 
+                        emp_picture = ?
+                        WHERE emp_username = ?";
+                $stmt = mysqli_prepare($conn, $sql);
+                mysqli_stmt_bind_param($stmt, "ss", $emp_picture, $emp_username);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_close($stmt);
+            } else {
+                // Handle error if file upload fails
+                echo "Error uploading file.";
+            }
         }
 
-        // Prepare SQL statement with prepared statement
+        // Prepare SQL statement for updating other employee details
         $sql = "UPDATE employees SET 
                 emp_firstname = ?,
                 emp_lastname = ?,
                 emp_email = ?,
-                emp_tel = ?,
-                emp_picture = ?
+                emp_tel = ?
                 WHERE emp_username = ?";
         $stmt = mysqli_prepare($conn, $sql);
-
-        // Bind parameters to the prepared statement
-        mysqli_stmt_bind_param($stmt, "ssssss", $emp_firstname, $emp_lastname, $emp_email, $emp_tel, $emp_picture, $emp_username);
-
+        mysqli_stmt_bind_param($stmt, "sssss", $emp_firstname, $emp_lastname, $emp_email, $emp_tel, $emp_username);
+        
         // Execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Redirect to the desired page after successful update

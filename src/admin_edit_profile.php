@@ -1,38 +1,38 @@
 <?php
-    // เริ่มต้นเซสชัน
+    // Start session
     session_start();
 
-    // เชื่อมต่อกับฐานข้อมูล
     include 'condb.php';
 
-    // ตรวจสอบสิทธิ์การเข้าถึง
-    // ในที่นี้คุณอาจต้องเพิ่มเงื่อนไขเพื่อตรวจสอบสิทธิ์การเข้าถึงของผู้ใช้
-
-    // ตรวจสอบการเชื่อมต่อกับฐานข้อมูล
+    // Check database connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // ตรวจสอบว่ามีข้อมูลเซสชันหรือไม่
+    // Check if session data exists
     if (isset($_SESSION['username'])) {
-        // ดึงชื่อผู้ใช้จากเซสชัน
+        // Get username from session
         $username = $_SESSION['username'];
 
-        // คำสั่ง SQL เพื่อดึงข้อมูลพนักงานโดยใช้ชื่อผู้ใช้
+        // SQL query to retrieve user data based on username
         $sql = "SELECT * FROM employees WHERE emp_username = '$username'";
         $result = $conn->query($sql);
 
-        // ตรวจสอบว่ามีข้อมูลพนักงานหรือไม่
+        // Check if user data exists
         if ($result->num_rows > 0) {
-            // ดึงข้อมูลพนักงาน
+            // Fetch user data
             $row = $result->fetch_assoc();
+
+            // Set session variables for first name and last name
+            $_SESSION['firstname'] = $row['emp_firstname'];
+            $_SESSION['lastname'] = $row['emp_lastname'];
         }
     } else {
-        // หากไม่มีข้อมูลเซสชัน แสดงข้อความผิดพลาด
+        // If session data doesn't exist, display an error message
         echo "Session not found";
     }
 
-    // ปิดการเชื่อมต่อกับฐานข้อมูล
+    // Close the database connection
     $conn->close();
 ?>
 
@@ -75,7 +75,13 @@
                     <div class="account-settings">
                       <div class="user-profile">
                         <div class="user-avatar">
-                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                          <!-- ตรวจสอบว่า $row['emp_picture'] มีค่าอยู่หรือไม่ ถ้ามีให้แสดงรูปภาพ -->
+                          <?php if(isset($row['emp_picture']) && !empty($row['emp_picture'])): ?>
+                              <img src="images/<?php echo htmlspecialchars($row['emp_picture']); ?>" alt="Profile">
+                          <?php else: ?>
+                              <!-- ถ้าไม่มีรูปภาพให้แสดงรูปภาพ placeholder หรือข้อความอื่น ๆ ตามต้องการ -->
+                              <img src="images/noimage.png" alt="Profile">
+                          <?php endif; ?>
                         </div>
                         <h5 class="user-name">emp_firstname</h5>
                         <h6 class="user-email">emp_username</h6>
@@ -83,70 +89,72 @@
                     </div>
                   </div>
                 </div>
-                <div class="card h-100">
-                  <div class="card-body">
-                    <div class="row gutters">
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h4 class="">Personal Details</h4>
-                      </div>
-                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                          <label for="emp_picture"></label>
-                          <input type="file" class="form-control" id="emp_picture">
+                <form class="form-horizontal" action="edit_profile_admin.php" method="POST" enctype="multipart/form-data">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <h4 class="">Personal Details</h4>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="form-group">
+                            <label for="emp_picture"></label>
+                            <input type="hidden" name="current_picture" value="<?php echo isset($row['emp_picture']) ? htmlspecialchars($row['emp_picture']) : ''; ?>">
+                            <input type="file" class="form-control" id="emp_picture">
+                          </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="form-group">
+                            <label for="emp_username">Username</label>
+                            <input type="text" name="emp_username" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
+                          </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="form-group">
+                            <label for="emp_firstname">Firstname</label>
+                            <input type="text" name="emp_firstname" class="form-control" value="<?php echo isset($row['emp_firstname']) ? $row['emp_firstname'] : ''; ?>">
+                          </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="form-group">
+                            <label for="emp_lastname">lastname</label>
+                            <input type="text" name="emp_lastname" class="form-control" value="<?php echo isset($row['emp_lastname']) ? $row['emp_lastname'] : ''; ?>">
+                          </div>
                         </div>
                       </div>
-                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                          <label for="emp_username">Username</label>
-                          <input type="text" name="emp_username" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
+                      <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <h4 class="">Contact Info</h4>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="form-group">
+                            <label for="emp_email">Email</label>
+                            <input type="text" name="emp_email" class="form-control" value="<?php echo isset($row['emp_email']) ? $row['emp_email'] : ''; ?>">
+                          </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                          <div class="form-group">
+                            <label for="emp_tel">Telephone</label>
+                            <input type="text" name="emp_tel" class="form-control" value="<?php echo isset($row['emp_tel']) ? $row['emp_tel'] : ''; ?>">
+                          </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="form-group">
+                            <label for="emp_address">Address</label>
+                            <textarea rows="3" class="form-control" name="emp_address"><?php echo isset($row['emp_address']) ? $row['emp_address'] : ''; ?></textarea>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                          <label for="emp_firstname">Firstname</label>
-                          <input type="text" name="emp_firstname" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                          <label for="emp_lastname">lastname</label>
-                          <input type="text" name="emp_lastname" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row gutters">
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h4 class="">Contact Info</h4>
-                      </div>
-                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                          <label for="emp_email">Email</label>
-                          <input type="text" name="emp_email" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group">
-                          <label for="emp_tel">Telephone</label>
-                          <input type="text" name="emp_tel" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
-                        </div>
-                      </div>
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="form-group">
-                          <label for="emp_address">Address</label>
-                          <textarea rows="3" class="form-control" name="emp_address"></textarea>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row gutters">
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="text-right">
-                          <button type="button" id="submit" name="submit" class="btn btn-secondary mt-2">Cancel</button>
-                          <button type="button" id="submit" name="submit" class="btn btn-primary mt-2">Update</button>
+                      <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="text-right">
+                            <button type="submit" id="submit" name="submit" class="btn btn-primary mt-2">Update</button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </form>
                 </div>
                 </div>
                 </div>
