@@ -46,6 +46,7 @@
     <link href="assets/fontawesome/css/brands.css" rel="stylesheet" />
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
     
     <title>Profile</title>
 </head>
@@ -65,135 +66,108 @@
                 </form>
             </div>
         </header>
-        <div class="row">
-            <div class="col-lg-12">
-              <div class="container">
-                <div class="row gutters justify-content-center">
-                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="account-settings">
-                      <div class="user-profile">
-                        <div class="user-avatar">
-                          <!-- ตรวจสอบว่า $row['emp_picture'] มีค่าอยู่หรือไม่ ถ้ามีให้แสดงรูปภาพ -->
-                          <?php if(isset($row['emp_picture']) && !empty($row['emp_picture'])): ?>
-                              <img src="images/<?php echo htmlspecialchars($row['emp_picture']); ?>" alt="Profile">
-                          <?php else: ?>
-                              <!-- ถ้าไม่มีรูปภาพให้แสดงรูปภาพ placeholder หรือข้อความอื่น ๆ ตามต้องการ -->
-                              <img src="images/noimage.png" alt="Profile">
-                          <?php endif; ?>
+        <div class="container">
+          <div class="row">
+              <div class="col-12">
+                <!-- Form START -->
+                <form class="file-upload">
+                  <div class="row mb-5 gx-5">
+                    <!-- Upload profile -->
+                    <div class="col-xxl-4">
+                      <div class="bg-secondary-soft px-4 py-5 rounded">
+                        <div class="row g-3">
+                          <h4 class="mb-4 mt-0">Upload your profile photo</h4>
+                          <div class="text-center">
+                            <!-- Image upload -->
+                            <div class="square position-relative display-2 mb-3">
+                              <i class="fas fa-fw fa-user position-absolute top-50 start-50 translate-middle text-secondary"></i>
+                            </div>
+                            <!-- Button -->
+                            <input type="file" id="customFile" name="file" hidden="">
+                            <label class="btn btn-success-soft btn-block" for="customFile">Upload</label>
+                            <button type="button" class="btn btn-danger-soft">Remove</button>
+                            <!-- Content -->
+                            <p class="text-muted mt-3 mb-0"><span class="me-1">Note:</span>Minimum size 300px x 300px</p>
+                          </div>
                         </div>
-                        <h5 class="user-name">emp_firstname</h5>
-                        <h6 class="user-email">emp_username</h6>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <form class="form-horizontal" action="edit_profile_admin.php" method="POST" enctype="multipart/form-data">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                          <h4 class="">Personal Details</h4>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <label for="emp_picture"></label>
-                            <input type="hidden" name="current_picture" value="<?php echo isset($row['emp_picture']) ? htmlspecialchars($row['emp_picture']) : ''; ?>">
-                            <input type="file" class="form-control" name="emp_picture">
+                    <!-- Contact detail -->
+                    <div class="col-xxl-8 mb-5 mb-xxl-0">
+                      <div class="bg-secondary-soft px-4 py-5 rounded">
+                        <div class="row g-3">
+                          <h4 class="mb-4 mt-0">Contact detail</h4>
+                          <!-- First Name -->
+                          <div class="col-md-6">
+                            <label class="form-label">First Name *</label>
+                            <input type="text" class="form-control" placeholder="" aria-label="First name" value="Scaralet">
                           </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <label for="emp_username">Username</label>
-                            <input type="text" name="emp_username" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
+                          <!-- Last name -->
+                          <div class="col-md-6">
+                            <label class="form-label">Last Name *</label>
+                            <input type="text" class="form-control" placeholder="" aria-label="Last name" value="Doe">
                           </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <label for="emp_firstname">Firstname</label>
-                            <input type="text" name="emp_firstname" class="form-control" value="<?php echo isset($row['emp_firstname']) ? $row['emp_firstname'] : ''; ?>">
+                          <!-- Phone number -->
+                          <div class="col-md-6">
+                            <label class="form-label">Phone number *</label>
+                            <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="(333) 000 555">
                           </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <label for="emp_lastname">lastname</label>
-                            <input type="text" name="emp_lastname" class="form-control" value="<?php echo isset($row['emp_lastname']) ? $row['emp_lastname'] : ''; ?>">
+                          <!-- Mobile number -->
+                          <div class="col-md-6">
+                            <label class="form-label">Mobile number *</label>
+                            <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="+91 9852 8855 252">
+                          </div>
+                          <!-- Email -->
+                          <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="inputEmail4" value="example@homerealty.com">
+                          </div>
+                          <!-- Skype -->
+                          <div class="col-md-6">
+                            <label class="form-label">Skype *</label>
+                            <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="Scaralet D">
+                          </div>
+                        </div> <!-- Row END -->
+                      </div>
+                      
+                      <!-- change password -->
+                      <div class="col-xxl-12">
+                        <div class="bg-secondary-soft px-4 py-5 rounded">
+                          <div class="row g-3">
+                            <h4 class="my-4">Change Password</h4>
+                            <!-- Old password -->
+                            <div class="col-md-7">
+                              <label for="exampleInputPassword1" class="form-label">Old password *</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <!-- New password -->
+                            <div class="col-md-7">
+                              <label for="exampleInputPassword2" class="form-label">New password *</label>
+                              <input type="password" class="form-control" id="exampleInputPassword2">
+                            </div>
+                            <!-- Confirm password -->
+                            <div class="col-md-7">
+                              <label for="exampleInputPassword3" class="form-label">Confirm Password *</label>
+                              <input type="password" class="form-control" id="exampleInputPassword3">
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                          <h4 class="">Contact Info</h4>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <label for="emp_email">Email</label>
-                            <input type="text" name="emp_email" class="form-control" value="<?php echo isset($row['emp_email']) ? $row['emp_email'] : ''; ?>">
-                          </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          <div class="form-group">
-                            <label for="emp_tel">Telephone</label>
-                            <input type="text" name="emp_tel" class="form-control" value="<?php echo isset($row['emp_tel']) ? $row['emp_tel'] : ''; ?>">
-                          </div>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                          <div class="form-group">
-                            <label for="emp_address">Address</label>
-                            <textarea rows="3" class="form-control" name="emp_address"><?php echo isset($row['emp_address']) ? $row['emp_address'] : ''; ?></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row gutters">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                
-                            <div class="text-end">
-                              <button type="submit" id="submit" name="submit" class="btn mt-2" style="background-color: #F88020; color: #fff;">Update</button>
-                              <button type="button" class="btn mt-2" data-bs-toggle="modal" data-bs-target="#changePasswordModal" style="background-color: #C96868; color: #fff;">Change Password</button>
-                            </div>
-                            
-                            <!-- Modal for Change Password -->
-                            <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- Form for changing password -->
-                                            <form action="change_password.php" method="POST">
-                                                <div class="mb-3">
-                                                    <label for="currentPassword" class="form-label">Current Password</label>
-                                                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="newPassword" class="form-label">New Password</label>
-                                                    <input type="password" class="form-control" id="newPassword" name="newPassword" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                                                </div>
-                                                <div class="text-center"><button type="submit" class="btn btn-primary">Confirm</button></div>
-                                                
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </div>
-                      </div>
                     </div>
+                    
+
+                  </div> <!-- Row END -->
+
+                  </div> <!-- Row END -->
+                  <!-- button -->
+                  <div class="gap-3 d-md-flex justify-content-center text-center mb-5">
+                    <button type="button" class="btn btn-warning btn-lg">Update</button>
                   </div>
-                </form>
-                </div>
-                </div>
-                </div>
+                </form> <!-- Form END -->
+              </div>
             </div>
-        </div>
+            </div>
     </div>
 
 </body>
@@ -368,4 +342,44 @@
         border: 0;
         margin-bottom: 1rem;
     }
+
+    body{
+      color: #9b9ca1;
+      }
+      .bg-secondary-soft {
+          background-color: rgba(208, 212, 217, 0.1) !important;
+      }
+      .rounded {
+          border-radius: 5px !important;
+      }
+      .py-5 {
+          padding-top: 3rem !important;
+          padding-bottom: 3rem !important;
+      }
+      .px-4 {
+          padding-right: 1.5rem !important;
+          padding-left: 1.5rem !important;
+      }
+      .file-upload .square {
+          height: 250px;
+          width: 250px;
+          margin: auto;
+          vertical-align: middle;
+          border: 1px solid #e5dfe4;
+          background-color: #fff;
+          border-radius: 5px;
+      }
+      .text-secondary {
+          --bs-text-opacity: 1;
+          color: rgba(208, 212, 217, 0.5) !important;
+      }
+      .btn-success-soft {
+          color: #28a745;
+          background-color: rgba(40, 167, 69, 0.1);
+      }
+      .btn-danger-soft {
+          color: #dc3545;
+          background-color: rgba(220, 53, 69, 0.1);
+      }
+
 </style>
