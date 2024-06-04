@@ -6,7 +6,6 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-  <script src="assets/js/color-modes.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Catster</title>
@@ -14,6 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
   <link href="assets/css/carousel.css" rel="stylesheet">
+  <script src="assets/js/color-modes.js"></script>
 </head>
 
 <body>
