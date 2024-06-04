@@ -48,7 +48,7 @@
         <strong><?php echo $_SESSION['username']; ?></strong>
       </a>
       <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="employees.php">New employees...</a></li>
         <li><a class="dropdown-item" href="admin_edit_profile.php">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item text-danger" href="logout.php">Sign out</a></li>

@@ -132,6 +132,7 @@
                         <div class="bg-secondary-soft px-4 py-5 rounded">
                           <div class="row g-3">
                             <h4 class="my-4">Change Password</h4>
+                            <input type="hidden" name="emp_password" value="<?php echo $row['emp_password']; ?>">
                             <!-- Old password -->
                             <div class="col-md-2"></div>
                             <div class="col-md-8">

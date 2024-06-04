@@ -21,6 +21,22 @@
         $emp_picture = $_POST['current_picture'];
     }
 
+        // Check if old password, new password, and confirm password are set
+        if (isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_POST['confirmPassword'])) {
+            // Get username from session
+            $username = $_SESSION['username'];
+            $currentPassword = $_POST['currentPassword'];
+            $newPassword = $_POST['newPassword'];
+            $confirmPassword = $_POST['confirmPassword'];
+            if($currentPassword == $_POST['emp_password']){
+                if($newPassword == $confirmPassword){
+                    $emp_password = $_POST['newPassword'];
+                }
+            }
+        }else{
+            $emp_password = $_POST['emp_password'];
+        }
+
     // สร้างคำสั่ง SQL ด้วย Prepared Statements
     $sql = "UPDATE employees SET 
             emp_firstname = ?,
