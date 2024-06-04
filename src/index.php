@@ -30,14 +30,12 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <img class="bd-placeholder-img" width="100%" height="100%" src="images/welcome.png" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
           </svg>
           <div class="container">
-            <div class="carousel-caption text-start">
-              <h1>Welcome to Catster</h1>
-              <p class="opacity-75">meowmeowmeowmeowmeowmeowmewo</p>
-              <p><a class="btn btn-lg btn-warning" href="#">Adopt now &raquo;</a></p>
+            <div class="carousel-caption text-center">
+              <p><a class="btn btn-lg btn-warning w-75" href="#">ADOPT CAT</a></p>
             </div>
           </div>
         </div>
@@ -46,7 +44,7 @@
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
           </svg>
           <div class="container">
-            <div class="carousel-caption">
+            <div class="carousel-caption text-start">
               <h1>Donation</h1>
               <p>Total donation is: </p>
               <p><a class="btn btn-lg btn-warning" href="#">Donate &raquo;</a></p>
@@ -54,10 +52,10 @@
           </div>
         </div>
         <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img class="bd-placeholder-img" width="100%" height="100%" src="images/petshop.png" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
-          <div class="container">
+          </img>
+          <div class="container" style="background-color: #eee;">
             <div class="carousel-caption text-end">
               <h1>Catster SHOP</h1>
               <p>Products for your Catster</p>
