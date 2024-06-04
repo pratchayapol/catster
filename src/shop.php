@@ -43,7 +43,7 @@
                     <div class="py-3" id="myBtnContainer">
                         <h5 class="font-weight-bold">Categories</h5>
                         <ul class="list-group">
-                        <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="All" onclick="filterSelection('All')"> All <span class="badge badge-primary badge-pill">328</span> </li>
+                        <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="All" onclick="filterSelection('All                                             ')"> All <span class="badge badge-primary badge-pill">328</span> </li>
 <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="TYPE1" onclick="filterSelection('TYPE1')"> Food <span class="badge badge-primary badge-pill">328</span> </li>
 <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="TYPE2" onclick="filterSelection('TYPE2')"> Toy <span class="badge badge-primary badge-pill">112</span> </li>
 <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="TYPE3" onclick="filterSelection('TYPE3')"> Item <span class="badge badge-primary badge-pill">32</span> </li>
