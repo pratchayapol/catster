@@ -25,61 +25,30 @@
 <body class="bg-body-tertiary">
     <?php include 'include/menu.php'; ?>
 
-
-    <div class="container mt-3">
+    <div class="container mt-5">
         <div class="wrapper">
-            <div class="filters"> <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="true" aria-controls="mobile-filter">Filter<span class="px-1 fas fa-filter"></span></button> </div>
             <div id="mobile-filter">
                 <div class="py-3">
                     <h5 class="font-weight-bold">Categories</h5>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Food <span class="badge badge-primary badge-pill">328</span> </li>
-                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Toy <span class="badge badge-primary badge-pill">112</span> </li>
-                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Item <span class="badge badge-primary badge-pill">32</span> </li>
-                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> by Catster <span class="badge badge-primary badge-pill">48</span> </li>
-                    </ul>
-                </div>
-                <div class="py-3">
-                    <h5 class="font-weight-bold">Brands</h5>
-                    <form class="brand">
-                        <div class="form-inline d-flex align-items-center py-1"> <label class="tick">Royal Fields <input type="checkbox"> <span class="check"></span> </label> </div>
-                        <div class="form-inline d-flex align-items-center py-1"> <label class="tick">Crasmas Fields <input type="checkbox" checked> <span class="check"></span> </label> </div>
-                        <div class="form-inline d-flex align-items-center py-1"> <label class="tick">Vegetarisma Farm <input type="checkbox" checked> <span class="check"></span> </label> </div>
-                        <div class="form-inline d-flex align-items-center py-1"> <label class="tick">Farmar Field Eve <input type="checkbox"> <span class="check"></span> </label> </div>
-                        <div class="form-inline d-flex align-items-center py-1"> <label class="tick">True Farmar Steve <input type="checkbox"> <span class="check"></span> </label> </div>
-                    </form>
-                </div>
-                <div class="py-3">
-                    <h5 class="font-weight-bold">Rating</h5>
-                    <form class="rating">
-                        <div class="form-inline d-flex align-items-center py-2"> <label class="tick"><span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <input type="checkbox"> <span class="check"></span> </label> </div>
-                        <div class="form-inline d-flex align-items-center py-2"> <label class="tick"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star px-1 text-muted"></span> <input type="checkbox"> <span class="check"></span> </label> </div>
-                        <div class="form-inline d-flex align-items-center py-2"> <label class="tick"><span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <input type="checkbox"> <span class="check"></span> </label> </div>
-                        <div class="form-inline d-flex align-items-center py-2"> <label class="tick"><span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <input type="checkbox"> <span class="check"></span> </label> </div>
-                        <div class="form-inline d-flex align-items-center py-2"> <label class="tick"> <span class="fas fa-star"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <span class="far fa-star px-1 text-muted"></span> <input type="checkbox"> <span class="check"></span> </label> </div>
-                    </form>
+                            <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Food <span class="badge badge-primary badge-pill">328</span> </li>
+                            <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Toy <span class="badge badge-primary badge-pill">112</span> </li>
+                            <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Item <span class="badge badge-primary badge-pill">32</span> </li>
+                            <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> by Catster <span class="badge badge-primary badge-pill">48</span> </li>
+                        </ul>
                 </div>
             </div>
             <div class="content py-md-0 py-3">
                 <section id="sidebar">
-                    <div class="py-3">
+                    <div class="py-3" id="myBtnContainer">
                         <h5 class="font-weight-bold">Categories</h5>
                         <ul class="list-group">
-                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> vegetables <span class="badge badge-primary badge-pill">328</span> </li>
-                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Fruits <span class="badge badge-primary badge-pill">112</span> </li>
-                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Kitchen Accessories <span class="badge badge-primary badge-pill">32</span> </li>
-                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Chefs Tips <span class="badge badge-primary badge-pill">48</span> </li>
+                        <li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="All" onclick="filterSelection('All')"> All <span class="badge badge-primary badge-pill">328</span> </li>
+<li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="TYPE1" onclick="filterSelection('TYPE1')"> Food <span class="badge badge-primary badge-pill">328</span> </li>
+<li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="TYPE2" onclick="filterSelection('TYPE2')"> Toy <span class="badge badge-primary badge-pill">112</span> </li>
+<li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="TYPE3" onclick="filterSelection('TYPE3')"> Item <span class="badge badge-primary badge-pill">32</span> </li>
+<li class="btn list-group-item list-group-item-action d-flex justify-content-between align-items-center category" data-type="TYPE4" onclick="filterSelection('TYPE4')"> by Catster <span class="badge badge-primary badge-pill">48</span> </li>
                         </ul>
-                    </div>
-                    <div class="py-3">
-                        <h5 class="font-weight-bold">Brands</h5>
-                        <form class="brand">
-                            <div class="form-inline d-flex align-items-center py-1"> <label class="tick">Royal Fields <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="form-inline d-flex align-items-center py-1"> <label class="tick">Crasmas Fields <input type="checkbox" checked> <span class="check"></span> </label> </div>
-                            <div class="form-inline d-flex align-items-center py-1"> <label class="tick">Vegetarisma Farm <input type="checkbox" checked> <span class="check"></span> </label> </div>
-                            <div class="form-inline d-flex align-items-center py-1"> <label class="tick">Farmar Field Eve <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="form-inline d-flex align-items-center py-1"> <label class="tick">True Farmar Steve <input type="checkbox"> <span class="check"></span> </label> </div>
-                        </form>
                     </div>
                 </section> 
                 
@@ -92,7 +61,7 @@
                                 <?php $count = 0; ?>
                                 <?php while ($product = mysqli_fetch_assoc($product_result)) : ?>
                                     <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="card mb-3">
+                                        <div class="card mb-3 <?php echo htmlspecialchars($product['type_id']); ?>" data-type-id="<?php echo htmlspecialchars($product['type_id']); ?>">
                                             <?php if (!empty($product['product_picture'])) : ?>
                                                 <img src="images/<?php echo htmlspecialchars($product['product_picture']); ?>" class="card-img-top" alt="Product Image">
                                             <?php else : ?>
@@ -137,7 +106,69 @@
             </div>
         </div>
     </div>
+
 </body>
+
+<script>
+    filterSelection("All")
+    function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("filterDiv");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+    }
+
+    function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+    }
+    }
+
+    function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        }
+    }
+    element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+    });
+    }
+    
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.category').click(function(){
+            var type = $(this).attr('data-type');
+            if(type == 'All'){
+                $('.card').show();
+            }else{
+                $('.card').hide();
+                $('.' + type).show();
+            }
+        });
+    });
+</script>
 
 
 
@@ -457,4 +488,8 @@
             clear: both;
         }
     }
+
+    .category.active {
+            background-color: #FFE084;
+        }
 </style>

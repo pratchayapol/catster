@@ -1,6 +1,5 @@
 <?php
  session_start();
-//123456
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
@@ -16,7 +15,7 @@
   <script src="assets/js/color-modes.js"></script>
 </head>
 
-<body>
+<body class="bg-body-tertiary">
 
   <?php include 'include/menu.php'; ?>
 
