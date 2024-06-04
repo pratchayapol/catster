@@ -1,38 +1,38 @@
 <?php
-    // Start session
+    // เริ่มต้นเซสชัน
     session_start();
 
+    // เชื่อมต่อกับฐานข้อมูล
     include 'condb.php';
 
-    // Check database connection
+    // ตรวจสอบสิทธิ์การเข้าถึง
+    // ในที่นี้คุณอาจต้องเพิ่มเงื่อนไขเพื่อตรวจสอบสิทธิ์การเข้าถึงของผู้ใช้
+
+    // ตรวจสอบการเชื่อมต่อกับฐานข้อมูล
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Check if session data exists
+    // ตรวจสอบว่ามีข้อมูลเซสชันหรือไม่
     if (isset($_SESSION['username'])) {
-        // Get username from session
+        // ดึงชื่อผู้ใช้จากเซสชัน
         $username = $_SESSION['username'];
 
-        // SQL query to retrieve user data based on username
+        // คำสั่ง SQL เพื่อดึงข้อมูลพนักงานโดยใช้ชื่อผู้ใช้
         $sql = "SELECT * FROM employees WHERE emp_username = '$username'";
         $result = $conn->query($sql);
 
-        // Check if user data exists
+        // ตรวจสอบว่ามีข้อมูลพนักงานหรือไม่
         if ($result->num_rows > 0) {
-            // Fetch user data
+            // ดึงข้อมูลพนักงาน
             $row = $result->fetch_assoc();
-
-            // Set session variables for first name and last name
-            $_SESSION['firstname'] = $row['emp_firstname'];
-            $_SESSION['lastname'] = $row['emp_lastname'];
         }
     } else {
-        // If session data doesn't exist, display an error message
+        // หากไม่มีข้อมูลเซสชัน แสดงข้อความผิดพลาด
         echo "Session not found";
     }
 
-    // Close the database connection
+    // ปิดการเชื่อมต่อกับฐานข้อมูล
     $conn->close();
 ?>
 
@@ -46,6 +46,7 @@
     <link href="assets/fontawesome/css/brands.css" rel="stylesheet" />
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
     <title>Profile</title>
 </head>
 <body>
@@ -67,75 +68,13 @@
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-11">
-                    <hr>
-                    <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-3">
-                        <div class="text-center">                        
-                        <?php
-                            if (isset($row['emp_picture'])) {
-                                echo "<img class='avatar img-circle' alt='avatar' style='border-radius: 50%; width: 150px;' src='images/" . $row['emp_picture'] . "'>";
-                            }
-                        ?>
-                        <br><br>
-                        <input type="hidden" name="current_picture" value="<?php echo isset($row['mem_picture']) ? htmlspecialchars($row['mem_picture']) : ''; ?>">
-                        <input type="file" id="emp_picture" name="emp_picture" class="form-control">
-                        </div>
-                    </div>
                     
-                    <!-- edit form column -->
-                    <div class="col-md-9 personal-info">
-                        <h3>Personal info</h3>
-                        <form class="form-horizontal" role="form" action="edit_profile_admin.php" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">First name:</label>
-                            <div class="col-lg-8">
-                            <input class="form-control" name="emp_firstname" type="text" value="<?php echo isset($row['emp_firstname']) ? $row['emp_firstname'] : ''; ?>">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Last name:</label>
-                            <div class="col-lg-8">
-                            <input class="form-control" name="emp_lastname" type="text" value="<?php echo isset($row['emp_lastname']) ? $row['emp_lastname'] : ''; ?>">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Telephone:</label>
-                            <div class="col-lg-8">
-                            <input class="form-control" name="emp_tel" type="text" value="<?php echo isset($row['emp_tel']) ? $row['emp_tel'] : ''; ?>">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Email:</label>
-                            <div class="col-lg-8">
-                            <input class="form-control" name="emp_email" type="text" value="<?php echo isset($row['emp_email']) ? $row['emp_email'] : ''; ?>">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Address:</label>
-                            <div class="col-lg-8"> 
-                            <textarea rows="3" class="form-control" name="emp_address"><?php echo isset($row['emp_address']) ? $row['emp_address'] : ''; ?></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"></label>
-                            <div class="col-md-8">
-                            <input type="button" class="btn btn-primary" value="Save Changes">
-                            <span></span>
-                            <input type="reset" class="btn btn-default" value="Cancel">
-                            </div>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-                <hr>
             </div>
         </div>
     </div>
 
 </body>
 </html>
-
 
 
 
