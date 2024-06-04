@@ -100,7 +100,7 @@
                           <div class="form-group">
                             <label for="emp_picture"></label>
                             <input type="hidden" name="current_picture" value="<?php echo isset($row['emp_picture']) ? htmlspecialchars($row['emp_picture']) : ''; ?>">
-                            <input type="file" class="form-control" id="emp_picture">
+                            <input type="file" class="form-control" name="emp_picture">
                           </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
