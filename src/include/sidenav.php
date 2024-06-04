@@ -1,4 +1,4 @@
-<div class="sidenav d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+<div class="sidenav d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 247px;">
     <a href="admin.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
       <i class="fa-solid fa-user"></i>
       <span class="fs-4 ms-2">Catster</span>

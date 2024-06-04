@@ -66,9 +66,90 @@
             </div>
         </header>
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-11">
-                    
+            <div class="col-lg-12">
+              <div class="container">
+                <div class="row gutters justify-content-center">
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="account-settings">
+                      <div class="user-profile">
+                        <div class="user-avatar">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                        </div>
+                        <h5 class="user-name">emp_firstname</h5>
+                        <h6 class="user-email">emp_username</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="row gutters">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h4 class="">Personal Details</h4>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                          <label for="emp_picture"></label>
+                          <input type="file" class="form-control" id="emp_picture">
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                          <label for="emp_username">Username</label>
+                          <input type="text" name="emp_username" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                          <label for="emp_firstname">Firstname</label>
+                          <input type="text" name="emp_firstname" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                          <label for="emp_lastname">lastname</label>
+                          <input type="text" name="emp_lastname" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row gutters">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h4 class="">Contact Info</h4>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                          <label for="emp_email">Email</label>
+                          <input type="text" name="emp_email" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
+                        </div>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                          <label for="emp_tel">Telephone</label>
+                          <input type="text" name="emp_tel" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
+                        </div>
+                      </div>
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="form-group">
+                          <label for="emp_address">Address</label>
+                          <textarea rows="3" class="form-control" name="emp_address"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row gutters">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-right">
+                          <button type="button" id="submit" name="submit" class="btn btn-secondary mt-2">Cancel</button>
+                          <button type="button" id="submit" name="submit" class="btn btn-primary mt-2">Update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -201,4 +282,48 @@
         color: #ffffff;
         background-color: #F88020;
       }
+
+    .account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        text-align: center;
+    }
+    .account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+    }
+    .account-settings .user-profile .user-avatar img {
+        width: 120px;
+        height: 120px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+    }
+    .account-settings .user-profile h5.user-name {
+        margin: 0 0 0.5rem 0;
+    }
+    .account-settings .user-profile h6.user-email {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #9fa8b9;
+    }
+    .account-settings .about {
+        margin: 2rem 0 0 0;
+        text-align: center;
+    }
+    .account-settings .about h5 {
+        margin: 0 0 15px 0;
+        color: #007ae1;
+    }
+    .account-settings .about p {
+        font-size: 0.825rem;
+    }
+
+    .card {
+        background: #ffffff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+    }
 </style>
