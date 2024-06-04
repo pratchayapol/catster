@@ -147,9 +147,43 @@
                       </div>
                       <div class="row gutters">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                          <div class="text-right">
-                            <button type="submit" id="submit" name="submit" class="btn btn-primary mt-2">Update</button>
-                          </div>
+                                
+                            <div class="text-end">
+                              <button type="submit" id="submit" name="submit" class="btn mt-2" style="background-color: #F88020; color: #fff;">Update</button>
+                              <button type="button" class="btn mt-2" data-bs-toggle="modal" data-bs-target="#changePasswordModal" style="background-color: #C96868; color: #fff;">Change Password</button>
+                            </div>
+                            
+                            <!-- Modal for Change Password -->
+                            <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Form for changing password -->
+                                            <form action="change_password.php" method="POST">
+                                                <div class="mb-3">
+                                                    <label for="currentPassword" class="form-label">Current Password</label>
+                                                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="newPassword" class="form-label">New Password</label>
+                                                    <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                                </div>
+                                                <div class="text-center"><button type="submit" class="btn btn-primary">Confirm</button></div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                       </div>
                     </div>

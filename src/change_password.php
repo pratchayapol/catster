@@ -11,12 +11,12 @@
     }
 
     // Check if old password, new password, and confirm password are set
-    if (isset($_POST['old_password']) && isset($_POST['new_password']) && isset($_POST['cf_password'])) {
+    if (isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_POST['confirmPassword'])) {
         // Get username from session
         $username = $_SESSION['username'];
-        $old_password = $_POST['old_password'];
-        $new_password = $_POST['new_password'];
-        $cf_password = $_POST['cf_password'];
+        $currentPassword = $_POST['currentPassword'];
+        $newPassword = $_POST['newPassword'];
+        $cf_password = $_POST['confirmPassword'];
 
         // SQL query to retrieve password from database
         $sql = "SELECT mem_password FROM members WHERE mem_username = ?";
@@ -30,13 +30,13 @@
             $stored_password = $row['mem_password'];
 
             // Verify old password
-            if ($old_password === $stored_password) {
+            if ($currentPassword === $stored_password) {
                 // Check if new password and confirm password match
-                if ($new_password === $cf_password) {
+                if ($newPassword === $cf_password) {
                     // Update password in the database
                     $update_sql = "UPDATE members SET mem_password = ? WHERE mem_username = ?";
                     $update_stmt = $conn->prepare($update_sql);
-                    $update_stmt->bind_param("ss", $new_password, $username);
+                    $update_stmt->bind_param("ss", $newPassword, $username);
                     
                     if ($update_stmt->execute()) {
                         echo "<script>alert('รหัสผ่านถูกเปลี่ยนแล้ว');</script>";

@@ -100,19 +100,19 @@
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">รหัสผ่านเดิม</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" name="old_password" class="form-control">
+                                    <input type="text" name="currentPassword" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">รหัสผ่าน</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" name="new_password" class="form-control">
+                                    <input type="text" name="newPassword" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">ยืนยันรหัสผ่าน</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" name="cf_password" class="form-control">
+                                    <input type="text" name="confirmPassword" class="form-control">
                                 </div>
                             </div>
                         </fieldset>
