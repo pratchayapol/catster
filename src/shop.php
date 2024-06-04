@@ -33,10 +33,10 @@
                 <div class="py-3">
                     <h5 class="font-weight-bold">Categories</h5>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> vegetables <span class="badge badge-primary badge-pill">328</span> </li>
-                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Fruits <span class="badge badge-primary badge-pill">112</span> </li>
-                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Kitchen Accessories <span class="badge badge-primary badge-pill">32</span> </li>
-                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Chefs Tips <span class="badge badge-primary badge-pill">48</span> </li>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Food <span class="badge badge-primary badge-pill">328</span> </li>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Toy <span class="badge badge-primary badge-pill">112</span> </li>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> Item <span class="badge badge-primary badge-pill">32</span> </li>
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category"> by Catster <span class="badge badge-primary badge-pill">48</span> </li>
                     </ul>
                 </div>
                 <div class="py-3">
