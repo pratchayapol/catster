@@ -62,6 +62,7 @@
                                 <button type="button" class="w3-button w3-amber" data-bs-toggle="modal" data-bs-target="#orderDetails<?php echo $row['order_id']; ?>">
                                     <i class="fa-regular fa-eye"></i>
                                 </button>
+                                <!-- Modals -->
                                 <div class="modal fade" id="orderDetails<?php echo $row['order_id']; ?>" tabindex="-1" aria-labelledby="orderDetailsLabel<?php echo $row['order_id']; ?>" aria-hidden="true">
                                   <div class="modal-dialog">
                                     <div class="modal-content">

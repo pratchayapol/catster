@@ -50,7 +50,6 @@
       <ul class="dropdown-menu text-small shadow">
         <li><a class="dropdown-item" href="#">New project...</a></li>
         <li><a class="dropdown-item" href="admin_edit_profile.php">Profile</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item text-danger" href="logout.php">Sign out</a></li>
       </ul>
