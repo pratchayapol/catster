@@ -70,24 +70,23 @@
           <div class="row">
               <div class="col-12">
                 <!-- Form START -->
-                <form class="file-upload">
+                <form class="file-upload" action="edit_profile_admin.php" method="POST" enctype="multipart/form-data">
                   <div class="row mb-5 gx-5">
                     <!-- Upload profile -->
                     <div class="col-xxl-4">
                       <div class="bg-secondary-soft px-4 py-5 rounded">
                         <div class="row g-3">
-                          <h4 class="mb-4 mt-0">Upload your profile photo</h4>
+                          <h4 class="mb-4 mt-0">Username : <?php echo $row['emp_username'] ?></h4>
                           <div class="text-center">
                             <!-- Image upload -->
-                            <div class="square position-relative display-2 mb-3">
-                              <i class="fas fa-fw fa-user position-absolute top-50 start-50 translate-middle text-secondary"></i>
+                            <div class="position-relative display-2 mb-3">
+                              <img src="images/<?php echo $row['emp_picture'] ?>" style="border-radius: 50%;">
                             </div>
                             <!-- Button -->
-                            <input type="file" id="customFile" name="file" hidden="">
-                            <label class="btn btn-success-soft btn-block" for="customFile">Upload</label>
-                            <button type="button" class="btn btn-danger-soft">Remove</button>
+                            <input type="hidden" class="form-control" name="current_picture" value="<?php echo isset($row['emp_picture']) ? htmlspecialchars($row['emp_picture']) : ''; ?>">
+                            <center><input type="file" id="emp_picture" name="emp_picture" class="form-control"></center>
                             <!-- Content -->
-                            <p class="text-muted mt-3 mb-0"><span class="me-1">Note:</span>Minimum size 300px x 300px</p>
+                            <small class="text-muted mt-3 mb-0"><span class="me-1">Note:</span>Minimum size 300px x 300px</small>
                           </div>
                         </div>
                       </div>
@@ -96,73 +95,75 @@
                     <div class="col-xxl-8 mb-5 mb-xxl-0">
                       <div class="bg-secondary-soft px-4 py-5 rounded">
                         <div class="row g-3">
-                          <h4 class="mb-4 mt-0">Contact detail</h4>
+                          <h4 class="mb-4 mt-0">Contact</h4>
                           <!-- First Name -->
                           <div class="col-md-6">
-                            <label class="form-label">First Name *</label>
-                            <input type="text" class="form-control" placeholder="" aria-label="First name" value="Scaralet">
+                            <label class="form-label">Firstname</label>
+                            <input type="hidden" class="form-control" name="emp_username" aria-label="Username" value="<?php echo $row['emp_username'] ?>">
+                            <input type="text" class="form-control" name="emp_firstname" aria-label="First name" value="<?php echo $row['emp_firstname'] ?>">
                           </div>
                           <!-- Last name -->
                           <div class="col-md-6">
-                            <label class="form-label">Last Name *</label>
-                            <input type="text" class="form-control" placeholder="" aria-label="Last name" value="Doe">
+                            <label class="form-label">Lastname</label>
+                            <input type="text" class="form-control" name="emp_lastname" aria-label="Last name" value="<?php echo $row['emp_lastname'] ?>">
                           </div>
                           <!-- Phone number -->
                           <div class="col-md-6">
-                            <label class="form-label">Phone number *</label>
-                            <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="(333) 000 555">
+                            <label class="form-label">Phone number</label>
+                            <input type="text" class="form-control" name="emp_tel" aria-label="Phone number" value="<?php echo $row['emp_tel'] ?>">
                           </div>
                           <!-- Mobile number -->
                           <div class="col-md-6">
-                            <label class="form-label">Mobile number *</label>
-                            <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="+91 9852 8855 252">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="emp_email" aria-label="Email" value="<?php echo $row['emp_email'] ?>">
                           </div>
                           <!-- Email -->
-                          <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Email *</label>
-                            <input type="email" class="form-control" id="inputEmail4" value="example@homerealty.com">
-                          </div>
-                          <!-- Skype -->
-                          <div class="col-md-6">
-                            <label class="form-label">Skype *</label>
-                            <input type="text" class="form-control" placeholder="" aria-label="Phone number" value="Scaralet D">
+                          <div class="col-md-12">
+                            <label for="inputEmail4" class="form-label">Address</label>
+                            <textarea type="text" class="form-control" name="emp_address"><?php echo $row['emp_address'] ?></textarea>
                           </div>
                         </div> <!-- Row END -->
                       </div>
+
+                      <hr>
                       
                       <!-- change password -->
-                      <div class="col-xxl-12">
+                      <div class="col-xxl-12 text-center">
                         <div class="bg-secondary-soft px-4 py-5 rounded">
                           <div class="row g-3">
                             <h4 class="my-4">Change Password</h4>
                             <!-- Old password -->
-                            <div class="col-md-7">
-                              <label for="exampleInputPassword1" class="form-label">Old password *</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                              <label for="currentPassword" class="form-label">Password</label>
+                              <input type="password" class="form-control" name="currentPassword">
                             </div>
+                            <div class="col-md-2"></div>
                             <!-- New password -->
-                            <div class="col-md-7">
-                              <label for="exampleInputPassword2" class="form-label">New password *</label>
-                              <input type="password" class="form-control" id="exampleInputPassword2">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                              <label for="newPassword" class="form-label">New password</label>
+                              <input type="password" class="form-control" name="newPassword">
                             </div>
+                            <div class="col-md-2"></div>
                             <!-- Confirm password -->
-                            <div class="col-md-7">
-                              <label for="exampleInputPassword3" class="form-label">Confirm Password *</label>
-                              <input type="password" class="form-control" id="exampleInputPassword3">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                              <label for="confirmPassword" class="form-label">Confirm Password</label>
+                              <input type="password" class="form-control" name="confirmPassword">
                             </div>
+                            <div class="col-md-2"></div>
                           </div>
                         </div>
                       </div>
 
                     </div>
-                    
-
                   </div> <!-- Row END -->
 
                   </div> <!-- Row END -->
                   <!-- button -->
                   <div class="gap-3 d-md-flex justify-content-center text-center mb-5">
-                    <button type="button" class="btn btn-warning btn-lg">Update</button>
+                    <button type="button" class="btn btn-warning btn-lg w-100">Update</button>
                   </div>
                 </form> <!-- Form END -->
               </div>
