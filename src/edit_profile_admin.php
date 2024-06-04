@@ -27,7 +27,7 @@
             emp_lastname = ?,
             emp_email = ?,
             emp_tel = ?,
-            emp_addres = ?,
+            emp_address = ?,
             emp_password = ?,
             emp_picture = ?
             WHERE emp_username = ?";

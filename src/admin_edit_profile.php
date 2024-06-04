@@ -163,7 +163,7 @@
                   </div> <!-- Row END -->
                   <!-- button -->
                   <div class="gap-3 d-md-flex justify-content-center text-center mb-5">
-                    <button type="button" class="btn btn-warning btn-lg w-100">Update</button>
+                    <button type="submit" class="btn btn-warning btn-lg w-100">Update</button>
                   </div>
                 </form> <!-- Form END -->
               </div>
