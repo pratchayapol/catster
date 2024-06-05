@@ -25,14 +25,14 @@
             <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cart.php">CART(<?php echo $cart_count; ?>)</a>
+            <a class="nav-link" href="cat.php">Cat</a>
           </li>
         </ul>
         <div class="d-flex">
           <?php if(isset($_SESSION['username'])): ?>
             <a class="nav-link" href="form_edit_profile.php">Welcome, <?php echo $_SESSION['username']; ?></a>
           <?php else: ?>
-            <a role="button" class="btn btn-outline-warning" href="login.php">sign in</a>
+            <a role="button" class="btn btn-outline-dark" style="color: #E9E5DD;" href="login.php">sign in</a>
           <?php endif; ?>
         </div>
       </div>

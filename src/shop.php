@@ -18,7 +18,6 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     <link href="assets/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="assets/fontawesome/css/brands.min.css" rel="stylesheet">
     <link href="assets/fontawesome/css/solid.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
     <title>สินค้า</title>
 </head>
@@ -30,7 +29,16 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <div class="container" style="margin-top: 110px;">
+    <div class="row" style="margin-top: 110px;">
+        <div class="col-10"></div>
+        <div class="col-2">
+            <div class="cart-container">
+                <span class="badge border rounded-pill cart-badge" style="background-color: #D04925; color: #E9E5DD;"><?php echo $cart_count; ?></span>
+                <i class="fas fa-cart-shopping" style="color: #696464;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <!-- Sidebar -->
         <div class="sidebar me-5">
             <!-- Input for searching -->
@@ -183,7 +191,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     display: none;
     }
     nav {
-    background: linear-gradient(125deg, #e61b36, #9c1032);
+    background: linear-gradient(125deg, #E9E5DD, #696464);
     }
     .nav-container {
     max-width: 90vw;
@@ -371,4 +379,14 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     cursor: pointer;
     }
 
+    .cart-container {
+            position: relative;
+            display: inline-block;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 0.75rem; /* Adjust font size if needed */
+        }
 </style>
