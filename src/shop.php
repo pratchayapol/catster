@@ -31,29 +31,38 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <div class="container" style="margin-top: 110px;">
+        <!-- Sidebar -->
         <div class="sidebar">
+            <!-- Input for searching -->
             <input onkeyup="searchsomething(this)" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">
+            <!-- Links to filter products -->
             <a onclick="searchproduct('all')" class="sidebar-items">All product</a>
             <a onclick="searchproduct('TYPE1')" class="sidebar-items">Food</a>
             <a onclick="searchproduct('TYPE2')" class="sidebar-items">Toy</a>
             <a onclick="searchproduct('TYPE3')" class="sidebar-items">Item</a>
         </div>
+        
+        <!-- Product list -->
         <div id="productlist" class="product">
-            <?php foreach ($products as $product): ?>
-                <div onclick="openProductDetail(<?= $product['product_id']; ?>)" class="product-items <?= $product['type_name']; ?>">
+            <?php while($product = mysqli_fetch_assoc($product_result)): ?>
+                <!-- Individual product item -->
+                <div onclick="openProductDetail(<?= $product['product_id']; ?>)" class="product-items <?= $product['type_id']; ?>">
+                    <!-- Product image -->
                     <img class="product-img" src="images/<?= htmlspecialchars($product['product_picture']); ?>" alt="">
+                    <!-- Product name -->
                     <p style="font-size: 1.2vw;"><?= htmlspecialchars($product['product_name']); ?></p>
+                    <!-- Product price -->
                     <p style="font-size: 1vw;"><?= htmlspecialchars(number_format($product['product_price'])); ?> THB</p>
                 </div>
-            <?php endforeach; ?>
+            <?php endwhile ?>
         </div>
     </div>
+
+
 
     <div id="modalDesc" class="modal" style="display: none;">
         <div onclick="closeModal()" class="modal-bg"></div>
         <div class="modal-page">
-            <h2>Detail</h2>
-            <br>
             <div class="modaldesc-content">
                 <img id="mdd-img" class="modaldesc-img" src="" alt="">
                 <div class="modaldesc-detail">
@@ -72,19 +81,6 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     </div>
 
 
-    <div id="modalCart" class="modal" style="display: none;">
-        <div onclick="closeModal()" class="modal-bg"></div>
-        <div class="modal-page">
-            <h2>My cart</h2>
-            <br>
-            <div id="mycart" class="cartlist"></div>
-            <div class="btn-control">
-                <button onclick="closeModal()" class="btn">Cancel</button>
-                <button class="btn btn-buy">Buy</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         var product = <?= json_encode($products); ?>;
         var productindex = 0;
@@ -92,7 +88,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
         $(document).ready(() => {
             var html = '';
             for (let i = 0; i < product.length; i++) {
-                html += `<div onclick="openProductDetail(${i})" class="product-items ${product[i].type}">
+                html += `<div onclick="openProductDetail(${i})" class="product-items ${product[i].type_id}">
                             <img class="product-img" src="images/${product[i].product_picture}" alt="">
                             <p style="font-size: 1.2vw;">${product[i].product_name}</p>
                             <p style="font-size: 1vw;">${ numberWithCommas(product[i].product_price) } THB</p>
@@ -110,33 +106,46 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
         }
 
         function searchsomething(elem) {
-            var value = $('#'+elem.id).val();
+            var value = elem.value.trim();
             var html = '';
-            for (let i = 0; i < product.length; i++) {
-                if( product[i].product_name.includes(value) ) {
-                    html += `<div onclick="openProductDetail(${i})" class="product-items ${product[i].type}">
-                            <img class="product-img" src="images/${product[i].product_picture}" alt="">
-                            <p style="font-size: 1.2vw;">${product[i].product_name}</p>
-                            <p style="font-size: 1vw;">${ numberWithCommas(product[i].product_price) } THB</p>
-                        </div>`;
+            for (let i = 0; i < products.length; i++) {
+                if (products[i].product_name.includes(value)) {
+                    html += `<div onclick="openProductDetail(${products[i].product_id})" class="product-items ${products[i].type_id}">
+                                <img class="product-img" src="images/${products[i].product_picture}" alt="">
+                                <p style="font-size: 1.2vw;">${products[i].product_name}</p>
+                                <p style="font-size: 1vw;">${numberWithCommas(products[i].product_price)} THB</p>
+                            </div>`;
                 }
             }
-            if(html == '') {
+            if (html === '') {
                 $("#productlist").html(`<p>Not found product</p>`);
             } else {
                 $("#productlist").html(html);
             }
         }
 
+
         function searchproduct(param) {
-            $(".product-items").css('display', 'none');
-            if(param == 'all') {
-                $(".product-items").css('display', 'block');
-            }
-            else {
-                $("."+param).css('display', 'block');
+            var items = document.getElementsByClassName('product-items');
+            if (param === 'all') {
+                // แสดงทุกรายการสินค้า
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'block';
+                }
+            } else {
+                // กรองและแสดงเฉพาะรายการสินค้าที่มีคลาสตรงกับ param
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].classList.contains(param)) {
+                        items[i].style.display = 'block';
+                    } else {
+                        items[i].style.display = 'none';
+                    }
+                }
             }
         }
+
+
+
 
         function openProductDetail(index) {
             productindex = index;
@@ -153,58 +162,6 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
             $(".modal").css('display','none');
         }
 
-        var cart = [];
-        function addtocart() {
-            var bool = true;
-            for (let i = 0; i < cart.length; i++) {
-                if(cart[i].id == product[productindex].id) {
-                    bool = false;
-                    cart[i].count = cart[i].count + 1;
-                }
-            }
-            if(bool) {
-                var obj = {
-                    id: product[productindex].id,
-                    name: product[productindex].name,
-                    price: product[productindex].price,
-                    picture: product[productindex].picture,
-                    count: 1
-                };
-                cart.push(obj);
-            }
-            rendercart();
-        }
-
-        function openCart() {
-            $("#modalCart").css('display', 'flex');
-        }
-
-        function rendercart() {
-            var html = '';
-            var total = 0;
-            for (let i = 0; i < cart.length; i++) {
-                total += cart[i].price * cart[i].count;
-                html += `<div class="cart-items">
-                            <div class="cart-left">
-                                <img class="cart-img" src="images/${cart[i].picture}" alt="">
-                                <div class="cart-detail">
-                                    <p class="cart-name">${cart[i].name}</p>
-                                    <p class="cart-price">${ numberWithCommas(cart[i].price * cart[i].count) } THB</p>
-                                </div>
-                            </div>
-                            <div class="cart-right">
-                                <p class="cart-count">x ${cart[i].count}</p>
-                            </div>
-                        </div>`;
-            }
-            if(total > 0) {
-                html += `<p>Total: ${ numberWithCommas(total) } THB</p>`;
-            } else {
-                html = `<p>Not found product in cart</p>`;
-            }
-            $("#mycart").html(html);
-            $("#cartcount").css('display', 'flex').html(cart.length);
-        }
     </script>
 </body>
 </html>
