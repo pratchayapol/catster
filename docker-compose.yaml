@@ -16,6 +16,7 @@ services:
     networks:
       catster_network:
         ipv4_address: 192.168.9.2
+# hello test
 
   php:
     build:
