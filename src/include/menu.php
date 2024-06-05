@@ -24,9 +24,9 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i>(<?php echo $cart_count; ?>)</a>
-          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="cart.php">CART(<?php echo $cart_count; ?>)</a>
+          </li>
         </ul>
         <div class="d-flex">
           <?php if(isset($_SESSION['username'])): ?>
