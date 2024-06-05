@@ -3,11 +3,9 @@ session_start();
 include 'condb.php';
 
 // Product All
-$product_sql = "SELECT products.*, product_type.type_name FROM products
-                INNER JOIN product_type ON products.type_id = product_type.type_id";
+$product_sql = "SELECT * FROM products";
 $product_result = mysqli_query($conn, $product_sql);
-$rows = mysqli_num_rows($product_result);
-
+$rows = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -21,115 +19,181 @@ $rows = mysqli_num_rows($product_result);
     <link href="assets/fontawesome/css/solid.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>สินค้า</title>
 </head>
 
 <body>
-<?php include 'include/menu.php'; ?>
+    <?php include 'include/menu.php'; ?>
 
-  <div class="container" style="margin-top: 110px;">
-    <div class="sidebar">
-      <input type="text" class="sidebar-search" placeholder="Search something...">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-      <a onclick="searchproduct('all')" class="sidebar-items" style="text-decoration: none;">
-        สินค้าทั้งหมด
-      </a>
-      <a onclick="searchproduct('TYPE1')" class="sidebar-items" style="text-decoration: none;">
-        อาหาร
-      </a>
-      <a onclick="searchproduct('TYPE2')" class="sidebar-items" style="text-decoration: none;">
-        ของเล่น
-      </a>
-      <a onclick="searchproduct('TYPE3')" class="sidebar-items" style="text-decoration: none;">
-        อุปกรณ์ / ของใช้
-      </a>
+
+    <div class="row" style="margin-top: 110px;">
+        <div class="col-10"></div>
+        <div class="col-2">
+            <a href="cart.php" style="cursor: pointer;" class="nav-profile-cart">
+                <i class="fas fa-cart-shopping" style="color: #000;"></i>
+                <div id="cartcount" class="cartcount" style="display: none;"><?php echo $cart_count; ?></div>
+            </a>
+        </div>
     </div>
-
-    <div class="product">
-        <?php if($rows > 0): ?>                        
-            <?php while($product = mysqli_fetch_assoc($product_result)): ?>
-                <div class="product-items">
-                <?php if(!empty($product['product_picture'])): ?>
-                    <img src="images/<?php echo htmlspecialchars($product['product_picture']); ?>" class="product-img" alt="รูปภาพสินค้า">
-                <?php else: ?>
-                    <img src="images/noimage.png" class="product-img" alt="ไม่มีรูปภาพ">
-                <?php endif; ?>
-                    <p style="font-size: 1.2vw;"><?php echo $product['product_name']; ?></p>
-                    <p stlye="font-size: 1vw;"><?php echo $product['product_price']; ?> THB</p>
+    <div class="container">
+        <div class="sidebar">
+            <input onkeyup="searchsomething(this)" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">
+            <a onclick="searchproduct('all')" class="sidebar-items">All product</a>
+            <a onclick="searchproduct('shoe')" class="sidebar-items">Shoe</a>
+            <a onclick="searchproduct('shirt')" class="sidebar-items">Shirt</a>
+        </div>
+        <div id="productlist" class="product">
+            <?php foreach($rows as $product): ?>
+                <div onclick="openProductDetail(<?= $product['product_id']; ?>)" class="product-items">
+                    <img class="product-img" src="images/<?= htmlspecialchars($product['product_picture']); ?>" alt="">
+                    <p style="font-size: 1.2vw;"><?= htmlspecialchars($product['product_name']); ?></p>
+                    <p style="font-size: 1vw;"><?= number_format($product['product_price']); ?> THB</p>
                 </div>
-            <?php endwhile ?>
-        <?php endif ?>
+            <?php endforeach; ?>
+        </div>
     </div>
 
-  </div>
-
-  <div class="modal" style="display: none;">
-    <div class="modal-bg"></div>
+    <div id="modalDesc" class="modal" style="display: none;">
+        <div onclick="closeModal()" class="modal-bg"></div>
         <div class="modal-page">
             <h2>Detail</h2>
             <br>
-            <?php if($rows > 0): ?>                        
-            <?php while($product = mysqli_fetch_assoc($product_result)): ?>
             <div class="modaldesc-content">
-                <?php if(!empty($product['product_picture'])): ?>
-                    <img src="images/<?php echo htmlspecialchars($product['product_picture']); ?>" class="modaldesc-img" alt="รูปภาพสินค้า">
-                <?php else: ?>
-                    <img src="images/noimage.png" class="modaldesc-img" alt="ไม่มีรูปภาพ">
-                <?php endif; ?>
+                <img id="mdd-img" class="modaldesc-img" src="" alt="">
                 <div class="modaldesc-detail">
-                    <p style="font-size: 1.5vw;"><?php echo $product['product_name']; ?></p>
-                    <p style="font-size: 1.2vw;"><?php echo $product['product_price']; ?> THB</p>
+                    <p id="mdd-name" style="font-size: 1.5vw;">Product name</p>
+                    <p id="mdd-price" style="font-size: 1.2vw;">500 THB</p>
                     <br>
-                    <p style="color: #adadad;"><?php echo $product['product_desc']; ?></p>
+                    <p id="mdd-desc" style="color: #adadad;">Description</p>
                     <br>
                     <div class="btn-control">
-                        <button class="btn">
-                        Close
-                        </button>
-                        <button class="btn btn-buy">
-                        Add to cart
-                        </button>
+                        <button onclick="closeModal()" class="btn">Close</button>
+                        <a href="add_to_cart.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>" class="btn btn-buy">Add to cart</a>
                     </div>
                 </div>
             </div>
-            <?php endwhile ?>
-            <?php endif ?>
         </div>
-  </div>
-
-  <div class="modal" style="display: none;">
-    <div class="modal-bg"></div>
-    <div class="modal-page">
-      <h2>My cart</h2>
-      <br>
-      <div class="cartlist">
-        <div class="cartlist-items">
-          <div class="cartlist-left">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="">
-            <div class="cartlist-detail">
-              <p style="font-size: 1.5vw;">Product name</p>
-              <p style="font-size: 1.2vw;">500 THB</p>
-            </div>
-          </div>
-          <div class="cartlist-right">
-            <p class="btnc">-</p>
-            <p style="margin: 0 20px;">1</p>
-            <p class="btnc">+</p>
-          </div>
-        </div>
-      </div>
-      <div class="btn-control">
-        <button class="btn">
-          Cancel
-        </button>
-        <button class="btn btn-buy">
-          Buy
-        </button>
-      </div>
     </div>
-  </div>
 
+    <div id="modalCart" class="modal" style="display: none;">
+        <div onclick="closeModal()" class="modal-bg"></div>
+        <div class="modal-page">
+            <h2>My cart</h2>
+            <br>
+            <div id="mycart" class="cartlist"></div>
+            <div class="btn-control">
+                <button onclick="closeModal()" class="btn">Cancel</button>
+                <button class="btn btn-buy">Buy</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var product = <?= json_encode($rows); ?>;
+        
+        $(document).ready(() => {
+            var html = '';
+            for (let i = 0; i < product.length; i++) {
+                html += `<div onclick="openProductDetail(${i})" class="product-items">
+                            <img class="product-img" src="images/${product[i].product_picture}" alt="">
+                            <p style="font-size: 1.2vw;">${product[i].product_name}</p>
+                            <p style="font-size: 1vw;">${numberWithCommas(product[i].product_price)} THB</p>
+                        </div>`;
+            }
+            $("#productlist").html(html);
+        });
+
+        function numberWithCommas(x) {
+            x = x.toString();
+            var pattern = /(-?\d+)(\d{3})/;
+            while (pattern.test(x))
+                x = x.replace(pattern, "$1,$2");
+            return x;
+        }
+
+        function searchsomething(elem) {
+            var value = $('#'+elem.id).val().toLowerCase();
+            var html = '';
+            for (let i = 0; i < product.length; i++) {
+                if (product[i].product_name.toLowerCase().includes(value)) {
+                    html += `<div onclick="openProductDetail(${i})" class="product-items">
+                            <img class="product-img" src="images/${product[i].product_picture}" alt="">
+                            <p style="font-size: 1.2vw;">${product[i].product_name}</p>
+                            <p style="font-size: 1vw;">${numberWithCommas(product[i].product_price)} THB</p>
+                        </div>`;
+                }
+            }
+            if (html == '') {
+                $("#productlist").html(`<p>Not found product</p>`);
+            } else {
+                $("#productlist").html(html);
+            }
+        }
+
+        function searchproduct(param) {
+            $(".product-items").css('display', 'none');
+            if (param == 'all') {
+                $(".product-items").css('display', 'block');
+            } else {
+                $("."+param).css('display', 'block');
+            }
+        }
+
+        var productindex = 0;
+        function openProductDetail(index) {
+            productindex = index;
+            $("#modalDesc").css('display', 'flex');
+            $("#mdd-img").attr('src', 'images/' + product[index].product_picture);
+            $("#mdd-name").text(product[index].product_name);
+            $("#mdd-price").text(numberWithCommas(product[index].product_price) + ' THB');
+            $("#mdd-desc").text(product[index].product_desc);
+        }
+
+        function closeModal() {
+            $(".modal").css('display','none');
+        }
+
+        var cart = [];
+        function addtocart() {
+            var bool = true;
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].id == product[productindex].product_id) {
+                    bool = false;
+                    cart[i].count++;
+                }
+            }
+            if (bool) {
+                var obj = {
+                    id: product[productindex].product_id,
+                    name: product[productindex].product_name,
+                    price: product[productindex].product_price,
+                    img: product[productindex].product_picture,
+                    count: 1
+                };
+                cart.push(obj);
+            }
+            $("#modalDesc").css('display', 'none');
+            $("#cartcount").text(cart.length);
+            $("#cartcount").css('display', 'flex');
+
+            var html = '';
+            for (let i = 0; i < cart.length; i++) {
+                html += `<div class="cartlist-items">
+                            <img class="cartlist-img" src="images/${cart[i].img}" alt="">
+                            <div class="cartlist-detail">
+                                <p style="font-size: 1.2vw;">${cart[i].name}</p>
+                                <p style="font-size: 1vw; color: #969696;">${numberWithCommas(cart[i].price)} THB x ${cart[i].count}</p>
+                                <p style="font-size: 1vw;">${numberWithCommas(cart[i].price * cart[i].count)} THB</p>
+                            </div>
+                        </div>`;
+            }
+            $("#mycart").html(html);
+        }
+    </script>
 </body>
 </html>
 
@@ -270,7 +334,7 @@ $rows = mysqli_num_rows($product_result);
     max-width: 60vw;
     max-height: 30vw;
     overflow: scroll;
-    background: #fff;
+    background-color: #fff;
     border-radius: 15px;
     padding: 20px;
     }

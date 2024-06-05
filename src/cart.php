@@ -36,8 +36,9 @@ if (!empty($IDs)) {
 <!DOCTYPE html>
 <html lang="th">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>ตะกร้า</title>
