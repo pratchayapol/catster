@@ -32,10 +32,9 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
 
     <div class="container" style="margin-top: 110px;">
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar me-5">
             <!-- Input for searching -->
-            <input onkeyup="searchsomething(this)" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">
-            <!-- Links to filter products -->
+            <input onkeyup="searchsomething(this)" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">            <!-- Links to filter products -->
             <a onclick="searchproduct('all')" class="sidebar-items">All product</a>
             <a onclick="searchproduct('TYPE1')" class="sidebar-items">Food</a>
             <a onclick="searchproduct('TYPE2')" class="sidebar-items">Toy</a>
@@ -105,7 +104,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
             return x;
         }
 
-        function searchsomething(elem) {
+        function searchsomething(elem, products) {
             var value = elem.value.trim();
             var html = '';
             for (let i = 0; i < products.length; i++) {
@@ -123,6 +122,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
                 $("#productlist").html(html);
             }
         }
+
 
 
         function searchproduct(param) {
