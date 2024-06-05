@@ -33,8 +33,8 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
         <div class="col-10"></div>
         <div class="col-2">
             <div class="cart-container">
-                <span class="badge border rounded-pill cart-badge" style="background-color: #D04925; color: #E9E5DD;"><?php echo $cart_count; ?></span>
-                <i class="fas fa-cart-shopping" style="color: #696464;"></i>
+                <a href="cart.php"><span class="badge border rounded-pill cart-badge" style="background-color: #D04925; color: #E9E5DD;"><?php echo $cart_count; ?></span>
+                <i class="fas fa-cart-shopping" style="color: #696464;"></i></a>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
         <!-- Sidebar -->
         <div class="sidebar me-5">
             <!-- Input for searching -->
-            <input onkeyup="searchsomething(this)" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">            <!-- Links to filter products -->
+            <input onkeyup="myFunction()" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">
             <a onclick="searchproduct('all')" class="sidebar-items">All product</a>
             <a onclick="searchproduct('TYPE1')" class="sidebar-items">Food</a>
             <a onclick="searchproduct('TYPE2')" class="sidebar-items">Toy</a>
@@ -131,8 +131,6 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
             }
         }
 
-
-
         function searchproduct(param) {
             var items = document.getElementsByClassName('product-items');
             if (param === 'all') {
@@ -153,8 +151,6 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
         }
 
 
-
-
         function openProductDetail(index) {
             productindex = index;
             $("#modalDesc").css('display', 'flex');
@@ -170,6 +166,24 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
             $(".modal").css('display','none');
         }
 
+
+        function myFunction() {
+            // Get the value from the search input
+            var input = document.getElementById('txt_search');
+            var filter = input.value.toUpperCase();
+            var productList = document.getElementById('productlist');
+            var productItems = productList.getElementsByClassName('product-items');
+
+            // Loop through all product items and hide those who don't match the search query
+            for (var i = 0; i < productItems.length; i++) {
+                var productName = productItems[i].getElementsByTagName('p')[0];
+                if (productName.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    productItems[i].style.display = "";
+                } else {
+                    productItems[i].style.display = "none";
+                }
+            }
+        }
     </script>
 </body>
 </html>

@@ -39,3 +39,9 @@
     </div>
   </nav>
 </header>
+
+<style>
+      nav {
+    background: linear-gradient(125deg, #E9E5DD, #696464);
+    }
+</style>
