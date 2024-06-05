@@ -34,9 +34,9 @@
             <li><a class="dropdown-item" href="#">Catster</a></li>
           </ul>
         </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i>(<?php echo $cart_count; ?>)</a>
-          </li>
+          </li> -->
         </ul>
         <div class="d-flex">
           <?php if(isset($_SESSION['username'])): ?>
