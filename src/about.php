@@ -2,11 +2,6 @@
 session_start();
 include 'condb.php';
 
-// Product All
-$product_sql = "SELECT products.*, product_type.type_name FROM products
-                INNER JOIN product_type ON products.type_id = product_type.type_id";
-$product_result = mysqli_query($conn, $product_sql);
-$products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +17,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>แมวs</title>
+    <title>เกี่ยวกับ</title>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -190,7 +185,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
 
     </main>
 
-    <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
+    <footer class="py-5 text-center text-body-secondary">
         <p class="mb-0">
             <a href="#">Back to top</a>
         </p>
