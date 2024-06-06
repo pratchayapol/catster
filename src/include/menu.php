@@ -19,23 +19,23 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link active" aria-current="page" style="color: #5C3D2E;" href="index.php"><strong>Home</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="cat_list.php">Cats</a>
+            <a class="nav-link" aria-current="page" style="color: #5C3D2E;" href="cat_list.php">Cats</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="shop.php">Shop</a>
+            <a class="nav-link" aria-current="page" style="color: #5C3D2E;" href="shop.php">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">About</a>
+            <a class="nav-link" style="color: #5C3D2E;" href="about.php">About</a>
           </li>
         </ul>
         <div class="d-flex">
           <?php if(isset($_SESSION['username'])): ?>
             <a class="nav-link" href="form_edit_profile.php">Welcome, <?php echo $_SESSION['username']; ?></a>
           <?php else: ?>
-            <a role="button" class="btn btn-outline-dark" style="color: #E9E5DD;" href="login.php">sign in</a>
+            <a role="button" class="btn btn-outline-light" style="color: #5C3D2E;" href="login.php">sign in</a>
           <?php endif; ?>
         </div>
       </div>
@@ -45,6 +45,6 @@
 
 <style>
       nav {
-    background: linear-gradient(125deg, #E9E5DD, #696464);
+    background: linear-gradient(125deg, #D79771, #D79771);
     }
 </style>

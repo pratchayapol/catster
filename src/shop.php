@@ -43,10 +43,10 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
         <div class="sidebar me-5">
             <!-- Input for searching -->
             <input onkeyup="myFunction()" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">
-            <a onclick="searchproduct('all')" class="sidebar-items">All product</a>
-            <a onclick="searchproduct('TYPE1')" class="sidebar-items">Food</a>
-            <a onclick="searchproduct('TYPE2')" class="sidebar-items">Toy</a>
-            <a onclick="searchproduct('TYPE3')" class="sidebar-items">Item</a>
+            <a onclick="searchproduct('all')" class="sidebar-items" style="text-decoration: none;">All product</a>
+            <a onclick="searchproduct('TYPE1')" class="sidebar-items" style="text-decoration: none;">Food</a>
+            <a onclick="searchproduct('TYPE2')" class="sidebar-items" style="text-decoration: none;">Toy</a>
+            <a onclick="searchproduct('TYPE3')" class="sidebar-items" style="text-decoration: none;">Item</a>
         </div>
         
         <!-- Product list -->
@@ -204,9 +204,6 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     *::-webkit-scrollbar {
     display: none;
     }
-    nav {
-    background: linear-gradient(125deg, #E9E5DD, #696464);
-    }
     .nav-container {
     max-width: 90vw;
     height: 100%;
@@ -279,7 +276,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     margin-bottom: 20px;
     }
     .sidebar-search:focus {
-    border: 2px solid #e61b36;
+    border: 2px solid #5C3D2E;
     }
     .sidebar-items {
     background: #f2f2f2;
@@ -292,7 +289,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     font-size: 1.2vw;
     }
     .sidebar-items:hover {
-    background: #9c1032;
+    background: #5C3D2E;
     color: #fff;
     }
     .product-items {
@@ -350,13 +347,12 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     .btn {
     padding: 10px 20px;
     cursor: pointer;
-    border: none;
+    border: #fff;
     border-radius: 5px;
-    font-size: 1.2vw;
     transition: 0.3s;
     }
     .btn-buy {
-    background: linear-gradient(125deg, #e61b36, #9c1032);
+    background: linear-gradient(125deg, #D79771, #D79771);
     color: #fff;
     margin-left: 10px;
     }

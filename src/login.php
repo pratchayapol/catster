@@ -6,30 +6,17 @@
 <html>
 
 <head>
-  <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-
   <title>Catster</title>
-
-  <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
-
-  <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Dosis:400,600,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
-  <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <div class="container" id="container">
@@ -45,9 +32,9 @@
         </div>
         <div class="form-container sign-in-container">
             <form method="POST" action="userAuthen.php">
-				
+				<img src="images/logo.png" class="mb-3" style="width: 120px; height: 120px">
                 <input type="text" name="username" placeholder="username" />
-                <input type="password" name="password" placeholder="password" />
+                <input type="password" name="password" id="password" placeholder="password" />
 					<?php
                         if(isset($_SESSION['Error'])){
                             echo "<div class='text-danger'>";
@@ -56,7 +43,17 @@
                             unset($_SESSION['Error']);
                         }
                     ?>
-                <a href="#"> ลืมรหัสผ่าน ?</a>
+                <input type="checkbox" style="" onclick="showPassword()">Show Password
+				<script>
+					function showPassword() {
+					var x = document.getElementById("password");
+					if (x.type === "password") {
+						x.type = "text";
+					} else {
+						x.type = "password";
+					}
+					}
+				</script>
                 <button type="submit" style="background-color: #5C3D2E;">เข้าสู่ระบบ</button>
             </form>
         </div>
