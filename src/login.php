@@ -39,11 +39,13 @@
                 <input type="text" name="mem_firstname" placeholder="Firstname" />
                 <input type="text" name="mem_lastname" placeholder="Lastname" />
                 <input type="password" name="mem_password" placeholder="Password" />
-                <button type="submit">สมัครสมาชิก</button>
+				<br>
+                <button type="submit" style="background-color: #5C3D2E;">สมัครสมาชิก</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
             <form method="POST" action="userAuthen.php">
+				
                 <input type="text" name="username" placeholder="username" />
                 <input type="password" name="password" placeholder="password" />
 					<?php
@@ -55,7 +57,7 @@
                         }
                     ?>
                 <a href="#"> ลืมรหัสผ่าน ?</a>
-                <button type="submit">เข้าสู่ระบบ</button>
+                <button type="submit" style="background-color: #5C3D2E;">เข้าสู่ระบบ</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -63,19 +65,19 @@
                 <div class="overlay-panel overlay-left">
                     <h1>Welcome Back!</h1>
                     <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
+                    <button class="ghost" id="signIn" style="background-color: #5C3D2E;">เข้าสู่ระบบ</button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1>Hello, Friend!</h1>
                     <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <button class="ghost" id="signUp" style="background-color: #5C3D2E;">สมัครสมาชิก</button>
                 </div>
             </div>
         </div>
     </div>
     <br><br>
     <a href="index.php">
-       <button style="background-color: #454545;"> หน้าหลัก </button> 
+       <button style="background-color: #5C3D2E;"> หน้าหลัก </button> 
     </a>
 
 </body>
@@ -143,7 +145,7 @@
 
 	button {
 		border-radius: 20px;
-		border: 1px solid #FFA559;
+		border: 1px solid #fff;
 		background-color: #FFA559;
 		color: #FFFFFF;
 		font-size: 12px;
@@ -257,9 +259,9 @@
 	}
 
 	.overlay {
-		background: #FFA559;
-		background: -webkit-linear-gradient(to right, #FF6000, #FFA559);
-		background: linear-gradient(to right, #FFA559, #FF6000);
+		background: #D79771;
+		background: -webkit-linear-gradient(to right, #753422, #D79771);
+		background: linear-gradient(to right, #D79771, #753422);
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: 0 0;
