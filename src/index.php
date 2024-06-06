@@ -150,11 +150,6 @@
       <hr class="featurette-divider">
       <!-- /END THE FEATURETTES -->
     </div><!-- /.container -->
-
-    <!-- FOOTER -->
-    <footer class="container">
-      <p class="float-end"><a href="#" style="text-decoration: dotted;">Back to top</a></p>
-    </footer>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

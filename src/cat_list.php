@@ -176,11 +176,6 @@ include 'condb.php';
 
     </main>
 
-    <footer class="py-5 text-center text-body-secondary">
-        <p class="mb-0">
-            <a href="#">Back to top</a>
-        </p>
-    </footer>
     <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
