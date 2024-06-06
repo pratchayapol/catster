@@ -1,12 +1,13 @@
 <?php
   date_default_timezone_set("Asia/Bangkok");
-  $servername = "100.70.4.4:3342";
+  $servername = "100.70.4.4";
+  $port = "3342";
   $username = "root";
   $password = "admincatster";
   $dbname = "dbcatster";
 
   // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  $conn = mysqli_connect($servername, $username, $password, $dbname, $port);
 
   // Check connection
   if (!$conn) {
