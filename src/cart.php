@@ -53,7 +53,7 @@
                         <form action="update_cart.php" method="POST">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h3 class="fw-normal mb-0 text-black">ตะกร้าสินค้า</h3>
-                            <button type="submit" class="btn btn-warning text-end"><i class="fa-solid fa-arrows-rotate"></i></button>
+                            <button type="submit" class="btn btn-warning text-end" style="background-color: #FFA559;"><i class="fa-solid fa-arrows-rotate"></i></button>
                         </div>
 
                         <?php if ($rows > 0): ?>
@@ -85,20 +85,16 @@
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                            <div class="card">
                                 <div class="card-body d-grid gap-2">
-                                    <a href="form_checkout.php" type="button" class="btn btn-warning btn-block btn-md">Check out</a>
+                                    <a href="form_checkout.php" type="button" class="btn btn-warning btn-block btn-md" style="background-color: #FFA559;">Check out</a>
                                 </div>
-                            </div>
                         <?php else: ?>
                             <div class="row">
                                 <div class="col text-center"><p>ไม่มีรายการสินค้า.</p></div>
                             </div>
-                            <div class="card">
-                                <div class="card-body d-grid gap-2">
-                                    <a href="shop.php" type="button" class="btn btn-warning btn-block btn-md">เลือกสินค้าเลย! <i class="fa-solid fa-cart-plus ms-2"></i></a>
+                                <div class="card-body d-grid gap-2" >
+                                    <a href="shop.php" type="button" class="btn btn-block btn-md" style="background-color: #FFA559;">เลือกสินค้าเลย! <i class="fa-solid fa-cart-plus ms-2"></i></a>
                                 </div>
-                            </div>
                         <?php endif; ?>
                         </form>
 
