@@ -7,6 +7,10 @@
     }
 ?>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
 <header data-bs-theme="light">
   <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
     <div class="container-fluid">
@@ -19,14 +23,14 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" style="color: #5C3D2E;" href="index.php"><strong>Home</strong></a>
+            <a class="nav-link active" aria-current="page" style="color: #5C3D2E;" href="index.php"><strong>Catster</strong></a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" aria-current="page" style="color: #5C3D2E;" href="cat_list.php">Cats</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" style="color: #5C3D2E;" href="shop.php">Shop</a>
-          </li>
+          </li> -->
         </ul>
         <div class="d-flex">
           <?php if(isset($_SESSION['username'])): ?>
@@ -41,6 +45,9 @@
 </header>
 
 <style>
+    body {
+          font-family: "Bai Jamjuree", sans-serif;
+      }
       nav {
     background: linear-gradient(125deg, #D79771, #D79771);
     }

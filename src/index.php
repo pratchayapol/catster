@@ -106,88 +106,51 @@
 
   <main>
 
-    <div class="container marketing" style="margin-top: 110px">
+    <div class="container marketing" style="margin-top: 80px">
       <div class="row">
+
         <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <img src="images/logo.png" class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
             <title>Placeholder</title>
             <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
           <h2 class="fw-normal">Heading</h2>
           <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-          <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
-          <h2 class="fw-normal">Heading</h2>
-          <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-          <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          </svg>
-          <h2 class="fw-normal">Heading</h2>
-          <p>And lastly this, the third column of representative placeholder content.</p>
-          <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
-
-      <main class="container" style="margin-top: 100px;">
-
-        <div class="row mb-2">
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                  <div class="col p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2 text-primary-emphasis">Adopt</strong>
-                  <h3 class="mb-0">Head</h3>
-                  <div class="mb-1 text-body-secondary"></div>
-                  <p class="card-text mb-auto">Description</p>
-                  <a href="cat_list.php" class="icon-link gap-1 icon-link-hover stretched-link">
-                      Cat List >>
-                  </a>
-                  </div>
-                  <div class="col-auto d-none d-lg-block">
-                  <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                  </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                  <div class="col p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2 text-success-emphasis">Report</strong>
-                  <h3 class="mb-0">Head</h3>
-                  <div class="mb-1 text-body-secondary"></div>
-                  <p class="mb-auto">Description</p>
-                  <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                      Donation >>
-                  </a>
-                  </div>
-                  <div class="col-auto d-none d-lg-block">
-                  <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                  </div>
-              </div>
-            </div>
+          <p><a class="btn btn-secondary" href="cat_list.php">ADOPT CAT &raquo;</a></p>
         </div>
 
+        <div class="col-lg-4">
+          <img src="images/logo.png" class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
+          <h2 class="fw-normal">Heading</h2>
+          <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+          <p><a class="btn btn-secondary" href="shop.php">SHOP &raquo;</a></p>
+        </div>
+
+        <div class="col-lg-4">
+          <img src="images/logo.png" class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <h2 class="fw-normal">Heading</h2>
+          <p>And lastly this, the third column of representative placeholder content.</p>
+          <p><a class="btn btn-secondary" href="#">DONATE &raquo;</a></p>
+        </div>
+
+      </div><!-- /.row -->
+
+      <main class="container mt-3">
         <div class="row g-5">
             <div class="col-md-8">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">
-                    ประวัติ
-                </h3>
+                <h1 class="pb-4 mb-4 fst-italic border-bottom">
+                  Catster by Kingdom of Tigers
+                </h1>
 
                 <article class="blog-post">
-                    <h2 class="display-5 link-body-emphasis mb-3">Catster by Kingdom of Tigers</h2>
                     <p>ถูกก่อตั้งขึ้นโดยอินฟลูเอนเซอร์เจ้าของแมวบ้านทูนหัวของบ่าว หรือ เพจ Kingdom of Tigers เพื่อที่จะสร้างสถานที่พักพิงให้แมวจรก่อนที่จะเจ้าแมวเหล่านี้จะถูกรับไปเลี้ยงในบ้านที่อบอุ่น ก่อนจะเข้าสู่ Catster และหาบ้าน เจ้าเหมียวเหล่านี้จะได้รับการตรวจร่างกาย ทำวัคซีนพื้นฐานเพื่อสุขภาพที่สมบูรณ์และป้องกันการเกิดโรคติดต่อ รวมเข้ารับการผ่าตัดทำหมันเมื่อถึงวัยไม่ว่าจะเป็นตัวผู้หรือตัวเมีย เพื่อควบคุมปริมาณแมว รวมทั้งเพื่อลดพฤติกรรมก้าวร้าวที่อาจเกิดขึ้นได้ในแมวหนุ่ม นำไปสู่การต่อสู้และบาดเจ็บ
                     หลังจากเจ้าเหมียวผ่านขั้นตอนเหล่านี้แล้วก็พร้อมย้ายเข้าไปยัง Catster ที่เป็นทั้งสถานที่พักพิงและคาเฟ่แมวจร เพื่อรอพบเพื่อนใหม่และผู้ที่สนใจเข้ามาอุปการะหรือทำความรู้จักแมว</p>
                     <center><img src="images/c1.jpg" style="widht: 720px; height: 540px; border-radius: 10%"></center>
                 </article>
                 <article class="blog-post mt-5">
-                    <h2 class="display-5 link-body-emphasis mb-3">ภารกิจของ Catster</h2>
+                    <h2 class="display-5 link-body-emphasis mb-3" style="font-size: 30px">ภารกิจของ Catster</h2>
                     <p>Catster มีความตั้งใจที่จะลดจำนวนแมวจรลงอย่างยุ่งยืน ผ่านการทำงานในรูปแบบของบ้านพักแมวจรที่สามารถอุปการะได้ ก่อนเจ้าเหมียวกลุ่มใหม่จะเข้าไปอยู่ร่วมกับเพื่อน ๆ แมวใน Catster นั้นต้องผ่านการตรวจเลือดเพื่อหาโรคติดต่อ และได้รับวัคป้องกันโรคซีนพื้นฐาน และหากเป็นแมวที่ก้าวเข้าสู่วัยรุ่นหรือแมวโตก็จะต้องรับการผ่าตัดเพื่อทำหมันเพื่อลดพฤติกรรมก้าวร้าว การปัสสาวะเพื่อสร้างอาณาเขต รวมถึงควบคุมปริมาณแมว</p>
                     <p>การดูแลแมวพื้นฐาน 1 ตัวโดยประมาณประกอบด้วย</p>
                     <ul>
@@ -202,7 +165,7 @@
             </div>
 
             <div class="col-md-4">
-                <div class="position-sticky" style="top: 2rem;">
+                <div class="position-sticky" style="top: 3.5rem;">
                     <div class="p-4 mb-3 bg-body-tertiary rounded">
                       <h4 class="fst-italic">มอบคุณภาพชีวิตที่ดีให้เจ้าเหมียว,</h4>
                       <p class="lead my-3"> ทุก 3,000 บาท จะนำไปสนับสนุนวัคซีนพื้นฐานและการทำหมันแมวจร</p>
