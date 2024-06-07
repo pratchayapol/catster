@@ -110,46 +110,39 @@ include 'condb.php';
     <?php include 'include/menu.php'; ?>
 
     <main class="container" style="margin-top: 100px;">
-    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-        <div class="col-lg-6 px-0">
-        <h1 class="display-4 fst-italic">Catster</h1>
-        <p class="lead my-3">Description</p>
-        <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">ร่วมบริจาคเงินสมทบทุนได้ที่นี่...</a></p>
-        </div>
-    </div>
 
     <div class="row mb-2">
         <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary-emphasis">Adopt</strong>
-            <h3 class="mb-0">Head</h3>
-            <div class="mb-1 text-body-secondary"></div>
-            <p class="card-text mb-auto">Description</p>
-            <a href="cat_list.php" class="icon-link gap-1 icon-link-hover stretched-link">
-                Cat List >>
-            </a>
-            </div>
-            <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            </div>
-        </div>
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary-emphasis">Adopt</strong>
+              <h3 class="mb-0">Head</h3>
+              <div class="mb-1 text-body-secondary"></div>
+              <p class="card-text mb-auto">Description</p>
+              <a href="cat_list.php" class="icon-link gap-1 icon-link-hover stretched-link">
+                  Cat List >>
+              </a>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              </div>
+          </div>
         </div>
         <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-success-emphasis">Report</strong>
-            <h3 class="mb-0">Head</h3>
-            <div class="mb-1 text-body-secondary"></div>
-            <p class="mb-auto">Description</p>
-            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                Donation >>
-            </a>
-            </div>
-            <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            </div>
-        </div>
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success-emphasis">Report</strong>
+              <h3 class="mb-0">Head</h3>
+              <div class="mb-1 text-body-secondary"></div>
+              <p class="mb-auto">Description</p>
+              <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                  Donation >>
+              </a>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+              <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              </div>
+          </div>
         </div>
     </div>
 
@@ -160,8 +153,29 @@ include 'condb.php';
             </h3>
 
             <article class="blog-post">
-                <h2 class="display-5 link-body-emphasis mb-1">Heading</h2>
-                <p>รายละเอียด</p>
+                <h2 class="display-5 link-body-emphasis mb-3">Catster by Kingdom of Tigers</h2>
+                <p>ถูกก่อตั้งขึ้นโดยอินฟลูเอนเซอร์เจ้าของแมวบ้านทูนหัวของบ่าว หรือ เพจ Kingdom of Tigers เพื่อที่จะสร้างสถานที่พักพิงให้แมวจรก่อนที่จะเจ้าแมวเหล่านี้จะถูกรับไปเลี้ยงในบ้านที่อบอุ่น ก่อนจะเข้าสู่ Catster และหาบ้าน เจ้าเหมียวเหล่านี้จะได้รับการตรวจร่างกาย ทำวัคซีนพื้นฐานเพื่อสุขภาพที่สมบูรณ์และป้องกันการเกิดโรคติดต่อ รวมเข้ารับการผ่าตัดทำหมันเมื่อถึงวัยไม่ว่าจะเป็นตัวผู้หรือตัวเมีย เพื่อควบคุมปริมาณแมว รวมทั้งเพื่อลดพฤติกรรมก้าวร้าวที่อาจเกิดขึ้นได้ในแมวหนุ่ม นำไปสู่การต่อสู้และบาดเจ็บ
+                หลังจากเจ้าเหมียวผ่านขั้นตอนเหล่านี้แล้วก็พร้อมย้ายเข้าไปยัง Catster ที่เป็นทั้งสถานที่พักพิงและคาเฟ่แมวจร เพื่อรอพบเพื่อนใหม่และผู้ที่สนใจเข้ามาอุปการะหรือทำความรู้จักแมว</p>
+                <center><img src="images/c1.jpg" style="widht: 720; height: 540px; border-radius: 10%"></center>
+            </article>
+            <article class="blog-post mt-5">
+                <h2 class="display-5 link-body-emphasis mb-3">ภารกิจของ Catster</h2>
+                <p>Catster มีความตั้งใจที่จะลดจำนวนแมวจรลงอย่างยุ่งยืน ผ่านการทำงานในรูปแบบของบ้านพักแมวจรที่สามารถอุปการะได้ ก่อนเจ้าเหมียวกลุ่มใหม่จะเข้าไปอยู่ร่วมกับเพื่อน ๆ แมวใน Catster นั้นต้องผ่านการตรวจเลือดเพื่อหาโรคติดต่อ และได้รับวัคป้องกันโรคซีนพื้นฐาน และหากเป็นแมวที่ก้าวเข้าสู่วัยรุ่นหรือแมวโตก็จะต้องรับการผ่าตัดเพื่อทำหมันเพื่อลดพฤติกรรมก้าวร้าว การปัสสาวะเพื่อสร้างอาณาเขต รวมถึงควบคุมปริมาณแมว</p>
+                <p>การดูแลแมวพื้นฐาน 1 ตัวโดยประมาณประกอบด้วย</p>
+                <ul>
+                  <li>ค่าตรวจเลือดหาเอดส์ ลิวคีเมีย 600 บาท</li>
+                  <li>วัคซีนพื้นฐาน (พิษสุนัขบ้า, ไวรัสไข้หัดแมว, เฮอร์ปีส์ไวรัส-1, แคลิซิไวรัสแมว) 400 บาท</li>
+                  <li>ถ่ายพยาธิ หยอดเห็บหมัด 500 บาท</li>
+                  <li>ทำหมัน 1,500-1,700 บาท</li>
+                  <strong>รวม 3,000 บาทต่อแมว 1 ตัว</strong>
+                </ul>
+                <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+                  <div class="col-lg-12 px-0">
+                  <h1 class="display-4 fst-italic" style="font-size: 40px">มอบคุณภาพชีวิตที่ดีให้เจ้าเหมียว,</h1>
+                  <p class="lead my-3"> ทุก 3,000 บาท จะนำไปสนับสนุนวัคซีนพื้นฐานและการทำหมันแมวจร</p>
+                  <p class="lead mb-0 text-end"><a href="#" class="text-body-emphasis fw-bold">ร่วมบริจาคเงินสมทบทุนได้ที่นี่</a></p>
+                  </div>
+              </div>
             </article>
 
         </div>
