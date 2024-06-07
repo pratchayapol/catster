@@ -19,6 +19,10 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     <link href="assets/fontawesome/css/brands.min.css" rel="stylesheet">
     <link href="assets/fontawesome/css/solid.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title>สินค้า</title>
 </head>
 
@@ -39,15 +43,18 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
         </div>
     </div>
     <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar me-5">
-            <!-- Input for searching -->
-            <input onkeyup="myFunction()" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">
-            <a onclick="searchproduct('all')" class="sidebar-items" style="text-decoration: none;">All product</a>
-            <a onclick="searchproduct('TYPE1')" class="sidebar-items" style="text-decoration: none;">Food</a>
-            <a onclick="searchproduct('TYPE2')" class="sidebar-items" style="text-decoration: none;">Toy</a>
-            <a onclick="searchproduct('TYPE3')" class="sidebar-items" style="text-decoration: none;">Item</a>
+        <div class="col-md-4">
+            <div class="position-sticky" style="top: 6rem; background-color: #454545;">
+                <div class="p-4 mb-3 rounded">
+                    <input onkeyup="myFunction()" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">
+                    <a onclick="searchproduct('all')" class="sidebar-items" style="text-decoration: none;">All product</a>
+                    <a onclick="searchproduct('TYPE1')" class="sidebar-items" style="text-decoration: none;">Food</a>
+                    <a onclick="searchproduct('TYPE2')" class="sidebar-items" style="text-decoration: none;">Toy</a>
+                    <a onclick="searchproduct('TYPE3')" class="sidebar-items" style="text-decoration: none;">Item</a>
+                </div>
+            </div>
         </div>
+
         
         <!-- Product list -->
         <div id="productlist" class="product">
@@ -271,7 +278,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     font-size: 1.2vw;
     outline: none;
     border-radius: 5px;
-    background: #f2f2f2;
+    background: #fff;
     transition: 0.3s;
     margin-bottom: 20px;
     }
@@ -279,7 +286,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     border: 2px solid #5C3D2E;
     }
     .sidebar-items {
-    background: #f2f2f2;
+    background: #fff;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
