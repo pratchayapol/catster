@@ -27,9 +27,6 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" style="color: #5C3D2E;" href="shop.php">Shop</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: #5C3D2E;" href="about.php">About</a>
-          </li>
         </ul>
         <div class="d-flex">
           <?php if(isset($_SESSION['username'])): ?>
