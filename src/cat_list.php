@@ -95,6 +95,164 @@ include 'condb.php';
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+
+      input,textarea,
+        input[type="radio"] + label,
+        input[type="checkbox"] + label:before,
+        select option,
+        select {
+        width: 100%;
+        padding: 1em;
+        line-height: 1.4;
+
+        border: 1px solid #e5e5e5;
+        border-radius: 3px;
+        -webkit-transition: 0.35s ease-in-out;
+        -moz-transition: 0.35s ease-in-out;
+        -o-transition: 0.35s ease-in-out;
+        transition: 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        }
+        input:focus {
+        outline: 0;
+        border-color: #bd8200;
+        }
+        input:focus + .input-icon i {
+        color: #f0a500;
+        }
+        input:focus + .input-icon:after {
+        border-right-color: #f0a500;
+        }
+        input[type="radio"] {
+        display: none;
+        }
+        input[type="radio"] + label,
+        select {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        float: left;
+        border-radius: 0;
+        }
+        input[type="radio"] + label:first-of-type {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        }
+        input[type="radio"] + label:last-of-type {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        }
+        input[type="radio"] + label i {
+        padding-right: 0.4em;
+        }
+        input[type="radio"]:checked + label,
+        input:checked + label:before,
+        select:focus,
+        select:active {
+        background-color: #f0a500;
+        color: #fff;
+        border-color: #bd8200;
+        }
+        input[type="checkbox"] {
+        display: none;
+        }
+        input[type="checkbox"] + label {
+        position: relative;
+        display: block;
+        padding-left: 1.6em;
+        }
+        input[type="checkbox"] + label:before {
+        position: absolute;
+        top: 0.2em;
+        left: 0;
+        display: block;
+        width: 1em;
+        height: 1em;
+        padding: 0;
+        content: "";
+        }
+        input[type="checkbox"] + label:after {
+        position: absolute;
+        top: 0.45em;
+        left: 0.2em;
+        font-size: 0.8em;
+        color: #fff;
+        opacity: 0;
+        font-family: FontAwesome;
+        content: "\f00c";
+        }
+        input:checked + label:after {
+        opacity: 1;
+        }
+        select {
+        height: 3.4em;
+        line-height: 2;
+        }
+        select:first-of-type {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        }
+        select:last-of-type {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        }
+        select:focus,
+        select:active {
+        outline: 0;
+        }
+        select option {
+        background-color: #f0a500;
+        color: #fff;
+        }
+        .input-group {
+        margin-bottom: 1em;
+        zoom: 1;
+        }
+        .input-group:before,
+        .input-group:after {
+        content: "";
+        display: table;
+        }
+        .input-group:after {
+        clear: both;
+        }
+        .input-group-icon {
+        position: relative;
+        }
+        .input-group-icon input {
+        padding-left: 4.4em;
+        }
+        .input-group-icon .input-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3.4em;
+        height: 3.4em;
+        line-height: 3.4em;
+        text-align: center;
+        pointer-events: none;
+        }
+        .input-group-icon .input-icon:after {
+        position: absolute;
+        top: 0.6em;
+        bottom: 0.6em;
+        left: 3.4em;
+        display: block;
+        border-right: 1px solid #e5e5e5;
+        content: "";
+        -webkit-transition: 0.35s ease-in-out;
+        -moz-transition: 0.35s ease-in-out;
+        -o-transition: 0.35s ease-in-out;
+        transition: 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        }
+        .input-group-icon .input-icon i {
+        -webkit-transition: 0.35s ease-in-out;
+        -moz-transition: 0.35s ease-in-out;
+        -o-transition: 0.35s ease-in-out;
+        transition: 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        }
     </style>
 
 </head>
@@ -147,17 +305,70 @@ include 'condb.php';
 
     <main>
     <section class="text-center container" style="margin-top: 80px;">
-        <div class="row py-lg-5">
+      <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">เหมียวเชลเตอร์หาบ้าน</h1>
-            <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-            <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="form_report.php" class="btn btn-secondary my-2">แบบฟอร์มแจ้งพบแมวจร</a>
-            </p>
+          <h1 class="fw-light">เหมียวเชลเตอร์หาบ้าน</h1>
+          <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">รับอุปการะ</a>
+            <button class="btn btn-secondary my-2" onclick="$('#exampleModal').modal('show');">แบบฟอร์มแจ้งพบแมวจร</button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">แบบฟอร์มแจ้งพบแมวจร</h5>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                        <div class="row">
+                        <div class="input-group input-group-icon">
+                            <input type="text" placeholder="Full Name">
+                            <div class="input-icon">
+                            <i class="fa fa-user ms-3"></i>
+                            </div>
+                        </div>
+                        <div class="input-group input-group-icon">
+                            <input type="email" placeholder="Email Adress">
+                            <div class="input-icon">
+                            <i class="fa fa-envelope"></i>
+                            </div>
+                        </div>
+                        <h4>วันที่พบ</h4>
+                        <div class="input-group">
+                            <div class="col">
+                                <input type="date" value="">
+                            </div>
+                        </div>
+                        <h4>รายละเอียด</h4>
+                        <div class="input-group">
+                            <div class="col">
+                                <textarea name="report_desc" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="input-group input-group-icon">
+                            <input type="password" placeholder="Password">
+                            <div class="input-icon">
+                            <i class="fa fa-key"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p>
         </div>
-        </div>
+      </div>
     </section>
+
+
+
 
     <div class="album py-5">
         <div class="container">

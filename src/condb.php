@@ -1,6 +1,6 @@
 <?php
   date_default_timezone_set("Asia/Bangkok");
-  $servername = "100.70.4.4";
+  $servername = "100.99.99.99";
   $port = "3342";
   $username = "root";
   $password = "admincatster";
