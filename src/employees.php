@@ -105,22 +105,28 @@
 				</div>
 			</div>
 
-      <div class="table-data">
-				<div class="todo">
-					<div class="head">
-						<h3>Todos</h3>
-						<i class='bx bx-plus' >เพิ่ม</i>
-					</div>
-					<form>
-
-          </form>
-				</div>
-			</div>
+      <form class="form-input" action="insert_emp.php" method="POST" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-6">
+            <input type="file" name="emp_picture">
+            <input type="text" name="emp_firstname" id="emp_firstname" placeholder="Firstname">
+            <input type="text" name="emp_lastname" id="emp_lastname" placeholder="Lastname">
+            <input type="text" name="emp_address" id="emp_address" placeholder="Address">
+          </div>
+          <div class="col-6">
+            <input type="email" name="emp_email" id="emp_email" placeholder="Email">
+            <input type="text" name="emp_tel" id="emp_tel" placeholder="Telephone">
+            <input type="text" name="emp_username" id="emp_username" placeholder="Username">
+            <input type="password" name="emp_password" id="emp_password" placeholder="Password">
+          </div>
+        </div>
+      </form>
 
       <div class="table-data">
 				<div class="order">
 					<div class="head">
 						<h3>รายชื่อพนักงาน</h3>
+            <i class='bx bx-plus' >เพิ่ม</i>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
@@ -177,3 +183,88 @@
 	<script src="assets/js/script_admin.js"></script>
 </body>
 </html>
+
+<script>
+  //Load animation if fields containing data on page load
+  $( document ).ready(function() {
+    $(".input-login").each(function() { 
+      if ($(this).val() != "") {
+        $(this).parent().addClass("animation");
+      }
+    });
+  });
+
+  //Add animation when input is focused
+  $(".login-input").focus(function(){
+    $(this).parent().addClass("animation animation-color");
+  });
+
+  //Remove animation(s) when input is no longer focused
+  $(".login-input").focusout(function(){
+    if($(this).val() === "")
+      $(this).parent().removeClass("animation");
+    $(this).parent().removeClass("animation-color");
+  })
+</script>
+
+<style>
+
+input {
+            margin-bottom: 10px;
+            width: 90%;
+            height: 40px;
+            font-size: 16px;
+            transition: 0.6s;
+            border: #313131;
+            border-bottom: 1px solid #CCC;
+            background-color: transparent;
+        }
+        input:focus {
+            outline: none;
+            border-bottom: 1px solid #FFA559;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .col-6 {
+            width: 48%;
+        }
+        .form-input {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 1300px;
+            margin: auto;
+            margin-top: 10px;
+        }
+        .form-input h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+</style>
