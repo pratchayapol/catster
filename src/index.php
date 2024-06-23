@@ -1,202 +1,509 @@
 <?php
  session_start();
 ?>
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catster</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
-  <link href="assets/css/carousel.css" rel="stylesheet">
-  <script src="assets/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <title>Catster - หน้าแรก</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
-<style>
-  body {
-    font-family: "Bai Jamjuree", sans-serif;
-  }
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
 
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
-
-  .b-example-divider {
-    width: 100%;
-    height: 3rem;
-    background-color: rgba(0, 0, 0, .1);
-    border: solid rgba(0, 0, 0, .15);
-    border-width: 1px 0;
-    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-  }
-
-  .b-example-vr {
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 100vh;
-  }
-
-  .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
-
-  .nav-scroller {
-    position: relative;
-    z-index: 2;
-    height: 2.75rem;
-    overflow-y: hidden;
-  }
-
-  .nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .btn-bd-primary {
-    --bd-violet-bg: #712cf9;
-    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-    --bs-btn-font-weight: 600;
-    --bs-btn-color: var(--bs-white);
-    --bs-btn-bg: var(--bd-violet-bg);
-    --bs-btn-border-color: var(--bd-violet-bg);
-    --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: #6528e0;
-    --bs-btn-hover-border-color: #6528e0;
-    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-    --bs-btn-active-color: var(--bs-btn-hover-color);
-    --bs-btn-active-bg: #5a23c8;
-    --bs-btn-active-border-color: #5a23c8;
-  }
-
-  .bd-mode-toggle {
-    z-index: 1500;
-  }
-
-  .bd-mode-toggle .dropdown-menu .active .bi {
-    display: block !important;
-  }
-</style>
-
-<body class="bg-body-tertiary">
-
-  <?php include 'include/menu.php'; ?>
-
-  <main>
-
-    <div class="container marketing" style="margin-top: 80px">
-      <div class="row">
-
-        <div class="col-lg-4">
-          <img src="images/logo.png" class="bd-placeholder-img rounded-circle img-fluid" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          <h2 class="fw-normal">Heading</h2>
-          <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-          <p><a class="btn btn-secondary" href="cat_list.php">ADOPT CAT &raquo;</a></p>
-        </div>
-
-        <div class="col-lg-4">
-          <img src="images/logo.png" class="bd-placeholder-img rounded-circle img-fluid" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-color)" />
-          <h2 class="fw-normal">Heading</h2>
-          <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-          <p><a class="btn btn-secondary" href="shop.php">SHOP &raquo;</a></p>
-        </div>
-
-        <div class="col-lg-4">
-          <img src="images/logo.png" class="bd-placeholder-img rounded-circle img-fluid" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <h2 class="fw-normal">Heading</h2>
-          <p>And lastly this, the third column of representative placeholder content.</p>
-          <p><a class="btn btn-secondary" href="#">DONATE &raquo;</a></p>
-        </div>
-
-      </div><!-- /.row -->
-
-      <main class="container mt-3">
-        <div class="row g-5">
-          <div class="col-md-8">
-            <h1 class="pb-4 mb-4 fst-italic border-bottom">
-              Catster by Kingdom of Tigers
-            </h1>
-
-            <article class="blog-post">
-              <p>ถูกก่อตั้งขึ้นโดยอินฟลูเอนเซอร์เจ้าของแมวบ้านทูนหัวของบ่าว หรือ เพจ Kingdom of Tigers เพื่อที่จะสร้างสถานที่พักพิงให้แมวจรก่อนที่จะเจ้าแมวเหล่านี้จะถูกรับไปเลี้ยงในบ้านที่อบอุ่น ก่อนจะเข้าสู่ Catster และหาบ้าน เจ้าเหมียวเหล่านี้จะได้รับการตรวจร่างกาย ทำวัคซีนพื้นฐานเพื่อสุขภาพที่สมบูรณ์และป้องกันการเกิดโรคติดต่อ รวมเข้ารับการผ่าตัดทำหมันเมื่อถึงวัยไม่ว่าจะเป็นตัวผู้หรือตัวเมีย เพื่อควบคุมปริมาณแมว รวมทั้งเพื่อลดพฤติกรรมก้าวร้าวที่อาจเกิดขึ้นได้ในแมวหนุ่ม นำไปสู่การต่อสู้และบาดเจ็บ
-                หลังจากเจ้าเหมียวผ่านขั้นตอนเหล่านี้แล้วก็พร้อมย้ายเข้าไปยัง Catster ที่เป็นทั้งสถานที่พักพิงและคาเฟ่แมวจร เพื่อรอพบเพื่อนใหม่และผู้ที่สนใจเข้ามาอุปการะหรือทำความรู้จักแมว</p>
-              <center><img src="images/c1.jpg" class="img-fluid" style="border-radius: 10%;"></center>
-                <article class="blog-post mt-5">
-                    <h2 class="display-5 link-body-emphasis mb-3" style="font-size: 30px">ภารกิจของ Catster</h2>
-                    <p>Catster มีความตั้งใจที่จะลดจำนวนแมวจรลงอย่างยุ่งยืน ผ่านการทำงานในรูปแบบของบ้านพักแมวจรที่สามารถอุปการะได้ ก่อนเจ้าเหมียวกลุ่มใหม่จะเข้าไปอยู่ร่วมกับเพื่อน ๆ แมวใน Catster นั้นต้องผ่านการตรวจเลือดเพื่อหาโรคติดต่อ และได้รับวัคป้องกันโรคซีนพื้นฐาน และหากเป็นแมวที่ก้าวเข้าสู่วัยรุ่นหรือแมวโตก็จะต้องรับการผ่าตัดเพื่อทำหมันเพื่อลดพฤติกรรมก้าวร้าว การปัสสาวะเพื่อสร้างอาณาเขต รวมถึงควบคุมปริมาณแมว</p>
-                    <p>การดูแลแมวพื้นฐาน 1 ตัวโดยประมาณประกอบด้วย</p>
-                    <ul>
-                      <li>ค่าตรวจเลือดหาเอดส์ ลิวคีเมีย 600 บาท</li>
-                      <li>วัคซีนพื้นฐาน (พิษสุนัขบ้า, ไวรัสไข้หัดแมว, เฮอร์ปีส์ไวรัส-1, แคลิซิไวรัสแมว) 400 บาท</li>
-                      <li>ถ่ายพยาธิ หยอดเห็บหมัด 500 บาท</li>
-                      <li>ทำหมัน 1,500-1,700 บาท</li>
-                      <strong>รวม 3,000 บาทต่อแมว 1 ตัว</strong>
-                    </ul>
-                    <div class="p-4 p-md-5 rounded text-body-emphasis"></div>
-                </article>
+<body style="background-color: #fff;">
+    <!-- Header -->
+    <?php include('include/header.php'); ?>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">กำลังโหลด...</span>
             </div>
+        </div>
+        <!-- Spinner End -->
 
-            <div class="col-md-4">
-                <div class="position-sticky" style="top: 3.5rem;">
-                    <div class="p-4 mb-3 bg-body-tertiary rounded">
-                      <h4 class="fst-italic">มอบคุณภาพชีวิตที่ดีให้เจ้าเหมียว,</h4>
-                      <p class="lead my-3"> ทุก 3,000 บาท จะนำไปสนับสนุนวัคซีนพื้นฐานและการทำหมันแมวจร</p>
-                      <p class="lead mb-0 text-end"><a href="#" class="text-body-emphasis fw-bold">ร่วมบริจาคเงินสมทบทุนได้ที่นี่</a></p>
+
+        <!-- Carousel Start -->
+        <!-- <div class="container-fluid p-0 mb-5">
+            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious Hotel</h1>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                            </div>
+                        </div>
                     </div>
+                    <div class="carousel-item">
+                        <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious Hotel</h1>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" src="img/carousel-3.jpg" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious Hotel</h1>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div> -->
+        <!-- Carousel End -->
 
-                    <div>
-                      <h4 class="fst-italic">Recent posts</h4>
-                      <ul class="list-unstyled">
-                          <li>
-                          <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                              <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-                              <div class="col-lg-8">
-                              <h6 class="mb-0">Example blog post title</h6>
-                              <small class="text-body-secondary">January 15, 2024</small>
-                              </div>
-                          </a>
-                          </li>
-                      </ul>
+
+        <!-- Booking Start -->
+        <!-- <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s" style="position: sticky; top: 0;">
+            <div class="container">
+                <div class="bg-white shadow" style="padding: 35px;">
+                    <div class="row g-2">
+                        <div class="col-md-10">
+                            <div class="row g-2">
+                                <div class="col-md-3">
+                                    <div class="date" id="date1" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input"
+                                            placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="date" id="date2" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select">
+                                        <option selected>Adult</option>
+                                        <option value="1">Adult 1</option>
+                                        <option value="2">Adult 2</option>
+                                        <option value="3">Adult 3</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select">
+                                        <option selected>Child</option>
+                                        <option value="1">Child 1</option>
+                                        <option value="2">Child 2</option>
+                                        <option value="3">Child 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary w-100">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Booking End -->
+
+
+        <!-- เกี่ยวกับ -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <h6 class="section-title text-start text-primary text-uppercase">About</h6>
+                        <h1 class="mb-4">ยินดีต้อนรับ <span class="text-primary text-uppercase">แคสเตอร์</span></h1>
+                        <p class="mb-4">
+                            มันคงจะดีถ้าวันนึงจะมีศูนย์กลางความช่วยเหลือให้สัตว์ในไทยบนโลกออนไลน์ ที่ทุกคนสามารถเข้ามาขอหรือให้ความช่วยเหลือสัตว์ได้
+                        </p>
+                        <div class="row g-3 pb-4">
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                        <i class="fa fa-hotel fa-2x text-primary mb-2"></i>
+                                        <h2 class="mb-1" data-toggle="counter-up">100</h2>
+                                        <p class="mb-0">ทั้งหมด</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                        <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>
+                                        <h2 class="mb-1" data-toggle="counter-up">48</h2>
+                                        <p class="mb-0">ได้บ้าน</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.5s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                        <i class="fa fa-users fa-2x text-primary mb-2"></i>
+                                        <h2 class="mb-1" data-toggle="counter-up">52</h2>
+                                        <p class="mb-0">หาบ้าน</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="">อุปการะแคทสเตอร์!</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="images/c-2.jfif" style="margin-top: 25%;">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="images/c-3.jfif">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="images/c-5.jfif">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="images/c-7.jfif">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-      </main>
 
-<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- แคทสเตอร์ -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Our Catster</h6>
+                    <h1 class="mb-5">สมาชิกของ <span class="text-primary text-uppercase">แคทสเตอร์</span></h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="service-item rounded" href="">
+                            <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
+                            <h5 class="mb-3 mt-4">Rooms & Appartment</h5>
+                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <a class="service-item rounded" href="">
+                            <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
+                            <h5 class="mb-3 mt-4">Food & Restaurant</h5>
+                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <a class="service-item rounded" href="">
+                            <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
+                            <h5 class="mb-3 mt-4">Spa & Fitness</h5>
+                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                        <a class="service-item rounded" href="">
+                            <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
+                            <h5 class="mb-3 mt-4">Sports & Gaming</h5>
+                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <a class="service-item rounded" href="">
+                            <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
+                            <h5 class="mb-3 mt-4">Event & Party</h5>
+                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <a class="service-item rounded" href="">
+                            <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
+                            <h5 class="mb-3 mt-4">GYM & Yoga</h5>
+                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <center><a class="btn btn-primary py-3 px-5 mt-4" href="catster.php">รายชื่อแคทสเตอร์ทั้งหมด</a></center>
+        </div>
 
-      <hr class="featurette-divider">
-      <!-- /END THE FEATURETTES -->
-    </div><!-- /.container -->
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- วีดิโอ -->
+        <div class="container-xxl py-5 px-0 wow zoomIn" data-wow-delay="0.1s">
+            <div class="row g-0">
+                <div class="col-md-6 d-flex align-items-center" style="background-color: #313131;">
+                    <div class="p-5">
+                        <h6 class="section-title text-start text-white text-uppercase mb-3">Cater by Kingdomoftigers</h6>
+                        <h1 class="text-white mb-4">โรงพยาบาลสนามแมว เพื่อดูแลน้องแมวที่เจ้าของดูแลต่อไม่ไหวในวิกฤตโควิด</h1>
+                        <p class="text-white mb-4">“Catster by Kingdomoftigers” ที่นี่เป็นทั้งคาเฟ่ของคนรักแมวและบ้านพักแมวจร แมวจรทุกตัวที่เข้ามาที่นี่ได้รับการดูแลในมาตรฐานเดียวกันกับแมวของเจ้าของกิจการ รักษาโรค ทำหมัน ฉีดวัคซีน มีห้องน้ำ อาหารอย่างดี มีที่พักที่สะอาด และแวดล้อมด้วยเครื่องเล่นนานาชนิด รอให้ผู้อุปการะมารับไปดูแลฟรีๆ ที่นี่ได้ดูแล และหาบ้านมาแล้วมากกว่า 1,700 ตัว </p>
+                        <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">รับเลี้ยงแคทสเตอร์</a>
+                        <a href="" class="btn btn-light py-md-3 px-md-5">บริจาคสมทบทุน</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="video">
+                        <button type="button" class="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/lmQUu-pcE20" data-bs-target="#videoModal">
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Youtube</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="ratio ratio-16x9">
+                            <iframe class="embed-responsive-item" id="video" allowfullscreen allowscriptaccess="always" allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var videoModal = document.getElementById('videoModal');
+            videoModal.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget;
+                var videoSrc = button.getAttribute('data-src');
+                var iframe = videoModal.querySelector('iframe');
+                iframe.src = videoSrc;
+            });
+
+            videoModal.addEventListener('hide.bs.modal', function (event) {
+                var iframe = videoModal.querySelector('iframe');
+                iframe.src = '';
+            });
+        </script>
+
+
+        <!-- สินค้า -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Pet Shop</h6>
+                    <h1 class="mb-5">สินค้าจาก <span class="text-primary text-uppercase">แคทสเตอร์</span></h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/bg.jpg" alt="">
+                                <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #313131;">$100/Night</small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Junior Suite</h5>
+                                </div>
+                                <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/bg.jpg" alt="">
+                                <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #313131;">$100/Night</small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Junior Suite</h5>
+                                </div>
+                                <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/bg.jpg" alt="">
+                                <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #313131;">$100/Night</small>
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">Junior Suite</h5>
+                                </div>
+                                <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <center><a class="btn btn-primary py-3 px-5 mt-4" href="shop.php">สินค้าทั้งหมด</a></center>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- สมาชิก -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Our Team</h6>
+                    <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Staffs</span></h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="rounded shadow overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/team-1.jpg" alt="">
+                                <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 mt-3">
+                                <h5 class="fw-bold mb-0">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="rounded shadow overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/team-2.jpg" alt="">
+                                <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 mt-3">
+                                <h5 class="fw-bold mb-0">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="rounded shadow overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/team-3.jpg" alt="">
+                                <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 mt-3">
+                                <h5 class="fw-bold mb-0">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="rounded shadow overflow-hidden">
+                            <div class="position-relative">
+                                <img class="img-fluid" src="img/team-4.jpg" alt="">
+                                <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 mt-3">
+                                <h5 class="fw-bold mb-0">Full Name</h5>
+                                <small>Designation</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Newsletter Start -->
+        <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 border rounded p-1">
+                    <div class="border rounded text-center p-1">
+                        <div class="bg-white rounded text-center p-5">
+                            <h4 class="mb-4">Subscribe Our <span class="text-primary text-uppercase">Newsletter</span></h4>
+                            <div class="position-relative mx-auto" style="max-width: 400px;">
+                                <input class="form-control w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                                <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter Start -->
+        
+
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+    <!-- Footer -->
+    <?php include('include/footer.php'); ?>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
