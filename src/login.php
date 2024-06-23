@@ -4,322 +4,287 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Catster</title>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Dosis:400,600,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/responsive.css" rel="stylesheet" />
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title> เข้าสู่ระบบ / สมัครสมาชิก </title>
 </head>
 <body>
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form method="POST" action="insert_mem.php">
-                <input type="text" name="mem_username" placeholder="Username" />
-                <input type="text" name="mem_firstname" placeholder="Firstname" />
-                <input type="text" name="mem_lastname" placeholder="Lastname" />
-                <input type="password" name="mem_password" placeholder="Password" />
-				<br>
-                <button type="submit" style="background-color: #5C3D2E;">สมัครสมาชิก</button>
-            </form>
-        </div>
-        <div class="form-container sign-in-container">
-            <form method="POST" action="userAuthen.php">
-				<img src="images/logo.png" class="mb-3" style="width: 120px; height: 120px">
-                <input type="text" name="username" placeholder="username" />
-                <input type="password" name="password" id="password" placeholder="password" />
-					<?php
-                        if(isset($_SESSION['Error'])){
-                            echo "<div class='text-danger'>";
-                            echo $_SESSION['Error'];
-                            echo "</div>";
-                            unset($_SESSION['Error']);
-                        }
-                    ?>
-                <input type="checkbox" style="" onclick="showPassword()">Show Password
-				<script>
-					function showPassword() {
-					var x = document.getElementById("password");
-					if (x.type === "password") {
-						x.type = "text";
-					} else {
-						x.type = "password";
-					}
-					}
-				</script>
-                <button type="submit" style="background-color: #5C3D2E;">เข้าสู่ระบบ</button>
-            </form>
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn" style="background-color: #5C3D2E;">เข้าสู่ระบบ</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp" style="background-color: #5C3D2E;">สมัครสมาชิก</button>
+
+	<div class="container" id="container">
+            <div class="form-container sign-up">
+                <form method="POST" action="insert_mem.php">
+                    <h1>Create Account</h1>
+					<input type="text" name="mem_username" placeholder="Username" />
+					<input type="text" name="mem_firstname" placeholder="Firstname" />
+					<input type="text" name="mem_lastname" placeholder="Lastname" />
+					<input type="password" name="mem_password" placeholder="Password" />
+                    <input type="password" name="mem_cfpassword" placeholder="Confirm Password">
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in">
+                <form method="POST" action="userAuthen.php">
+					<img src="images/logo.png" class="mb-3" style="width: 120px; height: 120px">
+                    <h1>Sign In</h1>
+					<input type="text" name="username" placeholder="username" />
+					<input type="password" name="password" id="password" placeholder="password" />
+						<?php
+							if(isset($_SESSION['Error'])){
+								echo "<div class='text-danger'>";
+								echo $_SESSION['Error'];
+								echo "</div>";
+								unset($_SESSION['Error']);
+							}
+						?>
+                    <a href="#">Forget Your Password?</a>
+                    <button type="submit">Sign In</button>
+                </form>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Welcome Back!</h1>
+                        <p>Enter your personal details to use all of site features</p>
+                        <button class="hidden" id="login">Sign In</button>
+                    </div>
+                    <div class="toggle-panel toggle-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Register with your personal details to use all of site features</p>
+                        <button class="hidden" id="register">Sign Up</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br><br>
-    <a href="index.php">
-       <button style="background-color: #5C3D2E;"> หน้าหลัก </button> 
-    </a>
+
+        <script src="script.js"></script>
+        <script>
+            const container = document.getElementById('container');
+            const registerBtn = document.getElementById('register');
+            const loginBtn = document.getElementById('login');
+
+            registerBtn.addEventListener('click', () => {
+                container.classList.add("active");
+            });
+
+            loginBtn.addEventListener('click', () => {
+                container.classList.remove("active");
+            });
+        </script>
 
 </body>
 
-<script>
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const container = document.getElementById('container');
-
-    signUpButton.addEventListener('click', () => {
-        container.classList.add("right-panel-active");
-    });
-
-    signInButton.addEventListener('click', () => {
-        container.classList.remove("right-panel-active");
-    });
-</script>
-
 <style>
-    
-	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-	* {
-		box-sizing: border-box;
-	}
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+    }
 
-	body {
-		background: #f6f5f7;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		font-family: 'Montserrat', sans-serif;
-		height: 100vh;
-		margin: -20px 0 50px;
-	}
+    body{
+        background-color: #f1f1f1;
+        background: linear-gradient(to right, #e2e2e2, #f1f1f1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+    }
 
-	h1 {
-		font-weight: bold;
-		margin: 0;
-	}
+    .container{
+        background-color: #fff;
+        border-radius: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+        position: relative;
+        overflow: hidden;
+        width: 768px;
+        max-width: 100%;
+        min-height: 480px;
+    }
 
-	h2 {
-		text-align: center;
-	}
+    .container p{
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.3px;
+        margin: 20px 0;
+    }
 
-	p {
-		font-size: 14px;
-		font-weight: 100;
-		line-height: 20px;
-		letter-spacing: 0.5px;
-		margin: 20px 0 30px;
-	}
+    .container span{
+        font-size: 12px;
+    }
 
-	span {
-		font-size: 12px;
-	}
+    .container a{
+        color: #333;
+        font-size: 13px;
+        text-decoration: none;
+        margin: 15px 0 10px;
+    }
 
-	a {
-		color: #333;
-		font-size: 14px;
-		text-decoration: none;
-		margin: 15px 0;
-	}
+    .container button{
+        background-color: #FFA559;
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 45px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        cursor: pointer;
+    }
 
-	button {
-		border-radius: 20px;
-		border: 1px solid #fff;
-		background-color: #FFA559;
-		color: #FFFFFF;
-		font-size: 12px;
-		font-weight: bold;
-		padding: 12px 45px;
-		letter-spacing: 1px;
-		text-transform: uppercase;
-		transition: transform 80ms ease-in;
-	}
+    .container button.hidden{
+        background-color: transparent;
+        border-color: #fff;
+    }
 
-	button:active {
-		transform: scale(0.95);
-	}
+    .container form{
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 40px;
+        height: 100%;
+    }
 
-	button:focus {
-		outline: none;
-	}
+    .container input{
+        background-color: #eee;
+        border: none;
+        margin: 8px 0;
+        padding: 10px 15px;
+        font-size: 13px;
+        border-radius: 8px;
+        width: 100%;
+        outline: none;
+    }
 
-	button.ghost {
-		background-color: transparent;
-		border-color: #FFFFFF;
-	}
+    .form-container{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        transition: all 0.6s ease-in-out;
+    }
 
-	form {
-		background-color: #FFFFFF;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 50px;
-		height: 100%;
-		text-align: center;
-	}
+    .sign-in{
+        left: 0;
+        width: 50%;
+        z-index: 2;
+    }
 
-	input {
-		background-color: #eee;
-		border: none;
-		padding: 12px 15px;
-		margin: 8px 0;
-		width: 100%;
-	}
+    .container.active .sign-in{
+        transform: translateX(100%);
+    }
 
-	.container {
-		background-color: #fff;
-		border-radius: 10px;
-		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-				0 10px 10px rgba(0,0,0,0.22);
-		position: relative;
-		overflow: hidden;
-		width: 768px;
-		max-width: 100%;
-		min-height: 480px;
-	}
+    .sign-up{
+        left: 0;
+        width: 50%;
+        opacity: 0;
+        z-index: 1;
+    }
 
-	.form-container {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		transition: all 0.6s ease-in-out;
-	}
+    .container.active .sign-up{
+        transform: translateX(100%);
+        opacity: 1;
+        z-index: 5;
+        animation: move 0.6s;
+    }
 
-	.sign-in-container {
-		left: 0;
-		width: 50%;
-		z-index: 2;
-	}
+    @keyframes move{
+        0%, 49.99%{
+            opacity: 0;
+            z-index: 1;
+        }
+        50%, 100%{
+            opacity: 1;
+            z-index: 5;
+        }
+    }
 
-	.container.right-panel-active .sign-in-container {
-		transform: translateX(100%);
-	}
+    .social-icons{
+        margin: 20px 0;
+    }
 
-	.sign-up-container {
-		left: 0;
-		width: 50%;
-		opacity: 0;
-		z-index: 1;
-	}
+    .social-icons a{
+        border: 1px solid #ccc;
+        border-radius: 20%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 3px;
+        width: 40px;
+        height: 40px;
+    }
 
-	.container.right-panel-active .sign-up-container {
-		transform: translateX(100%);
-		opacity: 1;
-		z-index: 5;
-		animation: show 0.6s;
-	}
+    .toggle-container{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        transition: all 0.6s ease-in-out;
+        border-radius: 150px 0 0 100px;
+        z-index: 1000;
+    }
 
-	@keyframes show {
-		0%, 49.99% {
-			opacity: 0;
-			z-index: 1;
-		}
-		
-		50%, 100% {
-			opacity: 1;
-			z-index: 5;
-		}
-	}
+    .container.active .toggle-container{
+        transform: translateX(-100%);
+        border-radius: 0 150px 100px 0;
+    }
 
-	.overlay-container {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 50%;
-		height: 100%;
-		overflow: hidden;
-		transition: transform 0.6s ease-in-out;
-		z-index: 100;
-	}
+    .toggle{
+        background-color: #FFA559;
+        height: 100%;
+        background: linear-gradient(to right, #FC8621, #FFA559);
+        color: #fff;
+        position: relative;
+        left: -100%;
+        height: 100%;
+        width: 200%;
+        transform: translateX(0);
+        transition: all 0.6s ease-in-out;
+    }
 
-	.container.right-panel-active .overlay-container{
-		transform: translateX(-100%);
-	}
+    .container.active .toggle{
+        transform: translateX(50%);
+    }
 
-	.overlay {
-		background: #D79771;
-		background: -webkit-linear-gradient(to right, #753422, #D79771);
-		background: linear-gradient(to right, #D79771, #753422);
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: 0 0;
-		color: #FFFFFF;
-		position: relative;
-		left: -100%;
-		height: 100%;
-		width: 200%;
-		transform: translateX(0);
-		transition: transform 0.6s ease-in-out;
-	}
+    .toggle-panel{
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 30px;
+        text-align: center;
+        top: 0;
+        transform: translateX(0);
+        transition: all 0.6s ease-in-out;
+    }
 
-	.container.right-panel-active .overlay {
-		transform: translateX(50%);
-	}
+    .toggle-left{
+        transform: translateX(-200%);
+    }
 
-	.overlay-panel {
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		padding: 0 40px;
-		text-align: center;
-		top: 0;
-		height: 100%;
-		width: 50%;
-		transform: translateX(0);
-		transition: transform 0.6s ease-in-out;
-	}
+    .container.active .toggle-left{
+        transform: translateX(0);
+    }
 
-	.overlay-left {
-		transform: translateX(-20%);
-	}
+    .toggle-right{
+        right: 0;
+        transform: translateX(0);
+    }
 
-	.container.right-panel-active .overlay-left {
-		transform: translateX(0);
-	}
-
-	.overlay-right {
-		right: 0;
-		transform: translateX(0);
-	}
-
-	.container.right-panel-active .overlay-right {
-		transform: translateX(20%);
-	}
-
-	.social-container {
-		margin: 20px 0;
-	}
-
-	.social-container a {
-		border: 1px solid #DDDDDD;
-		border-radius: 50%;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		margin: 0 5px;
-		height: 40px;
-		width: 40px;
-	}
+    .container.active .toggle-right{
+        transform: translateX(200%);
+    }
 </style>
-
