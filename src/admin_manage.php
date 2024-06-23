@@ -120,13 +120,13 @@
 			</ul>
 
             <ul class="box-info">
-				<li>
+				<a href="vaccines.php"><li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
 						<h3>Vaccines</h3>
 						<p>วัคซีน</p>
 					</span>
-				</li>
+				</li></a>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
