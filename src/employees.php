@@ -53,7 +53,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="#" class="logout">
+				<a href="logout.php" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -89,91 +89,110 @@
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-		<main>
-			<div class="head-title">
-				<div class="left">
-					<h1>พนักงาน</h1>
-          <ul class="breadcrumb">
-						<li>
-							<a href="admin_manage.php" class="active">Manage</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a href="employees.php">Employees</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+    <main>
+  <div class="head-title">
+    <div class="left">
+      <h1>พนักงาน</h1>
+      <ul class="breadcrumb">
+        <li>
+          <a href="admin_manage.php" class="active">Manage</a>
+        </li>
+        <li><i class='bx bx-chevron-right'></i></li>
+        <li>
+          <a href="employees.php">Employees</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-      <form class="form-input" action="insert_emp.php" method="POST" enctype="multipart/form-data">
-        <div class="row">
-          <div class="col-6">
-            <input type="file" name="emp_picture">
-            <input type="text" name="emp_firstname" id="emp_firstname" placeholder="Firstname">
-            <input type="text" name="emp_lastname" id="emp_lastname" placeholder="Lastname">
-            <input type="text" name="emp_address" id="emp_address" placeholder="Address">
-          </div>
-          <div class="col-6">
-            <input type="email" name="emp_email" id="emp_email" placeholder="Email">
-            <input type="text" name="emp_tel" id="emp_tel" placeholder="Telephone">
-            <input type="text" name="emp_username" id="emp_username" placeholder="Username">
-            <input type="password" name="emp_password" id="emp_password" placeholder="Password">
-          </div>
+  <form id="employeeForm" class="form-input" action="insert_emp.php" method="POST" enctype="multipart/form-data" style="display: none;">
+    <div class="row">
+      <div class="col-6">
+        <input type="file" name="emp_picture">
+        <input type="text" name="emp_firstname" id="emp_firstname" placeholder="Firstname">
+        <input type="text" name="emp_lastname" id="emp_lastname" placeholder="Lastname">
+        <input type="text" name="emp_address" id="emp_address" placeholder="Address">
+      </div>
+      <div class="col-6">
+        <input type="email" name="emp_email" id="emp_email" placeholder="Email">
+        <input type="text" name="emp_tel" id="emp_tel" placeholder="Telephone">
+        <input type="text" name="emp_username" id="emp_username" placeholder="Username">
+        <input type="password" name="emp_password" id="emp_password" placeholder="Password">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-main">
+          <button class="button-two" type="submit"><span>บันทึก</span></button>
         </div>
-      </form>
+      </div>
+    </div>
+  </form>
 
-      <div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>รายชื่อพนักงาน</h3>
-            <i class='bx bx-plus' >เพิ่ม</i>
-						<i class='bx bx-search' ></i>
-						<i class='bx bx-filter' ></i>
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th></th>
-								<th>Firstname</th>
-								<th>Lastname</th>
-                <th>Email</th>
-                <th>Manage</th>
-							</tr>
-						</thead>
-						<tbody>
-              <?php 
-                if(mysqli_num_rows($result) > 0): 
-                  while($employee = mysqli_fetch_assoc($result)):
-              ?>
-							<tr>
-								<td>
-                  <?php if(!empty($employee['emp_picture'])): ?>
-                    <img src="images/<?php echo htmlspecialchars($employee['emp_picture']); ?>" style="width: 50px; height: auto;" alt="Employee Picture">
-                  <?php else: ?>
-                    <img src="images/noimage.png" style="width: 100px;" alt="No Image">
-                  <?php endif; ?>
-								</td>
-                <td><?php echo htmlspecialchars($employee['emp_firstname']); ?></td>
-								<td><?php echo htmlspecialchars($employee['emp_lastname']); ?></td>
-								<td><?php echo htmlspecialchars($employee['emp_email']); ?></td>
-                <td>
-                  <a role="button" href="delete_emp.php?emp_username=<?php echo htmlspecialchars($employee['emp_username']); ?>" onclick="return confirm('Are you sure you want to delete this employee?');">
-                    <i class="fa-regular fa-trash-can" style="margin-right: 10px;"></i>Delete
-                  </a>
-                </td>
-							</tr>
-              <?php endwhile; ?>
+
+  <div class="table-data">
+    <div class="order">
+      <div class="head">
+        <h3>รายชื่อพนักงาน</h3>
+        <i class='bx bx-plus' id="toggleFormButton" style="cursor: pointer;">เพิ่ม</i>
+        <i class='bx bx-search'></i>
+        <i class='bx bx-filter'></i>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Manage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            if(mysqli_num_rows($result) > 0): 
+              while($employee = mysqli_fetch_assoc($result)):
+          ?>
+          <tr>
+            <td>
+              <?php if(!empty($employee['emp_picture'])): ?>
+                <img src="images/<?php echo htmlspecialchars($employee['emp_picture']); ?>" style="width: 50px; height: auto;" alt="Employee Picture">
               <?php else: ?>
-              <tr>
-                <td colspan="8"><p class="text-center">No data available</p></td>
-              </tr>
-            <?php endif; ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
+                <img src="images/noimage.png" style="width: 100px;" alt="No Image">
+              <?php endif; ?>
+            </td>
+            <td><?php echo htmlspecialchars($employee['emp_firstname']); ?></td>
+            <td><?php echo htmlspecialchars($employee['emp_lastname']); ?></td>
+            <td><?php echo htmlspecialchars($employee['emp_email']); ?></td>
+            <td>
+              <a role="button" href="delete_emp.php?emp_username=<?php echo htmlspecialchars($employee['emp_username']); ?>" onclick="return confirm('Are you sure you want to delete this employee?');">
+                <i class="fa-regular fa-trash-can" style="margin-right: 10px; color: #FFA559;"></i><span style="color: #FFA559;">Delete</span> 
+              </a>
+            </td>
+          </tr>
+          <?php endwhile; ?>
+          <?php else: ?>
+          <tr>
+            <td colspan="8"><p class="text-center">No data available</p></td>
+          </tr>
+          <?php endif; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
 
-		</main>
+<script>
+  document.getElementById('toggleFormButton').addEventListener('click', function() {
+    var form = document.getElementById('employeeForm');
+    if (form.style.display === 'none' || form.style.display === '') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+    }
+  });
+</script>
+
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
@@ -209,7 +228,7 @@
 
 <style>
 
-input {
+  input {
             margin-bottom: 10px;
             width: 90%;
             height: 40px;
@@ -237,7 +256,7 @@ input {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 1300px;
             margin: auto;
-            margin-top: 10px;
+            margin-top: 20px;
         }
         .form-input h2 {
             margin-bottom: 20px;
@@ -267,4 +286,46 @@ input {
         .form-group button:hover {
             background-color: #0056b3;
         }
+
+  .sub-main {
+    margin-top: 20px; /* Adjust margin as needed */
+    text-align: center; /* Center align the button */
+  }
+
+  .button-two {
+    border-radius: 4px;
+    background-color: #FFA559;
+    font-size: 18px;
+    border: none;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+  }
+
+  .button-two span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .button-two span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .button-two:hover span {
+    padding-right: 25px;
+  }
+
+  .button-two:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
 </style>
