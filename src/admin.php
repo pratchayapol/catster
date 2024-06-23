@@ -27,6 +27,12 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
+      <li>
+				<a href="admin_manage.php">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Manage</span>
+				</a>
+			</li>
 			<li>
 				<a href="#">
 					<i class='bx bxs-shopping-bag-alt' ></i>
@@ -40,15 +46,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="admin_manage.php">
+				<a href="#">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Message</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Manage</span>
 				</a>
 			</li>
 		</ul>
