@@ -49,7 +49,7 @@
                                 </div>
                                 <a href="contact.php" class="nav-item nav-link">ติดต่อ</a>
                             </div>
-                            <a href="sign_in_up.php" class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block">เข้าสู่ระบบ / สมัครสมาชิก<i class="fa fa-arrow-right ms-3"></i></a>
+                            <a href="login.php" class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block">เข้าสู่ระบบ / สมัครสมาชิก<i class="fa fa-arrow-right ms-3"></i></a>
                         </div>
                     </nav>
                 </div>
