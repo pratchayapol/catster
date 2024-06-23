@@ -13,7 +13,7 @@
     
     if(mysqli_stmt_execute($stmt)){
         echo "insert success!";
-        echo "<script>window.location='form.php';</script>";
+        echo "<script>window.location='vaccines.php';</script>";
     }else{
         echo "ERROR";
         echo "<script>alert('ไม่สามารถเพิ่มวัคซีนได้: " . mysqli_error($conn) . "');</script>";
