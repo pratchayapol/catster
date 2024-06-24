@@ -6,7 +6,6 @@
     $mem_firstname = $_POST['mem_firstname'];
     $mem_lastname = $_POST['mem_lastname'];
     $mem_email = $_POST['mem_email'];
-    $mem_password = $_POST['mem_password'];
     
     // ตรวจสอบว่ามีการอัปโหลดไฟล์รูปหรือไม่
     if(isset($_FILES['mem_picture']) && $_FILES['mem_picture']['error'] === UPLOAD_ERR_OK) {
@@ -24,11 +23,10 @@
             mem_firstname = ?,
             mem_lastname = ?,
             mem_email = ?,
-            mem_password = ?,
             mem_picture = ?
             WHERE mem_username = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssssss", $mem_firstname, $mem_lastname, $mem_email, $mem_password, $mem_picture, $mem_username);
+    mysqli_stmt_bind_param($stmt, "sssss", $mem_firstname, $mem_lastname, $mem_email, $mem_picture, $mem_username);
     
     if(mysqli_stmt_execute($stmt)){
         echo "Record updated successfully";

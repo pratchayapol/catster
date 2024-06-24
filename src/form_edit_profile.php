@@ -1,162 +1,346 @@
 <?php
-    // Start session
-    session_start();
+// Start session
+session_start();
 
-    include 'condb.php';
+include 'condb.php';
 
-    // Check database connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+// Check database connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if session data exists
+if (isset($_SESSION['username'])) {
+    // Get username from session
+    $username = $_SESSION['username'];
+
+    // SQL query to retrieve user data based on username
+    $sql = "SELECT * FROM members WHERE mem_username = '$username'";
+    $result = $conn->query($sql);
+
+    // Check if user data exists
+    if ($result->num_rows > 0) {
+        // Fetch user data
+        $row = $result->fetch_assoc();
+
+        // Set session variables for first name and last name
+        $_SESSION['firstname'] = $row['mem_firstname'];
+        $_SESSION['lastname'] = $row['mem_lastname'];
     }
+} else {
+    // If session data doesn't exist, display an error message
+    echo "Session not found";
+}
 
-    // Check if session data exists
-    if (isset($_SESSION['username'])) {
-        // Get username from session
-        $username = $_SESSION['username'];
-
-        // SQL query to retrieve user data based on username
-        $sql = "SELECT * FROM members WHERE mem_username = '$username'";
-        $result = $conn->query($sql);
-
-        // Check if user data exists
-        if ($result->num_rows > 0) {
-            // Fetch user data
-            $row = $result->fetch_assoc();
-
-            // Set session variables for first name and last name
-            $_SESSION['firstname'] = $row['mem_firstname'];
-            $_SESSION['lastname'] = $row['mem_lastname'];
-        }
-    } else {
-        // If session data doesn't exist, display an error message
-        echo "Session not found";
-    }
-
-    // Close the database connection
-    $conn->close();
+// Close the database connection
+$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <title>ข้อมูลส่วนตัว</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" target="_blank" href="style.css" />
+    <title>Catster - เกี่ยวกับเรา</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
+
 </head>
-<body>
 
-<nav>
+<body style="background-color: #fff;">
+    <!-- Header -->
+    <?php include('include/header.php'); ?>
 
-</nav>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
 
-<div class="container">
-    <div class="view-account">
-        <section class="module">
-            <div class="module-inner">
-                <div class="side-bar">
-                    <div class="user-info">
-                        <?php
-                        if (isset($row['mem_picture'])) {
-                            echo "<img class='img-profile img-circle img-responsive center-block' src='images/" . $row['mem_picture'] . "'>";
-                        }
-                        ?>
-                        <ul class="meta list list-unstyled">
-                            <li class="name">
-                                <?php
-                                if (isset($_SESSION['firstname'])) {
-                                    echo $_SESSION['firstname'] . " " . $_SESSION['lastname'];
-                                }
-                                ?><br>
-                                <?php
-                                    // Check if mem_status is set in $row
-                                    if(isset($row['mem_status'])) {
-                                        // Check the value of mem_status
-                                        if($row['mem_status'] == 0) {
-                                            echo "<label class='label' style='background-color: #FFF4E4; color: #454545;'>สถานะ : ไม่ได้เป็นผู้อุปการะ</label>";
-                                        } elseif($row['mem_status'] == 1) {
-                                            echo "<label class='label' style='background-color: #F88020;'>สถานะ : เป็นผู้อุปการะ</label>";
-                                        }
-                                    }
-                                ?>
-                            </li>
-                        </ul>
-                    </div>
-                    <nav class="side-menu">
-                        <ul class="nav">
-                            <li><a href="index.php"><span class="fa fa-arrow-left"></span> หน้าหลัก </a></li>
-                            <li class="active"><a href="edit_profile.php"><span class="fa fa-user"></span> ข้อมูลส่วนตัว </a></li>
-                            <li><a href="your_orders.php"><span class="fa fa-clock-o"></span> ประวัติการสั่งซื้อ</a></li>
-                            <li><a href="form_change_password.php"><span class="fa fa-cog"></span> เปลี่ยนรหัสผ่าน</a></li>
-                            <li><a href="logout.php"><span class="fa fa-outdent"></span> ออกจากระบบ</a></li>
-                        </ul>
-                    </nav>
+
+        <!-- Team Start -->
+        <div class="container-xxl py-3" style="margin-bottom: 200px;">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Edit Profile</h6>
+                    <h1 class="mb-5">แก้ไข <span class="text-primary text-uppercase">ข้อมูลส่วนตัว</span></h1>
                 </div>
-                <div class="content-panel">
-                    <form class="form-horizontal" action="edit_profile.php" method="POST" enctype="multipart/form-data">
-                        <fieldset class="fieldset">
-                            <h3 class="fieldset-title">ข้อมูลส่วนตัว</h3>
-                            <div class="form-group avatar">
-                                <figure class="figure col-md-2 col-sm-3 col-xs-12"></figure>
-                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                                    <input type="hidden" name="current_picture" value="<?php echo isset($row['mem_picture']) ? htmlspecialchars($row['mem_picture']) : ''; ?>">
-                                    <input type="file" id="mem_picture" name="mem_picture" class="file-uploader pull-left">
-                                    <button type="submit" name="submit" class="btn btn-sm btn-default-alt pull-left">แก้ไขรูปภาพ</button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">ชื่อผู้ใช้งาน</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" name="mem_username" class="form-control" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">ชื่อ</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" name="mem_firstname" class="form-control" value="<?php echo isset($_SESSION['firstname']) ? $_SESSION['firstname'] : ''; ?>">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">นามสกุล</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" name="mem_lastname" class="form-control" value="<?php echo isset($_SESSION['lastname']) ? $_SESSION['lastname'] : ''; ?>">
-                                </div>
-                            </div>
-                            <input type="hidden" name="mem_password" value="<?php echo isset($row['mem_password']) ? $row['mem_password'] : ''; ?>">
-                        </fieldset>
-                        <fieldset class="fieldset">
-                            <h3 class="fieldset-title">ข้อมูลการติดต่อ</h3>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">อีเมล</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="email" name="mem_email" class="form-control" value="<?php echo isset($row['mem_email']) ? $row['mem_email'] : ''; ?>">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">เบอร์โทรศัพท์</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" name="mem_tel" class="form-control" value="<?php echo isset($row['mem_tel']) ? $row['mem_tel'] : ''; ?>">
-                                </div>
-                            </div>
-                        </fieldset>
+                <div class="row g-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="text-center">
+                                            <!-- Avatar Upload -->
+                                            <div class="avatar-upload">
+                                                <div class="avatar-edit">
+                                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                                    <label for="imageUpload"><i class="fa-solid fa-gear" style="color: #fff;"></i></label>
+                                                </div>
 
-                        <hr>
-                        <div class="form-group">
-                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                <input class="btn" style="background-color: #F88020; color: #FFF4E4;" name="submit" type="submit" value="แก้ไขข้อมูล">
+                                                <div class="avatar-preview">
+                                                    <div id="imagePreview" style="background-image: url('images/<?php echo $row['mem_picture'] ?>');">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Avatar Upload -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 personal-info">
+                                        <h5>Personal info</h5>
+                                        <form class="form-horizontal" role="form" action="update_mem.php" method="POST" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Username:</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" type="text" value="<?php echo $_SESSION['username'] ?>" style="background-color: #d6d6d6;" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Firstname:</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" type="text" name="firstname" value="<?php echo $row['mem_firstname'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Lastname:</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" type="text" name="lastname" value="<?php echo $row['mem_lastname'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Email:</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" type="email" name="email" value="<?php echo $row['mem_email'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Telephone:</label>
+                                                <div class="col-md-8">
+                                                    <input class="form-control" type="text" name="telephone" value="<?php echo $row['mem_tel'] ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label"></label>
+                                                <div class="col-md-8">
+                                                    <input type="submit" class="btn btn-primary" value="Save Changes">
+                                                    <span></span>
+                                                    <input type="reset" class="btn btn-default" value="Cancel">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
-                    </form>
+                    </div>
+                    <hr>
                 </div>
             </div>
-        </section>
+        </div>
+        <!-- Team End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-</div>
+
+    <!-- Footer -->
+    <?php include('include/footer.php') ?>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                    $('#imagePreview').hide();
+                    $('#imagePreview').fadeIn(650);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#imageUpload").change(function() {
+            readURL(this);
+        });
+    </script>
 </body>
+
 </html>
+
+
+
+<style>
+    .avatar-upload {
+        position: relative;
+        max-width: 205px;
+        margin: 0 auto;
+        /* ทำให้อยู่ตรงกลางหน้าจอ */
+    }
+
+    /* เพิ่มเติมเพื่อการ Responsive */
+    @media (max-width: 768px) {
+        .avatar-upload {
+            width: 100%;
+            max-width: 205px;
+            /* จำกัดขนาดสูงสุดไม่เกิน 205px */
+        }
+    }
+
+
+    .avatar-upload .avatar-edit {
+        position: absolute;
+        right: 20px;
+        z-index: 1;
+        top: 20px;
+    }
+
+    .avatar-upload .avatar-edit input {
+        display: none;
+    }
+
+    .avatar-upload .avatar-edit input+label {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 0;
+        border-radius: 100%;
+        background: #FFA559;
+        border: 1px solid transparent;
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .avatar-upload .avatar-edit input+label:hover {
+        background: #f1f1f1;
+        border-color: #d6d6d6;
+    }
+
+
+    .avatar-upload .avatar-edit input+label:after {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    .avatar-upload .avatar-preview {
+        width: 192px;
+        height: 192px;
+        position: relative;
+        border-radius: 100%;
+        border: 6px;
+    }
+
+    .avatar-upload .avatar-preview>div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+
+
+
+    .jumbotron-flat {
+        background-color: solid #4DB8FF;
+        height: 100%;
+        border: 1px solid #4DB8FF;
+        background: white;
+        width: 100%;
+        text-align: center;
+        overflow: auto;
+        color: var(--dark-color);
+    }
+
+    .paymentAmt {
+        color: var(--dark-color);
+        font-size: 80px;
+    }
+
+    .centered {
+        text-align: center;
+    }
+
+    .title {
+        padding-top: 15px;
+        color: var(--dark-color);
+    }
+
+    .form-horizontal {
+        position: relative;
+        max-width: 100%;
+        /* กำหนดความกว้างสูงสุดของแบบฟอร์ม */
+        margin: 0 auto;
+        /* ทำให้อยู่ตรงกลาง */
+        padding: 20px;
+        /* เพิ่ม padding เพื่อให้มีขอบที่สวยงาม */
+
+    }
+
+    @media (max-width: 768px) {
+        .form-horizontal {
+            width: 100%;
+            /* กำหนดความกว้างเต็มหน้าจอใน responsive mode */
+            max-width: 100%;
+            /* กำหนดความกว้างสูงสุดเป็น 100% */
+            padding: 10px;
+            /* ลด padding ในโหมด responsive เพื่อให้แบบฟอร์มมีขนาดเล็กลง */
+        }
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+</style>

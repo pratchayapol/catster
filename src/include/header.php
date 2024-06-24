@@ -61,7 +61,7 @@
                                     <h6>ไอย์ พงษ์สถิตย์พัฒน์</h6>
                                 </div>
                                 <hr>
-                                <a href="#" class="sub-menu-link">
+                                <a href="form_edit_profile.php" class="sub-menu-link">
                                     <p>Edit Profile</p>
                                     <span>></span>
                                 </a>
