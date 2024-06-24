@@ -244,17 +244,20 @@
         }
         .row {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
+            gap: 10px;
         }
         .col-6 {
-            width: 48%;
+          flex: 1;
+          min-width: 45%;
         }
         .form-input {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 1300px;
+            max-width: 800px;
             margin: auto;
             margin-top: 20px;
         }

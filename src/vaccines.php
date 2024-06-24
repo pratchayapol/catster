@@ -99,7 +99,7 @@
         </li>
         <li><i class='bx bx-chevron-right'></i></li>
         <li>
-          <a href="employees.php">Employees</a>
+          <a href="employees.php">Vaccines</a>
         </li>
       </ul>
     </div>
@@ -215,7 +215,7 @@
 
   input {
             margin-bottom: 10px;
-            width: 100%;
+            width: 90%;
             height: 40px;
             font-size: 16px;
             transition: 0.6s;
@@ -229,20 +229,20 @@
         }
         .row {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
+            gap: 10px;
         }
         .col-6 {
-            width: 50%;
-        }
-        .col-12 {
-            width: 100%;
+          flex: 1;
+          min-width: 45%;
         }
         .form-input {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 800px;
+            max-width: 800px;
             margin: auto;
             margin-top: 20px;
         }

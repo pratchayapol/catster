@@ -110,16 +110,6 @@
 						<p>พนักงาน</p>
 					</span>
 				</li></a>
-				<li>
-					<i class='bx bxs-dollar-circle' ></i>
-					<span class="text">
-						<h3>Members</h3>
-						<p>สมาชิก</p>
-					</span>
-				</li>
-			</ul>
-
-            <ul class="box-info">
 				<a href="vaccines.php"><li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
@@ -127,18 +117,28 @@
 						<p>วัคซีน</p>
 					</span>
 				</li></a>
-				<li>
+			</ul>
+
+            <ul class="box-info">
+				<a href="types.php"><li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
 						<h3>Types</h3>
 						<p>ประเภทสินค้า</p>
 					</span>
-				</li>
-				<li>
+				</li></a>
+				<a href="products.php"><li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
 						<h3>Products</h3>
 						<p>สินค้า</p>
+					</span>
+				</li></a>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>Members</h3>
+						<p>สมาชิก</p>
 					</span>
 				</li>
 			</ul>
