@@ -207,20 +207,25 @@
 
 <style>
 
-  input {
-            margin-bottom: 10px;
-            width: 90%;
-            height: 40px;
-            font-size: 16px;
-            transition: 0.6s;
-            border: #313131;
-            border-bottom: 1px solid #CCC;
-            background-color: transparent;
-        }
-        input:focus {
-            outline: none;
-            border-bottom: 1px solid #FFA559;
-        }
+  input,
+    select {
+        margin-bottom: 10px;
+        width: 90%;
+        height: 40px;
+        font-size: 16px;
+        transition: border-bottom 0.6s; /* Added transition for consistency */
+        border: 1px solid #CCC; /* Added default border for consistency */
+        background-color: transparent;
+        border-radius: 4px; /* Added border-radius for consistency */
+        padding: 8px; /* Added padding for consistency */
+    }
+
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: #FFA559;
+        border-bottom: 1px solid #FFA559; /* Adjusted to match input field behavior */
+    }
         .row {
             display: flex;
             flex-wrap: wrap;
