@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb-catster
--- Generation Time: Jun 02, 2024 at 10:20 AM
--- Server version: 11.3.2-MariaDB-1:11.3.2+maria~ubu2204
+-- Generation Time: Jun 24, 2024 at 05:40 PM
+-- Server version: 11.4.2-MariaDB-ubu2404
 -- PHP Version: 8.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -43,7 +43,8 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`emp_username`, `emp_firstname`, `emp_lastname`, `emp_address`, `emp_email`, `emp_tel`, `emp_picture`, `emp_password`) VALUES
-('emp.ai', 'Ai', 'Employee', 'ทดสอบการเพิ่มพนักงาน', 'emp@gmail.com', '0811052518', 0x31343070782d524d5554495f4b4f5241542e706e67, '1234');
+('emp.ai', 'Ai', 'Employee', 'ทดสอบการเพิ่มพนักงาน', 'emp@gmail.com', '0811052518', 0x31343070782d524d5554495f4b4f5241542e706e67, '1234'),
+('emp.fang', 'ฟ่าง', 'นงนภัส', '243/116', 'fang@gmail.com', '0811052518', 0x312e6a7067, '1234');
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,7 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`mem_username`, `mem_firstname`, `mem_lastname`, `mem_email`, `mem_tel`, `mem_picture`, `mem_status`, `mem_password`) VALUES
-('mem.ai', 'ไอย์', 'ทดสอบแก้ไข', 'test@gmail.com', '0811052518', 0x6d656d2d312e706e67, 0, '1234'),
+('mem.ai', 'ไอย์', 'ทดสอบแก้ไข', 'test@gmail.com', '0811052518', 0x70656f706c652e706e67, 0, '1234'),
 ('mem.fang', 'Nongnapat', 'Sriwongjan', 'fang.nnp@gmail.com', '0920726830', 0x312e6a7067, 0, '1234');
 
 -- --------------------------------------------------------
