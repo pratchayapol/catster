@@ -134,13 +134,13 @@
 						<p>สินค้า</p>
 					</span>
 				</li></a>
-				<li>
+				<a href="members.php"><li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
 						<h3>Members</h3>
 						<p>สมาชิก</p>
 					</span>
-				</li>
+				</li></a>
 			</ul>
 
 		</main>

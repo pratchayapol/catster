@@ -5,92 +5,297 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> สมาชิก </title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="assets/css/admin_style.css">
+  <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
+
+	<title>AdminHub</title>
 </head>
 <body>
-    <div class="sidenav">
-        <a href="admin.php">หน้าหลัก</a>
-        <a href="shelter.php">สถานพักพิง</a>
-        <a href="employees.php">พนักงาน</a>
-        <a href="members.php">สมาชิก</a>
-        <a href="#types">ประเภท</a>
-        <a href="#goods">สินค้า</a>
-        <a href="#vaccines">วัคซีน</a>
-        <a href="logout.php"><button type="button" class="btn mt-2" style="background-color: #FFA559;"> ออกจากระบบ </button></a>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">AdminHub</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="admin.php">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="admin_manage.php">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Manage</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="logout.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Manage</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="img/people.png">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+    <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>พนักงาน</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="admin_manage.php" class="active">Manage</a>
+          </li>
+          <li><i class='bx bx-chevron-right'></i></li>
+          <li>
+            <a href="employees.php">Employees</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="main"><br>
-        <h4 class="alert alert-secondary" style="text-align: center;">ข้อมูลสมาชิก</h4>
-        <table class="table table-dark" style="text-align: center;">
+
+
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>รายชื่อพนักงาน</h3>
+          <i class='bx bx-search'></i>
+          <i class='bx bx-filter'></i>
+        </div>
+        <table>
+          <thead>
             <tr>
-                <th>Username</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Telephone</th>
-                <th>Picture</th>
-                <th>Manage</th>
+              <th></th>
+              <th>#Username</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Manage</th>
             </tr>
-            <?php
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["mem_username"]. "</td>";
-                    echo "<td>" . $row["mem_firstname"]. "</td>";
-                    echo "<td>" . $row["mem_lastname"]. "</td>";
-                    echo "<td>" . $row["mem_tel"]. "</td>";
-                    echo "<td><img src='images/" . $row["mem_picture"] . "' style='width: 50px;' ></td>";
-                    echo "<td>";    
-                    echo "<a href='form_update_mem.php?mem_username=" . $row['mem_username'] . "' class='btn btn-warning mb-3'> แก้ไข </a><br>";
-                    echo "<a href='delete_mem.php?mem_username=" . $row['mem_username'] . "' class='btn btn-danger mb-3'> ลบ </a>";
-                    echo "</td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='6'>0 results</td></tr>";
-            }
-            $conn->close();
+          </thead>
+          <tbody>
+            <?php 
+              if(mysqli_num_rows($result) > 0): 
+                while($member = mysqli_fetch_assoc($result)):
             ?>
+            <tr>
+              <td>
+                <?php if(!empty($member['mem_picture'])): ?>
+                  <img src="images/<?php echo htmlspecialchars($member['mem_picture']); ?>" style="width: 50px; height: auto;" alt="Employee Picture">
+                <?php else: ?>
+                  <img src="images/noimage.png" style="width: 100px;" alt="No Image">
+                <?php endif; ?>
+              </td>
+              <td><?php echo htmlspecialchars($member['mem_username']); ?></td>
+              <td><?php echo htmlspecialchars($member['mem_firstname']); ?></td>
+              <td><?php echo htmlspecialchars($member['mem_lastname']); ?></td>
+              <td><?php echo htmlspecialchars($member['mem_email']); ?></td>
+              <td>
+                <a role="button" href="delete_mem.php?mem_username=<?php echo htmlspecialchars($member['mem_username']); ?>" onclick="return confirm('Are you sure you want to delete this member?');">
+                  <i class="fa-regular fa-trash-can" style="margin-right: 10px; color: #FFA559;"></i><span style="color: #FFA559;">Delete</span> 
+                </a>
+              </td>
+            </tr>
+            <?php endwhile; ?>
+            <?php else: ?>
+            <tr>
+              <td colspan="8"><p class="text-center">No data available</p></td>
+            </tr>
+            <?php endif; ?>
+          </tbody>
         </table>
+      </div>
     </div>
+  </main>
+
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+	
+
+	<script src="assets/js/script_admin.js"></script>
 </body>
 </html>
 
+<script>
+  //Load animation if fields containing data on page load
+  $( document ).ready(function() {
+    $(".input-login").each(function() { 
+      if ($(this).val() != "") {
+        $(this).parent().addClass("animation");
+      }
+    });
+  });
+
+  //Add animation when input is focused
+  $(".login-input").focus(function(){
+    $(this).parent().addClass("animation animation-color");
+  });
+
+  //Remove animation(s) when input is no longer focused
+  $(".login-input").focusout(function(){
+    if($(this).val() === "")
+      $(this).parent().removeClass("animation");
+    $(this).parent().removeClass("animation-color");
+  })
+</script>
+
 <style>
-.sidenav {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
+  input,
+    select {
+        margin-bottom: 10px;
+        width: 90%;
+        height: 40px;
+        font-size: 16px;
+        transition: border-bottom 0.6s; /* Added transition for consistency */
+        border: 1px solid #CCC; /* Added default border for consistency */
+        background-color: transparent;
+        border-radius: 4px; /* Added border-radius for consistency */
+        padding: 8px; /* Added padding for consistency */
+    }
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: #FFA559;
+        border-bottom: 1px solid #FFA559; /* Adjusted to match input field behavior */
+    }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .col-6 {
+          flex: 1;
+          min-width: 45%;
+        }
+        .form-input {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .form-input h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
 
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
-}
+  .sub-main {
+    margin-top: 20px; /* Adjust margin as needed */
+    text-align: center; /* Center align the button */
+  }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+  .button-two {
+    border-radius: 4px;
+    background-color: #FFA559;
+    font-size: 18px;
+    border: none;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+  }
+
+  .button-two span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .button-two span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .button-two:hover span {
+    padding-right: 25px;
+  }
+
+  .button-two:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
 </style>
