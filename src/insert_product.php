@@ -25,6 +25,7 @@
 
 
     if (!empty($sql) && mysqli_query($conn, $sql)) {
+        echo "<script>alert('เพิ่มสินค้าสำเร็จ!');</script>";
         echo "<script>window.location='products.php';</script>";
     } else {
         echo "<script>alert('ไม่สามารถบันทึกข้อมูลสินค้าได้: " . mysqli_error($conn) . "');</script>";
