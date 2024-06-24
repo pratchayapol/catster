@@ -16,7 +16,7 @@
     
     if(mysqli_stmt_execute($stmt)){
         echo "Record updated successfully";
-        header("Location: form.php");
+        header("Location: vaccines.php");
     } else {
         echo "Error updating record: " . mysqli_error($conn);
     }

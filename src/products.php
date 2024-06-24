@@ -121,14 +121,14 @@ if (!empty($_GET['product_id'])) {
     <main>
       <div class="head-title">
         <div class="left">
-          <h1>พนักงาน</h1>
+          <h1>สินค้า</h1>
           <ul class="breadcrumb">
             <li>
               <a href="admin_manage.php" class="active">Manage</a>
             </li>
             <li><i class='bx bx-chevron-right'></i></li>
             <li>
-              <a href="employees.php">Employees</a>
+              <a href="employees.php">Product</a>
             </li>
           </ul>
         </div>
@@ -157,41 +157,6 @@ if (!empty($_GET['product_id'])) {
           </div>
         </div>
       </form>
-
-      <?php
-      // ตรวจสอบว่า $product ถูกกำหนดหรือไม่
-      if (!isset($product) || empty($product)) {
-        echo "ไม่พบข้อมูลสินค้าที่ต้องการแก้ไข";
-      } else {
-      ?>
-        <form id="updateForm" class="form-input" action="update_product.php" method="POST" enctype="multipart/form-data" style="display: none;">
-          <div class="row">
-            <div class="col-6">
-              <input type="file" name="product_picture">
-              <input type="text" name="product_id" id="product_id" value="<?php echo htmlspecialchars($product['product_id']); ?>" readonly style="background-color: #CCC;">
-              <input type="text" name="product_name" id="product_name" value="<?php echo htmlspecialchars($product['product_name']); ?>">
-              <input type="text" name="product_price" id="product_price" value="<?php echo htmlspecialchars($product['product_price']); ?>">
-              <input type="text" name="product_remain" id="product_remain" value="<?php echo htmlspecialchars($product['product_remain']); ?>">
-              <select name="type_id" id="type_id">
-                <?php while ($row = mysqli_fetch_assoc($type_result)) : ?>
-                  <option value="<?php echo htmlspecialchars($row['type_id']); ?>" <?php if ($row['type_id'] == $result['type_id']) echo 'selected'; ?>><?php echo htmlspecialchars($row['type_name']); ?></option>
-                <?php endwhile; ?>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="sub-main">
-                <button class="button-two" type="submit"><span>แก้ไข</span></button>
-              </div>
-            </div>
-          </div>
-        </form>
-      <?php
-      }
-      ?>
-
-
 
       <div class="table-data">
         <div class="order">
@@ -226,8 +191,8 @@ if (!empty($_GET['product_id'])) {
                     <td><?php echo htmlspecialchars($product['product_name']); ?></td>
                     <td><?php echo htmlspecialchars($product['type_name']); ?></td>
                     <td>
-                      <a role="button" id="updateFormButton" data-product-id="<?php echo htmlspecialchars($product['product_id']); ?>" data-product-name="<?php echo htmlspecialchars($product['product_name']); ?>" data-product-price="<?php echo htmlspecialchars($product['product_price']); ?>" data-product-remain="<?php echo htmlspecialchars($product['product_remain']); ?>" data-type-id="<?php echo htmlspecialchars($product['type_id']); ?>">
-                        <i class="fa-solid fa-pen-to-square" style="margin-right: 10px; color: #FFA559;"></i><span style="color: #FFA559;">Update</span>
+                      <a href="form_update_product.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>">
+                        <i class="fa-solid fa-pen-to-square" style="margin-right: 10px; color: orange;"></i><span style="color: orange;">Update</span>
                       </a>
                       <br>
                       <a href="delete_product.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>" onclick="return confirm('Are you sure you want to delete this product?');">
@@ -252,15 +217,6 @@ if (!empty($_GET['product_id'])) {
     <script>
       document.getElementById('insertFormButton').addEventListener('click', function() {
         var form = document.getElementById('insertForm');
-        if (form.style.display === 'none' || form.style.display === '') {
-          form.style.display = 'block';
-        } else {
-          form.style.display = 'none';
-        }
-      });
-
-      document.getElementById('updateFormButton').addEventListener('click', function() {
-        var form = document.getElementById('updateForm');
         if (form.style.display === 'none' || form.style.display === '') {
           form.style.display = 'block';
         } else {
