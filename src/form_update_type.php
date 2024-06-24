@@ -109,7 +109,7 @@ if (isset($_GET['type_id'])) {
                         </li>
                         <li><i class='bx bx-chevron-right'></i></li>
                         <li>
-                            <a href="types.php" class="active">Type</a>
+                            <a href="types.php" class="active">Product Type</a>
                         </li>
                         <li><i class='bx bx-chevron-right'></i></li>
                         <li>
