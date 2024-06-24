@@ -166,6 +166,9 @@
             <td><?php echo htmlspecialchars($employee['emp_email']); ?></td>
             <td>
               <a role="button" href="delete_emp.php?emp_username=<?php echo htmlspecialchars($employee['emp_username']); ?>" onclick="return confirm('Are you sure you want to delete this employee?');">
+                <i class="fa-solid fa-pen-to-square" style="margin-right: 10px; color: #FFA559;"></i><span style="color: #FFA559;">Update</span> 
+              </a>
+              <a role="button" href="delete_emp.php?emp_username=<?php echo htmlspecialchars($employee['emp_username']); ?>" onclick="return confirm('Are you sure you want to delete this employee?');">
                 <i class="fa-regular fa-trash-can" style="margin-right: 10px; color: #FFA559;"></i><span style="color: #FFA559;">Delete</span> 
               </a>
             </td>
